@@ -1,0 +1,129 @@
+{{ define "main" }}
+<section>
+    <header>
+        <h2>Welcome</h2>
+    </header>
+    <p>
+        Hi, I'm Loura and this is my digital space. 
+        Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
+        <a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
+    </p>
+</section>
+<section>
+    <header><h2>My Interests</h2></header>
+    <p>
+        These are the things that have interested me enough to post something. It could
+        be a quick note or a longer musing. Sometimes I attach photos/screenshots, books I've read, or
+        I'll bookmark something on the web. Take a look:
+    </p>
+    <style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
+    <ol>
+	{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+	{{ if gt (len $list) 0 }}
+		{{ range $list }}
+	    		{{ $categoryTitle := .Title }}
+	    		{{ if eq .Title "newsletter" }}
+	    		{{ else if eq .Title "app defaults" }}
+	    		{{ else if eq .Title "change log" }}
+	    		{{ else if eq .Title "timeline" }}
+	    		{{ else if eq .Title "video" }}
+	    		{{ else }}
+			<li>
+				<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;•
+				<span class="dates">
+				{{ range where .Site.Pages.ByDate.Reverse "Type" "post"  }}
+					{{ $postDate := .Date.Format "Jan 2, 2006" }}
+					{{- range $index, $category := .Page.Params.categories -}}
+						{{ if eq $category $categoryTitle }}
+							<span><small>Last updated: {{ $postDate }}</small></span>
+						{{ end }}
+	  				{{- end -}}
+				{{ end }}
+				</span>
+			</li>
+	    		{{ end }}
+		{{ end }}
+	{{ end }}
+    </ol>
+</section>
+<section class="h-feed">
+	<header><h2>Dear Internet</h2></header>
+	<p>
+		Sometimes I just want to say/share something on the internet that isn't part of anything in particular.
+		Below you can find my recent musings. Wanna chat about one? Click on the hyperlink and join the conversation (～￣▽￣)～
+	</p>
+	<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
+	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
+	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif" />
+	{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 20) }}
+	{{ range $paginator.Pages  }}
+
+		{{ if .Title }}
+			<dl class="h-entry">
+				<dt>
+					<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+					<span data-id="{{ .RelPermalink }}"></span>
+				</dt>
+				{{ if in .RawContent "<!--more-->" }}
+				<dd class="p-summary">
+				    <p>
+				    {{ $splitContents := split .RawContent "<!--more-->" }}
+				    {{ $summary := index $splitContents 0 }}
+				    {{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
+				    {{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
+				    {{ $summary | markdownify }}
+				    </p>
+				    <p><a href="{{ .Permalink }}">Read More →</a></p>
+				</dd>
+			    {{ else }}
+				<dd class="e-content">
+				    {{ .Content }}
+				</dd>
+			    {{ end }}
+			</dl>
+		{{ else }}
+			<dl class="h-entry">
+				<dt>
+					<a href="{{ .Permalink }}" class="u-url">
+						<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+					</a>
+					<span data-id="{{ .RelPermalink }}"></span>
+				</dt>
+				<dd class="e-content">{{ .Content }}</dd>
+			</dl>
+		{{ end }}
+
+		<script>
+		  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
+		  .then(response => response.json())
+		  .then(conversation => {
+		    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
+		    if(conversation.items.length > 0) {
+		        let postA = document.createElement('a');
+		        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
+		        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
+			let postSpan = document.createElement('span');
+			postSpan.innerHTML = '◊ ';
+		        repliesLink.prepend(postA);
+			repliesLink.prepend(postSpan);
+		    } else {
+		        repliesLink.remove()
+		    }
+		  })
+		  .catch((error) => {
+		    // TODO: nothing for now…
+		  });
+		</script>
+	
+	{{ end }}
+	{{ $pag := $.Paginator }}
+	<nav>
+		{{ if $pag.HasPrev }}
+			<a rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+		{{ end }}
+		{{ if $pag.HasNext }}
+			<a rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
+		{{ end }}
+	</nav>
+</section>
+{{ end }}
