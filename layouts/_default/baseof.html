@@ -171,8 +171,8 @@
 	</style>
 </head>
 <body>
-<main class="frame wooden-frame">
-	<menu class="left">
+<main class="">
+	<nav class="left frame wooden-frame">
 		<a class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}</a>
 		<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
 		<p>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</p>
@@ -180,7 +180,7 @@
 		<a class="button" href='/reading'>📚 Library</a>
 		<a class="button" href='/archive'>🏛️ Archive</a>
 		<a class="button" href='/search-space'>🔎 Search</a>
-	</menu>
+	</nav>
 	<section class="right">
 		<aside class="frame border-frame">
 			
@@ -189,7 +189,6 @@
 		{{ block "main" . }}{{ end }}
 		</section>
 	</section>
-
 </main>
 </body>
 </html>
