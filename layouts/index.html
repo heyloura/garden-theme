@@ -1,76 +1,96 @@
 {{ define "main" }}
-<section class="h-feed">
+<aside class="frame border-frame">
+	<header><h5>Dear Internet</h5></header>
+	<p>
+		Sometimes I just want to say/share something on the internet that isn't part of anything in particular.
+		Below you can find my recent musings. Wanna chat about one? Click on the hyperlink and join the conversation (～￣▽￣)～
+	</p>
+	<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
+	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
+</aside>
+<section class="content">
 
-	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif" />
-	{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 20) }}
-	{{ range $paginator.Pages  }}
+	<section class="h-feed">
 
-		{{ if .Title }}
-			<dl class="h-entry">
-				<dt>
-					<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-					<span data-id="{{ .RelPermalink }}"></span>
-				</dt>
-				{{ if in .RawContent "<!--more-->" }}
-				<dd class="p-summary">
-				    <p>
-				    {{ $splitContents := split .RawContent "<!--more-->" }}
-				    {{ $summary := index $splitContents 0 }}
-				    {{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
-				    {{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
-				    {{ $summary | markdownify }}
-				    </p>
-				    <p><a href="{{ .Permalink }}">Read More →</a></p>
-				</dd>
-			    {{ else }}
-				<dd class="e-content">
-				    {{ .Content }}
-				</dd>
-			    {{ end }}
-			</dl>
-		{{ else }}
-			<dl class="h-entry">
-				<dt>
-					<a href="{{ .Permalink }}" class="u-url">
-						<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-					</a>
-					<span data-id="{{ .RelPermalink }}"></span>
-				</dt>
-				<dd class="e-content">{{ .Content }}</dd>
-			</dl>
-		{{ end }}
 
-		<script>
-		  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
-		  .then(response => response.json())
-		  .then(conversation => {
-		    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
-		    if(conversation.items.length > 0) {
-		        let postA = document.createElement('a');
-		        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
-		        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
-			let postSpan = document.createElement('span');
-			postSpan.innerHTML = '◊ ';
-		        repliesLink.prepend(postA);
-			repliesLink.prepend(postSpan);
-		    } else {
-		        repliesLink.remove()
-		    }
-		  })
-		  .catch((error) => {
-		    // TODO: nothing for now…
-		  });
-		</script>
+	{{ range (.Paginator.Pages).GroupByDate "2006" }}
+	        <h2 style='margin-top:2em;' id='{{ .Key }}'>📜 The year was {{ .Key }}</h2>
+	{{ end }} <!-- end GroupByDate -->
+
+
+		
+		<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif" />
+		{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 20) }}
+		{{ range $paginator.Pages  }}
 	
-	{{ end }}
-	{{ $pag := $.Paginator }}
-	<nav>
-		{{ if $pag.HasPrev }}
-			<a rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+			{{ if .Title }}
+				<dl class="h-entry">
+					<dt>
+						<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						<span data-id="{{ .RelPermalink }}"></span>
+					</dt>
+					{{ if in .RawContent "<!--more-->" }}
+					<dd class="p-summary">
+					    <p>
+					    {{ $splitContents := split .RawContent "<!--more-->" }}
+					    {{ $summary := index $splitContents 0 }}
+					    {{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
+					    {{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
+					    {{ $summary | markdownify }}
+					    </p>
+					    <p><a href="{{ .Permalink }}">Read More →</a></p>
+					</dd>
+				    {{ else }}
+					<dd class="e-content">
+					    {{ .Content }}
+					</dd>
+				    {{ end }}
+				</dl>
+			{{ else }}
+				<dl class="h-entry">
+					<dt>
+						<a href="{{ .Permalink }}" class="u-url">
+							<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						</a>
+						<span data-id="{{ .RelPermalink }}"></span>
+					</dt>
+					<dd class="e-content">{{ .Content }}</dd>
+				</dl>
+			{{ end }}
+	
+			<script>
+			  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
+			  .then(response => response.json())
+			  .then(conversation => {
+			    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
+			    if(conversation.items.length > 0) {
+			        let postA = document.createElement('a');
+			        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
+			        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
+				let postSpan = document.createElement('span');
+				postSpan.innerHTML = '◊ ';
+			        repliesLink.prepend(postA);
+				repliesLink.prepend(postSpan);
+			    } else {
+			        repliesLink.remove()
+			    }
+			  })
+			  .catch((error) => {
+			    // TODO: nothing for now…
+			  });
+			</script>
+		
 		{{ end }}
-		{{ if $pag.HasNext }}
-			<a rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
-		{{ end }}
-	</nav>
+		{{ $pag := $.Paginator }}
+		<nav>
+			{{ if $pag.HasPrev }}
+				<a rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+			{{ end }}
+			{{ if $pag.HasNext }}
+				<a rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
+			{{ end }}
+		</nav>
+	</section> <!-- hfeed -->
+	
 </section>
 {{ end }}
