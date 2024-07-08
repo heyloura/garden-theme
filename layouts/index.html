@@ -44,7 +44,8 @@
 					</dd>
 				    {{ else }}
 					<dd class="e-content">
-					    {{ .Content }}
+						{{ .Content | safeHTML | truncate 300 }}
+						<p><a href="{{ .Permalink }}">Read More →</a></p>
 					</dd>
 				    {{ end }}
 				</dl>
@@ -89,10 +90,10 @@
 		{{ $pag := $.Paginator }}
 		<nav>
 			{{ if $pag.HasPrev }}
-				<a class="button" rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+				<a style="display:inline-block;" class="button" rel='prev' href='{{ $pag.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
 			{{ end }}
 			{{ if $pag.HasNext }}
-				<a class="button" rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
+				<a style="display:inline-block;" class="button" rel='next' href='{{ $pag.Next.URL }}'>Older Posts →</a>
 			{{ end }}
 		</nav>
 	</section> <!-- hfeed -->
