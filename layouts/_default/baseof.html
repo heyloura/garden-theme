@@ -106,19 +106,73 @@
 			background-position: center bottom;
 			image-rendering: pixelated;
 		}
+		menu a 
+		{
+			display: block;
+		}
+		.golden-button:visited {
+			color: #fff;
+		}
+		.golden-button {
+			background: url(/img/button-golden.png) center no-repeat no-repeat;
+			background-clip: padding-box;
+			background-origin: padding-box;
+			background-size: 100% 80%;
+			padding-top: 5px;
+			overflow: visible;
+			border: none;
+			height: 60px;
+			display: inline-block;
+			padding-left: 35px;
+			padding-right: 35px;
+			outline: 0;
+			max-width: 100%;
+			font-size: 0.75em;
+			line-height: 55px;
+			color: #fff;
+			text-decoration: none;
+		}
+		.golden-button:before {
+			background: url(/img/button-golden-left.png) right center no-repeat;
+			background-size: 100% 100%;
+			margin: -5% 0 0 -46px;
+			left: 0;
+			float: left; 
+		}
+		.golden-button:after, .golden-button:before {
+			white-space: nowrap;
+			display: block;
+			content: "";
+			width: 34px;
+			height: 110%;
+		}
+		.golden-button:after {
+			background: url(/img/button-golden-right.png) left center no-repeat;
+			background-size: 100% 100%;
+			margin: -5% -46px 0 0;
+			right: 0;
+			float: right;
+		}
 	</style>
 </head>
 <body>
-<main class="left-sidebar frame golden-frame">
-	<section class="frame border-frame">{{ block "main" . }}{{ end }}</section>
+<main class="left-sidebar frame wooden-frame">
+	<section>
+		<aside class="frame border-frame">
+			
+		</aside>
+		<section>
+		{{ block "main" . }}{{ end }}
+		</section>
+	</section>
 	<menu>
-		<li style='margin-bottom: 1em;'><a class='golden' href='/categories/rpg/'>{{ .Site.Title }}</a></li>
-		<li class='avatar-li'><img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/><small>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</small></li>
-		<li><a target='_top' href='/photos'>🔮 Photos</a></li>
-		<li><a target='_top' href='/reading'>📚 Library</a></li>
-		<!--<li><a target='_top' href='/bookmarks'>🔖 Saved</a></li>-->
-		<li><a target='_top' href='/archive'>🏛️ Archive</a></li>
-		<li><a target='_top' href='/search-space'>🔎 Search</a></li>
+		<a class='golden' href='/categories/rpg/'>{{ .Site.Title }}</a>
+		<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
+		<p>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</p>
+		<a class="golden-button" href='/photos'>🔮 Photos</a>
+		<a class="golden-button" href='/reading'>📚 Library</a>
+		<a class="golden-button" href='/archive'>🏛️ Archive</a>
+		<a class="golden-button" href='/search-space'>🔎 Search</a>
 	</menu>
 </main>
 </body>
