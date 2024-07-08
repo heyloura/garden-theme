@@ -30,10 +30,14 @@
 		body 
 		{
 			background: #222;
+			text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+			color: white;
+			font-size:18px;
+			cursor: url(/img/cursor/default.png), auto !important;
+			font-family: Consolas, monaco, monospace;
 		}
 		.left-sidebar {
 			display:flex;
-/* 			flex-wrap:wrap; */
 		} 
 		
 		.left-sidebar > * {
@@ -50,7 +54,7 @@
 				order:-1;
 			}
 		}
-		.golden-frame 
+		.wooden-frame 
 		{
 			image-rendering: pixelated;
 			border-image-width:18px;
@@ -67,9 +71,26 @@
 			background-clip:padding-box;
 			background-origin:padding-box;
 		}
+		.golden-frame{
+			image-rendering: pixelated;
+			border-image-width:18px;
+			border-width:15px;
+			box-sizing:border-box;
+			border-image-repeat:repeat;
+			padding:12px;
+			border-style:solid;
+			background-clip:padding-box;
+			background-origin:padding-box;
+			border-image-source:url(/img/border-image-golden2.png);
+			border-image-slice:8 8 8 8;
+			-moz-box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			background:url(/img/background-image-golden2.png) center;
+			background-clip:padding-box;
+			background-origin:padding-box;
+	        }
 		a {
 			color: yellow;
-			text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 			font-size: 1.0em;
 			line-height: 22px;
 			text-decoration: none;
@@ -79,8 +100,8 @@
   	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
-<main class="left-sidebar">
-	<section class="golden-frame">{{ block "main" . }}{{ end }}</section>
+<main class="left-sidebar golden-frame">
+	<section>{{ block "main" . }}{{ end }}</section>
 	<menu>
 		<li style='margin-bottom: 1em;'><a class='golden' href='/categories/rpg/'>{{ .Site.Title }}</a></li>
 		<li class='avatar-li'><img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/><small>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</small></li>
