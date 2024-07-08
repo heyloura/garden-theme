@@ -385,11 +385,10 @@
 <script>
 	var pres = document.querySelectorAll('pre');
 	pres.forEach(function (pre, index) {
-		console.log(pre); // The element
 		var hasCodeEl = false;
 		for (var i = 0; i < pre.children.length; i++) {
 			var child = pre.children[i];
-			console.log(child);
+			console.log(child.nodeName);
 			// Do stuff
 		}
 
