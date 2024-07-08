@@ -1,7 +1,8 @@
 {{ define "main" }}
-       <header>
-	       <h2>{{ strings.FirstUpper .Title }}</h2>
-       	       <nav style="margin-bottom: 2em;"> ⚓ <a href="#intro">into</a> ⚓ <a href="#posts">posts</a> ⚓ <a href="#photos">photos</a> ⚓ <a href="#bookmarks">bookmarks</a> ⚓ <a href="#books">books</a></nav>
+       <div class="frame border-frame">
+	<header>
+	       <h4>{{ strings.FirstUpper .Title }}</h4>
+       	       <nav style="margin-bottom: 2em;"> 🐉 <a href="#intro">into</a> ⚔️ <a href="#posts">posts</a> 👑 <a href="#photos">photos</a> 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a></nav>
        </header>
 	<img id="intro" style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
 	<iframe aria-busy="true"
@@ -17,8 +18,11 @@
 		<a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a>
 	</p>
 	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
+	</div>
+	       
+	
+      	<header id="posts"><h2>{{ strings.FirstUpper .Title }} Posts</h2></header>
 	<img style="display:block;margin: 2em auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
-      <header id="posts"><h2>{{ strings.FirstUpper .Title }} Posts</h2></header>
   {{- $title := .Title -}}
 	{{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 10) }}
   <section  class="h-feed">
