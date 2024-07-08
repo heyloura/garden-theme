@@ -25,13 +25,26 @@
 	<link rel="webmention" href="https://micro.blog/webmention" />
 	<link rel="subscribe" href="https://micro.blog/users/follow" />
 	<link rel="canonical" href="{{ .Permalink }}"> 
-	<style>main{max-width:70ch;background-color:#222;padding:1em;margin:auto;}</style>
-  	<link href="rpgui.min.css" rel="stylesheet" type="text/css" >
-  	<script src="rpgui.min.js"></script>
+	<style>
+		body { background-color:#222; } 
+		main
+		{
+			max-width:70ch;	
+			padding:1em;
+			margin:auto;
+			font-size:18px;
+			cursor: url(/img/default.png), auto !important;
+			font-family: Consolas, monaco, monospace;     
+			height: 100vh;  
+			color: #000000;
+		}
+	</style>
+  	<!--<link href="rpgui.min.css" rel="stylesheet" type="text/css" >
+  	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
-<main class="rpgui-container">
-	<div class="rpgui-content">{{ block "main" . }}{{ end }}</div>
+<main>
+	{{ block "main" . }}{{ end }}
 </main>
 </body>
 </html>
