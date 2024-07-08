@@ -39,26 +39,17 @@
 			line-height: 22px;
 			cursor: url(/img/cursor/default.png), auto !important;
 			font-family: Consolas, monaco, monospace;
-		}
-/* 		.left-sidebar {
-			display:block;
-		} 
-		
-		.left-sidebar > * {
-			width:100%;
-			padding:1rem;
-		} */
-		
+		}		
 		@media (min-width:768px) {
-			.left-sidebar {
-				display:flex;
-			} 
-			.left-sidebar > *:nth-child(1) {
-				width:calc(100% / 3 * 2);
+			.left 
+			{
+				width: 29%;
+				float: left;
 			}
-			.left-sidebar > *:nth-child(2) {
-				width:calc(100% / 3);
-				order:-1;
+			.right 
+			{
+				width: 69%;
+				float: right;
 			}
 		}
 		.frame {
@@ -180,16 +171,8 @@
 	</style>
 </head>
 <body>
-<main class="left-sidebar frame wooden-frame">
-	<section>
-		<aside class="frame border-frame">
-			
-		</aside>
-		<section class="content">
-		{{ block "main" . }}{{ end }}
-		</section>
-	</section>
-	<menu>
+<main class="frame wooden-frame">
+	<menu class="left">
 		<a class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}</a>
 		<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
 		<p>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</p>
@@ -198,6 +181,15 @@
 		<a class="button" href='/archive'>🏛️ Archive</a>
 		<a class="button" href='/search-space'>🔎 Search</a>
 	</menu>
+	<section class="right">
+		<aside class="frame border-frame">
+			
+		</aside>
+		<section class="content">
+		{{ block "main" . }}{{ end }}
+		</section>
+	</section>
+
 </main>
 </body>
 </html>
