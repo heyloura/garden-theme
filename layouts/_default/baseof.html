@@ -386,8 +386,22 @@
 	var pres = document.querySelectorAll('pre');
 	pres.forEach(function (pre, index) {
 		var hasCodeEl = false;
-		for (var i = 0; i < pre.children.length; i++) {
+		var hasCodeClass = false;
+		for (var i = 0; i < pre.children.length; i++) 
+		{
 			var child = pre.children[i];
+			if(child.nodeName == "CODE") 
+			{
+				hasCodeEl = true;
+			}
+			for (var j = 0; j < child.classList.length; j++) 
+			{
+				console.log(child.classList[j]);
+			}
+			if(!hasCodeClass) 
+			{
+
+			}
 			console.log(child.nodeName);
 			// Do stuff
 		}
