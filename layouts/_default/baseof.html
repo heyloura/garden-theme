@@ -40,16 +40,19 @@
 			cursor: url(/img/cursor/default.png), auto !important;
 			font-family: Consolas, monaco, monospace;
 		}
-		.left-sidebar {
-			display:flex;
+/* 		.left-sidebar {
+			display:block;
 		} 
 		
 		.left-sidebar > * {
 			width:100%;
 			padding:1rem;
-		}
+		} */
 		
 		@media (min-width:768px) {
+			.left-sidebar {
+				display:flex;
+			} 
 			.left-sidebar > *:nth-child(1) {
 				width:calc(100% / 3 * 2);
 			}
@@ -95,9 +98,15 @@
 			line-height: 22px;
 			text-decoration: none;
 		}
+		h1,h2,h3,h4,h5,h6
+		{
+			text-align: center;
+			background-image: url(/img/hr.png);
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			image-rendering: pixelated;
+		}
 	</style>
-  	<!--<link href="rpgui.min.css" rel="stylesheet" type="text/css" >
-  	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
 <main class="left-sidebar frame golden-frame">
