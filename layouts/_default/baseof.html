@@ -383,6 +383,16 @@
 <script src="/js/prism.js"></script>
 
 <script>
+	function wrapInner(parent, wrapper) {
+		if (typeof wrapper === "string")
+		wrapper = document.createElement(wrapper);
+		wrapper.classList.add("language-html");
+		
+		var div = parent.appendChild(wrapper);
+		
+		while(parent.firstChild !== wrapper)
+		wrapper.appendChild(parent.firstChild);
+	}
 	var pres = document.querySelectorAll('pre');
 	pres.forEach(function (pre, index) {
 		var hasCodeEl = false;
@@ -396,35 +406,24 @@
 			}
 			for (var j = 0; j < child.classList.length; j++) 
 			{
-				console.log(child.classList[j]);
+				if(child.classList[j].indexOf('language-')  === 1) 
+				{
+					hasCodeClass = true;
+				}
 			}
 			if(!hasCodeClass) 
 			{
-
+				console.log('need to add class');
+				child.classList.add("language-html")
 			}
-			console.log(child.nodeName);
-			// Do stuff
 		}
-
+		if(!hasCodeEl) 
+		{
+			//wrap code element around content
+			wrapInner(pre, "code");
+		}
 	});
 	Prism.highlightAll();
-	// 
-
-
- //  $(function() {
- //    // Wrap the code inside the required <code> tag, when needed:
- //    $('pre').each(function() {
- //      if (1 !== $(this).children('code').length) {
- //        $(this).wrapInner('<code>');
- //      }
- //      if(!$(this).attr('class') || $(this).attr('class').indexOf('language-') !== 1)
- //      {
- //          $(this).addClass('language-html');
- //      }
- //    });
-
-    
- //  });
 </script>
 </body>
 </html>
