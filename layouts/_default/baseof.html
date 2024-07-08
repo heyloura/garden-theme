@@ -172,10 +172,12 @@
 </head>
 <body>
 <main class="">
-	<nav class="left frame wooden-frame">
-		<a class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}</a>
-		<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
-		<p>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</p>
+	<nav class="left frame golden-frame">
+		<a style="font-size: 0.50em;" class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}!</a>		
+		<p style="text-align:center;">
+			<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
+			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster
+		</p>
 		<a class="button" href='/photos'>🔮 Photos</a>
 		<a class="button" href='/reading'>📚 Library</a>
 		<a class="button" href='/archive'>🏛️ Archive</a>
@@ -183,9 +185,6 @@
 	</nav>
 	<section class="right">
 		<aside class="frame border-frame">
-			<header>
-				<h2>Welcome</h2>
-			</header>
 			<p>
 				Hi, I'm Loura and this is my digital space. 
 				Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
