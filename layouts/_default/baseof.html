@@ -359,13 +359,21 @@
 <script src="/js/prism.js"></script>
 
 <script>
-	Prism.highlightAll();
-	// var pres = document.querySelectorAll('pre');
+	var pres = document.querySelectorAll('pre');
+	pres.forEach(function (pre, index) {
+		console.log(pre); // The element
+		var hasCodeEl = false;
+		for (var i = 0; i < pre.children.length; i++) {
+			var child = pre.children[i];
+			console.log(child);
+			// Do stuff
+		}
 
-	// pres.forEach(function (pre, index) {
-	// 	console.log(sandwich); // The element
-	// 	console.log(index); // The index in the NodeList
-	// });
+	});
+	Prism.highlightAll();
+	// 
+
+
  //  $(function() {
  //    // Wrap the code inside the required <code> tag, when needed:
  //    $('pre').each(function() {
