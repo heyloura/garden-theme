@@ -221,35 +221,13 @@
 	</nav>
 	<section class="right">
 		<aside class="frame border-frame">
-			<p></p>
-			<p><b>Current Quests</b></p>
-						<p><small>
-			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-			{{ if gt (len $list) 0 }}
-				{{ range $list }}
-					{{ $categoryTitle := .Title }}
-					{{ if eq .Title "newsletter" }}
-					{{ else if eq .Title "app defaults" }}
-					{{ else if eq .Title "change log" }}
-					{{ else if eq .Title "timeline" }}
-					{{ else if eq .Title "video" }}
-					{{ else }}
-						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;⚔️
-						<span class="dates">
-						{{ range where .Site.Pages.ByDate.Reverse "Type" "post"  }}
-							{{ $postDate := .Date.Format "Jan 2, 2006" }}
-							{{- range $index, $category := .Page.Params.categories -}}
-								{{ if eq $category $categoryTitle }}
-								<span><small>{{ $postDate }}</small></span>
-								{{ end }}
-							{{- end -}}
-						{{ end }}
-						</span>
-						<br/>
-					{{ end }}
-				{{ end }}
-			{{ end }}
-			</small></p>
+			<header><h5>Dear Internet</h5></header>
+			<p>
+				Sometimes I just want to say/share something on the internet that isn't part of anything in particular.
+				Below you can find my recent musings. Wanna chat about one? Click on the hyperlink and join the conversation (～￣▽￣)～
+			</p>
+			<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
+			<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
 		</aside>
 		<section class="content">
 		{{ block "main" . }}{{ end }}
