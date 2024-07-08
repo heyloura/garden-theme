@@ -1,0 +1,289 @@
+{{ define "main" }}
+       <header>
+	       <h2>{{ strings.FirstUpper .Title }}</h2>
+       	       <nav style="margin-bottom: 2em;"> ⚓ <a href="#intro">into</a> ⚓ <a href="#posts">posts</a> ⚓ <a href="#photos">photos</a> ⚓ <a href="#bookmarks">bookmarks</a> ⚓ <a href="#books">books</a></nav>
+       </header>
+	<img id="intro" style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+	<iframe aria-busy="true"
+	      id="main_calendar"
+	      src="/{{ replace (strings.ToLower .Title) ' ' '-' }}" 
+	      loading="lazy"
+	      onload="disappear(this)"></iframe>
+
+	<header><h2>Dear Internet,</h2></header>
+	<p>
+		Here you can find some ideas or thoughts I had or maybe a picture, bookmark, or book that I found.
+		Wanna chat about {{ .Title }}? Join the conversation []~(￣▽￣)~* on a post, messege me on
+		<a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a>
+	</p>
+	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
+	<img style="display:block;margin: 2em auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+      <header id="posts"><h2>{{ strings.FirstUpper .Title }} Posts</h2></header>
+  {{- $title := .Title -}}
+	{{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 10) }}
+  <section  class="h-feed">
+	{{ range $paginator.Pages  }}
+		<dl  class="h-entry">
+    			<dt>
+						{{ if .Title }}
+							<a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						{{ else }}
+							<a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+						{{ end }}
+  			{{- range $index, $category := .Page.Params.categories -}}
+					{{ if eq $category $title }}
+					{{ else }}
+	   				◊&nbsp;<a class="subheading" href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
+					{{ end }}
+  			{{- end -}}
+				<span data-id="{{ .RelPermalink }}"></span>
+		</dt>
+		{{ if in .RawContent "<!--more-->" }}
+			<dd class="p-summary">
+					<p>
+					{{ $splitContents := split .RawContent "<!--more-->" }}
+					{{ $summary := index $splitContents 0 }}
+					{{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
+					{{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
+					{{ $summary | markdownify }}
+					</p>
+					<p><a href="{{ .Permalink }}">Read More →</a></p>
+			</dd>
+		{{ else }}
+				{{ if .Title }}
+				<dd class="e-content">
+					{{ .Content | safeHTML | truncate 300 }}
+					<p><a href="{{ .Permalink }}">Read More →</a></p>
+				</dd>
+			{{ else }}
+				<dd class="e-content">
+					{{ .Content }}
+				</dd>
+			{{ end }}
+		{{ end }}
+		</dl>
+
+	  		<script>
+		  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
+		  .then(response => response.json())
+		  .then(conversation => {
+		    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
+		    if(conversation.items.length > 0) {
+		        let postA = document.createElement('a');
+		        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
+		        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
+			let postSpan = document.createElement('span');
+			postSpan.innerHTML = '◊ ';
+		        repliesLink.prepend(postA);
+			repliesLink.prepend(postSpan);
+		    } else {
+		        repliesLink.remove()
+		    }
+		  })
+		  .catch((error) => {
+		    // TODO: nothing for now…
+		  });
+		</script>
+	{{ end }}
+  </section>
+
+	<nav style="margin-bottom: 2em;">
+		{{ if $paginator.HasPrev }}
+			<a rel='prev' href='{{ $paginator.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+		{{ end }}
+		{{ if $paginator.HasNext }}
+			<a rel='next' href='{{ $paginator.Next.URL }}'>Older Posts →</a>
+		{{ end }}
+	</nav>
+	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+	<header id="photos"><h2>Photos</h2></header>
+	{{- $list := where .Pages ".Params.photos" "!=" nil -}}
+	{{- $len := (len $list) -}}
+			<section>
+				<div class="photos-grid-container" style="max-width: 100%;width: calc( 100vw - 5em );display: grid; grid-column-gap: 15px; grid-row-gap: 15px; grid-template-columns: 33% 33% 33%;">
+			
+				{{ range $index, $value := $list }}
+					<a href="{{ .Permalink }}">
+						{{ range first 1 .Params.photos }}
+							<img src="{{ . }}" width="300" height="300" style="border-radius: 5px; max-width: 100%; height: auto;" class="photos-grid-item" loading="lazy" />
+						{{ end }}
+					</a>
+				{{ end }}
+			
+				</div>
+      </section>
+
+<header id="bookmarks"><h2>Bookmarks</h2></header>
+<section>
+{{ $feed_url := $.Site.Params.feeds.bookmarks_json }}
+{{ $response := getJSON $feed_url }}
+{{ $title := .Title }}
+
+{{ if isset $response "items" }}
+
+{{ $tags := slice }}
+{{ range $response.items }}
+ {{ if not (hasPrefix .id "link") }}
+    {{ $tags = $tags | append (split .tags ", ") }}
+ {{ end }}
+{{ end }}
+{{ $tags = uniq $tags }}
+
+{{ range sort $tags }}
+    {{ $tag := . }}
+
+    {{ if eq $tag $title }}
+
+   <ul>
+   {{ range $response.items }}
+   {{ $url := urls.Parse .url }}
+     {{ if not (hasPrefix .id "link") }}
+        {{ if strings.Contains .tags $tag }}
+                <li><figure style="margin: var(--space-m) 0;">
+        <figcaption><cite><a target="_blank" class="u-bookmark-of" href="{{ .url }}">{{ $url.Host }}</a><br/><small>Bookmarked: {{ time.Format "Jan 2, 2006" .date_published}}</small></cite></figcaption>
+        <blockquote style="padding-left: var(--space-s);border-left: 1px solid var(--text)">
+          <p>{{ replace (replace ( .content_html | plainify | truncate 300 ) "Reader: " "") $url.Host "" }}</p>
+        </blockquote>
+
+      </figure></li>
+        {{ end }}
+     {{ end }}
+    {{ end }}
+    </ul>
+
+    {{ end }}
+
+{{ end }}
+
+{{ end }}
+
+</section>
+
+<section>
+	<header id="books"><h2>Books</h2></header>
+	<style>
+/**
+Reset
+**/
+
+ul.bookshelf.bookshelf {
+  padding: 0;
+  margin: 0;
+  list-style-type: none !important;
+}
+
+ul.bookshelf.bookshelf li {
+  margin: 0;
+  padding: 0;
+}
+
+ul.bookshelf.bookshelf li img.bookshelf__cover {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 4/6;
+}
+
+h3.bookshelf__title {
+  margin: 0;
+  padding: 0;
+}
+
+.bookshelf.bookshelf--variant-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 8rem));
+}
+
+.bookshelf--variant-grid .bookshelf__meta {
+  display: none;
+}
+
+.bookshelf--variant-grid .bookshelf__cover {
+  width: 100%;
+}
+		
+	</style>
+	{{ $bookshelf := .Title  }}
+
+<ul class="bookshelf bookshelf--variant-grid">
+  {{ range (index .Site.Data.bookshelves $bookshelf) }}
+    <li>
+      <div class="bookshelf__item" title="{{ .title }} by {{ .author }}">
+        <a href="https://micro.blog/books/{{ .isbn }}">
+          <img class="bookshelf__cover" src="{{ .cover_url }}" />
+        </a>
+        <div class="bookshelf__meta">
+          <a href="https://micro.blog/books/{{ .isbn }}">
+            <h3 class="bookshelf__title">{{ .title }}</h3>
+          </a>
+          <span class="bookshelf__by">by</span>
+          <span class="bookshelf__author">{{ .author }}</span>
+        </div>
+      </div>
+    </li>
+  {{ end }}
+</ul>
+</section>
+
+
+<script>
+	/* Make the iframe hidden while loading  */
+(async () => {
+  let div = document.createElement('div');
+  let ref = document.getElementsByTagName('base')[0] || 
+            document.getElementsByTagName('script')[0];
+
+  div.innerHTML = '<style> iframe { visibility: hidden; } </style>';
+  ref.parentNode.insertBefore(div, ref);
+})();  
+
+/* Copy the contents of the iframe into the DOM and execute scripts  */
+function disappear(frame) {
+let body = (frame.contentDocument.body||frame.contentDocument);
+let children = [...body.children];
+
+for(let child of children) {
+  let scope = child.getAttribute('data-scope');
+
+  if(child.tagName === 'SCRIPT'){
+    let script = document.createElement("script");
+    script.setAttribute('data-scope', scope);    
+    script.text = child.innerHTML;
+    document.body.appendChild( script );
+  } else if(child.tagName === 'STYLE'){
+    let doc = document.implementation.createHTMLDocument("");
+    let styleElement = document.createElement("style");
+    styleElement.textContent = child.innerHTML;
+    doc.body.appendChild(styleElement); // to compute the css rules
+    child.innerHTML = '';
+    
+    // scope out the styles
+    for(var style of styleElement.sheet.cssRules) {
+      let selectors = style.selectorText;
+      let scoped = [];
+      
+      for(var selector of selectors.split(',')){
+        scoped.push(`[data-scope='${scope}'] ${selector}`);
+      }
+      
+      child.innerHTML += style.cssText.replace(selectors, scoped.join(', ')) + ' ';
+    }
+
+    frame.before(child);
+  }
+  else {
+	  let subchildren = [...child.children]
+	  for(let subchild of subchildren) {
+		  console.log(subchild);
+		  if(subchild.tagName === 'ARTICLE') {
+			frame.before(subchild);
+		  }
+	  }
+  }
+}
+
+frame.remove();
+}
+</script>
+
+{{ end }}
