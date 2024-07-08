@@ -171,6 +171,68 @@
 			max-width: 100%;
 		}
 		nav p { text-align: center; }
+		.rpgui-progress {
+			height: 42px;
+			width: 100%;
+			margin-top: 5px;
+			margin-bottom: 1.5em;
+			position: relative;
+		}
+		.rpgui-progress-track {
+			height: 42px;
+			left: 40px;
+			right: 40px;
+			background-image: url(/img/progress-bar-track.png);
+		}
+		.rpgui-progress-fill.red {
+			background-image: url(/images/progress-red.png);
+		}
+		.rpgui-progress-fill {
+			top: 9px;
+			bottom: 8px;
+			left: 0;
+			width: 100%;
+			background-image: url(/img/progress.png);
+		}
+		.rpgui-progress-fill, .rpgui-progress-track {
+			position: absolute;
+			background-repeat: repeat-x;
+			background-size: 36px 100%;
+		}
+		.rpgui-progress-left-edge {
+			left: 0;
+			background-image: url(/img/progress-bar-left.png);
+		}
+		
+		.rpgui-progress-left-edge, .rpgui-progress-right-edge {
+			position: absolute;
+			width: 40px;
+			background-size: 100% 100%;
+			height: 42px;
+		}
+		
+		.rpgui-progress-right-edge {
+			right: 0;
+			background-image: url(/img/progress-bar-right.png);
+		}
+		
+		.rpgui-progress-left-edge, .rpgui-progress-right-edge {
+			position: absolute;
+			width: 40px;
+			background-size: 100% 100%;
+			height: 42px;
+		}
+		
+		.rpgui-progress-fill.blue {
+			background-image: url(/img/progress-blue.png);
+		}
+		
+		.rpgui-progress-fill.green {
+			background-image: url(/img/progress-green.png);
+		}
+		.rpgui-progress-fill {
+			background-image: url(/img/progress.png);
+		}
 	</style>
 </head>
 <body>
