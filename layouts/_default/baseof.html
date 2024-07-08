@@ -185,7 +185,7 @@
 			background-image: url(/img/progress-bar-track.png);
 		}
 		.rpgui-progress-fill.red {
-			background-image: url(/images/progress-red.png);
+			background-image: url(/img/progress-red.png);
 		}
 		.rpgui-progress-fill {
 			top: 9px;
@@ -308,17 +308,16 @@
 			{{ $maxWordCount := $scratch.Get "longestPost" }}
 			{{ $avgPostLength := float (div $wordCount $postCount) }}
 			<div class='bar'>
-				<div class='bar'>
 				<label>Micro Posts: {{ $microPostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
 				<small>Micro Posts</small>
-					<div id='mana-bar' class='rpgui-progress red'>
-						<div class=' rpgui-progress-track'>
-							<div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $microPostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
-						</div>
-						<div class=' rpgui-progress-left-edge'></div>
-						<div class=' rpgui-progress-right-edge'></div>
+				<div id='mana-bar' class='rpgui-progress red'>
+					<div class=' rpgui-progress-track'>
+						<div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $microPostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
 					</div>
+					<div class=' rpgui-progress-left-edge'></div>
+					<div class=' rpgui-progress-right-edge'></div>
 				</div>
+			</div>
 			<label>Health: {{ $titlePostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
 			<small>Long Posts</small>
 			<div id='hp-bar' class='rpgui-progress red'>
