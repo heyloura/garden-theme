@@ -1,9 +1,9 @@
 {{ define "main" }}
 <aside class="frame border-frame">
-	<header><h5>Dear Internet Visitor #<span class="tinylytics_hits"></span></h5></header>
+	<header><h5>Dear Visitor #<span class="tinylytics_hits"></span></h5></header>
 	<p>
-		Welcome to my spot on the internet.
-		Below you can find my recent musings. Wanna chat about one? Click on the hyperlink and join the conversation (～￣▽￣)～
+		Welcome to my spot on the internet. You get +5XP. 
+		As far as I know I'm 100% human and below you can find my recent posts. Wanna chat about one? Click on the hyperlink and join the conversation (～￣▽￣)～
 	</p>
 	<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
 	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
@@ -24,11 +24,19 @@
 
 			<div class="frame golden-frame">
 		{{ range .Pages  }}
-			
+			{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
+			{{ $shuffled := shuffle $slice }}
+			{{ $random := index $shuffled 0 }}
 			{{ if .Title }}
 				<dl class="h-entry frame grey-frame">
 					<dt>
-						<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> {{ $random }} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						{{- range $index, $category := .Page.Params.categories -}}
+							{{ if eq $category $title }}
+							{{ else }}
+							{{ $random }}&nbsp;<a href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
+							{{ end }}
+						{{- end -}}
 						<span data-id="{{ .RelPermalink }}"></span>
 					</dt>
 					{{ if in .RawContent "<!--more-->" }}
@@ -55,6 +63,12 @@
 						<a href="{{ .Permalink }}" class="u-url">
 							<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
 						</a>
+						{{- range $index, $category := .Page.Params.categories -}}
+							{{ if eq $category $title }}
+							{{ else }}
+							{{ $random }}&nbsp;<a href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
+							{{ end }}
+						{{- end -}}
 						<span data-id="{{ .RelPermalink }}"></span>
 					</dt>
 					<dd class="e-content">{{ .Content }}</dd>
