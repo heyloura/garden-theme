@@ -83,7 +83,7 @@
 		</script>
 	{{ end }}
   </section>
-
+</div>
 	<nav>
 		{{ if $paginator.HasPrev }}
 			<a class="button" style="display: inline-block;" rel='prev' href='{{ $paginator.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
@@ -94,8 +94,10 @@
 	</nav>
 
 	
-	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
 	<header id="photos"><h4>Photos</h4></header>
+	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+
+<div class="frame golden-frame">
 	{{- $list := where .Pages ".Params.photos" "!=" nil -}}
 	{{- $len := (len $list) -}}
 			<section>
