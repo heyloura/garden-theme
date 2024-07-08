@@ -13,14 +13,14 @@
 	       
 	
       	<header id="posts"><h4>{{ strings.FirstUpper .Title }} Posts</h4></header>
-	<img style="display:block;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
 
 <div class="frame golden-frame">
   {{- $title := .Title -}}
 	{{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 10) }}
   <section  class="h-feed">
 	{{ range $paginator.Pages  }}
-		<dl  class="h-entry">
+		<dl  class="h-entry frame grey-frame">
     			<dt>
 						{{ if .Title }}
 							<a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a> ◊ <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
@@ -84,16 +84,18 @@
 	{{ end }}
   </section>
 
-	<nav style="margin-bottom: 2em;">
+	<nav>
 		{{ if $paginator.HasPrev }}
-			<a rel='prev' href='{{ $paginator.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
+			<a class="button" style="display: inline-block;" rel='prev' href='{{ $paginator.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
 		{{ end }}
 		{{ if $paginator.HasNext }}
-			<a rel='next' href='{{ $paginator.Next.URL }}'>Older Posts →</a>
+			<a class="button" style="display: inline-block;" rel='next' href='{{ $paginator.Next.URL }}'>Older Posts →</a>
 		{{ end }}
 	</nav>
+
+	
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
-	<header id="photos"><h2>Photos</h2></header>
+	<header id="photos"><h4>Photos</h4></header>
 	{{- $list := where .Pages ".Params.photos" "!=" nil -}}
 	{{- $len := (len $list) -}}
 			<section>
