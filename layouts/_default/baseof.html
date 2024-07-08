@@ -32,7 +32,8 @@
 	<style>
 		body 
 		{
-			background: #4D4A4E;
+/* 			background: #4D4A4E; */
+			background: #3C2533;
 			text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 			color: white;
 			font-size:18px;
@@ -173,9 +174,9 @@
 <body>
 <main class="">
 	<nav class="left frame border-frame">
-		<a style="font-size: 0.50em;" class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}!</a>		
+		<a style="font-size: 0.55em;" class='golden-button' href='/'>{{ .Site.Title }}!</a>		
 		<p style="text-align:center;">
-			<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/>
+			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster
 		</p>
 		<a class="button" href='/photos'>🔮 Photos</a>
