@@ -172,10 +172,10 @@
 </head>
 <body>
 <main class="">
-	<nav class="left frame golden-frame">
+	<nav class="left frame border-frame">
 		<a style="font-size: 0.50em;" class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}!</a>		
 		<p style="text-align:center;">
-			<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
+			<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster
 		</p>
 		<a class="button" href='/photos'>🔮 Photos</a>
@@ -183,14 +183,9 @@
 		<a class="button" href='/archive'>🏛️ Archive</a>
 		<a class="button" href='/search-space'>🔎 Search</a>
 		<section>
-			<header><h2>My Interests</h2></header>
-			<p>
-				These are the things that have interested me enough to post something. It could
-				be a quick note or a longer musing. Sometimes I attach photos/screenshots, books I've read, or
-				I'll bookmark something on the web. Take a look:
-			</p>
+			<header><h2>Categories</h2></header>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
-			<ol>
+			<p>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 			{{ if gt (len $list) 0 }}
 				{{ range $list }}
@@ -201,8 +196,7 @@
 					{{ else if eq .Title "timeline" }}
 					{{ else if eq .Title "video" }}
 					{{ else }}
-						<li>
-						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;•
+						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;⚔️
 						<span class="dates">
 						{{ range where .Site.Pages.ByDate.Reverse "Type" "post"  }}
 							{{ $postDate := .Date.Format "Jan 2, 2006" }}
@@ -213,15 +207,15 @@
 							{{- end -}}
 						{{ end }}
 						</span>
-						</li>
+						<br/>
 					{{ end }}
 				{{ end }}
 			{{ end }}
-			</ol>
+			</p>
 		</section>
 	</nav>
-	<section class="right">
-		<aside class="frame border-frame">
+	<section class="right frame wooden-frame">
+		<aside class="frame golden-frame">
 			<p>
 				Hi, I'm Loura and this is my digital space. 
 				Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
