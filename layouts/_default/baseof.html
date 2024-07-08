@@ -357,5 +357,28 @@
 	</section>
 	<div style="clear:both;"></div>
 </main>
+<script>
+  window.Prism = window.Prism || {};
+  window.Prism.manual = true;
+</script>
+
+<script src="/js/prism.js"></script>
+
+<script>
+  $(function() {
+    // Wrap the code inside the required <code> tag, when needed:
+    $('pre').each(function() {
+      if (1 !== $(this).children('code').length) {
+        $(this).wrapInner('<code>');
+      }
+      if(!$(this).attr('class') || $(this).attr('class').indexOf('language-') !== 1)
+      {
+          $(this).addClass('language-html');
+      }
+    });
+
+    Prism.highlightAll()
+  });
+</script>
 </body>
 </html>
