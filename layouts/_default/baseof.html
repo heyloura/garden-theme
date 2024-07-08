@@ -404,19 +404,19 @@
 			{
 				hasCodeEl = true;
 			}
-			for (var j = 0; j < child.classList.length; j++) 
+		}
+		for (var j = 0; j < pre.classList.length; j++) 
+		{
+			console.log(pre.classList[j].indexOf('language-') );
+			if(pre.classList[j].indexOf('language-') > -1) 
 			{
-				console.log(child.classList[j].indexOf('language-') );
-				if(child.classList[j].indexOf('language-') > -1) 
-				{
-					hasCodeClass = true;
-				}
+				hasCodeClass = true;
 			}
-			if(!hasCodeClass) 
-			{
-				console.log('need to add class');
-				child.classList.add("language-html")
-			}
+		}
+		if(!hasCodeClass) 
+		{
+			console.log('need to add class');
+			pre.classList.add("language-html")
 		}
 		if(!hasCodeEl) 
 		{
