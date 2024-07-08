@@ -174,18 +174,21 @@
 </head>
 <body>
 <main class="frame wooden-frame">
-	<nav class="left frame border-frame">
+	<nav class="left">
 		<a class='golden-button' href='/'>{{ .Site.Title }}!</a>		
 		<p>
 			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster
 		</p>
+		<p>Hi, I'm Loura and this is my digital space. 
+			Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
+			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.</p>
 		<a class="button" href='/photos'>🔮 Photos</a>
 		<a class="button" href='/reading'>📚 Library</a>
 		<a class="button" href='/archive'>🏛️ Archive</a>
 		<a class="button" href='/search-space'>🔎 Search</a>
 		<section>
-			<p>Categories</p>
+			<h5>Categories</h5>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
 			<p><small>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
@@ -218,9 +221,7 @@
 	</nav>
 	<section class="right">
 		<aside class="frame border-frame">
-			<p>Hi, I'm Loura and this is my digital space. 
-			Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
-			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.</p>
+			<p></p>
 			<p><b>Current Quests</b></p>
 						<p><small>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
