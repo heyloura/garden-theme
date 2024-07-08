@@ -267,7 +267,10 @@
 					{{ else if eq .Title "timeline" }}
 					{{ else if eq .Title "video" }}
 					{{ else }}
-						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;⚔️
+						{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
+						{{ $shuffled := shuffle $slice }}
+						{{ $random := index $shuffled 0 }}
+						<a href="{{ .Permalink }}">{{ strings.FirstUpper .Title }}</a>&nbsp;{{$random}}
 						<span class="dates">
 						{{ range where .Site.Pages.ByDate.Reverse "Type" "post"  }}
 							{{ $postDate := .Date.Format "Jan 2, 2006" }}
@@ -307,7 +310,13 @@
 			<div class='bar'>
 			<label>Health: {{ $titlePostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
 			<small>Long Posts</small>
-			<div id='hp-bar' data-value='0.4' class='rpgui-progress red' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $titlePostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
+			<div id='hp-bar' class='rpgui-progress red'>
+				<div class='rpgui-progress-track'>
+					<div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $titlePostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
+				</div>
+				<div class=' rpgui-progress-left-edge'></div>
+				<div class=' rpgui-progress-right-edge'></div>
+			</div>
 			</div>
 			<div class='bar'>
 			<label style='margin-top:1em;'>Mana: {{ $microPostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
