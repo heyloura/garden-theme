@@ -107,8 +107,9 @@
 			image-rendering: pixelated;
 			padding-bottom: 44px;
 		}
-		.golden-button:visited {
+		.golden-button:visited, .button:visited {
 			color: #fff;
+			cursor: url(img/cursor/point.png) 10 0, auto;
 		}
 		.golden-button {
 			background: url(/img/button-golden.png) center no-repeat no-repeat;
@@ -149,6 +150,32 @@
 			right: 0;
 			float: right;
 		}
+		.button {
+			overflow: hidden;
+			background: url(img/button.png) center no-repeat no-repeat;
+			background-clip: padding-box;
+			background-origin: padding-box;
+			background-size: 100% 100%;
+			font-size: 1em;
+			display: block;
+			
+/* 			padding-top: 5px;
+			overflow: visible;
+			border: none;
+			height: 60px;
+			
+			padding-left: 44px;
+			padding-right: 44px;
+			outline: 0;
+			max-width: 100%;
+			line-height: 55px;
+			margin: 0px auto; */
+			color: #fff;
+		}
+		menu 
+		{
+			padding-left: 1em;
+		}
 	</style>
 </head>
 <body>
@@ -162,13 +189,13 @@
 		</section>
 	</section>
 	<menu>
-		<a class='golden' href='/categories/rpg/'>{{ .Site.Title }}</a>
+		<a class='golden-button' href='/categories/rpg/'>{{ .Site.Title }}</a>
 		<img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
 		<p>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</p>
-		<a class="golden-button" href='/photos'>🔮 Photos</a>
-		<a class="golden-button" href='/reading'>📚 Library</a>
-		<a class="golden-button" href='/archive'>🏛️ Archive</a>
-		<a class="golden-button" href='/search-space'>🔎 Search</a>
+		<a class="button" href='/photos'>🔮 Photos</a>
+		<a class="button" href='/reading'>📚 Library</a>
+		<a class="button" href='/archive'>🏛️ Archive</a>
+		<a class="button" href='/search-space'>🔎 Search</a>
 	</menu>
 </main>
 </body>
