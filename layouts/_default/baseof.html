@@ -83,6 +83,7 @@
 			border-image-source:url(/img/border-image.png);
 			border-image-slice:6 6 6 6;
 			background:url(/img/background-image.png) center;
+			border-radius: 2em;
 		}
 		a {
 			color: yellow;
@@ -177,13 +178,14 @@
 	<nav class="left">
 		<a class='golden-button' href='/'>{{ .Site.Title }}!</a>
 		<p>
+			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
+			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'>
+			
+		</p>
+		<p>
 			Hi, I'm Loura and this is my digital space. 
 			Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
 			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
-		</p>
-		<p>
-			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/>
-			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster
 		</p>
 		<a class="button" href='/photos'>🔮 Photos</a>
 		<a class="button" href='/reading'>📚 Library</a>
@@ -219,6 +221,47 @@
 				{{ end }}
 			{{ end }}
 			</small></p>
+		</section>
+		<section>
+			<h5>Blogger Stats</h5>
+			<div class='level-bars'>
+			{{ $posts := where site.RegularPages "Type" "post" }}
+			{{ $microPostsCount := float ( len ( where $posts ".Params.title"  "=" nil )) }}
+			{{ $titlePostsCount := float ( len ( where $posts ".Params.title"  "!=" nil )) }}
+			
+			{{ $scratch := newScratch }}
+			{{ $scratch.Set "longCount" 0 }}
+			{{ range $posts }}
+			{{ $scratch.Add "wordcount" .WordCount }}
+			{{ if ge .WordCount ($scratch.Get "longCount") }}
+			{{ $scratch.Set "longestPost" . }}
+			{{ $scratch.Set "longCount" .WordCount }}
+			{{ end }}
+			{{ end }}
+			{{ $postCount :=  len ($posts) }}
+			{{ $wordCount := $scratch.Get "wordcount" }}
+			{{ $maxWordCount := $scratch.Get "longestPost" }}
+			{{ $avgPostLength := float (div $wordCount $postCount) }}
+			<div class='bar'>
+			<label>Health: {{ $titlePostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
+			<small>Long Posts</small>
+			<div id='hp-bar' data-value='0.4' class='rpgui-progress red' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $titlePostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
+			</div>
+			<div class='bar'>
+			<label style='margin-top:1em;'>Mana: {{ $microPostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>
+			<small>Micro Posts</small>
+			<div id='mana-bar' data-value='0.8' class='rpgui-progress blue' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill blue' style='left: 0px; width: {{math.Mul 100 (math.Div $microPostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
+			</div>
+			<div class='bar'>
+			<label style='margin-top:1em;'>Stamina: {{ $avgPostLength }}/{{ with $scratch.Get "longestPost" }}{{lang.FormatNumberCustom 0 .WordCount "- . ,"}}{{ end }}</label><br/>
+			<small>avg / longest</small>
+			<div id='stamina-bar' data-value='0.2' class='rpgui-progress green' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill green' style='left: 0px; width:{{ with $scratch.Get "longestPost" }}{{math.Mul 100 (math.Div $avgPostLength .WordCount)}}{{ end }}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
+			</div>
+			<div class='bar'>
+			<label style='margin-top:1em;'>Experience: {{ lang.FormatNumberCustom 0 $wordCount "- . ,"}}/40,000</label>
+			<br/><small>Word Count</small>
+			<div id='stamina-bar' data-value='0.5' class='rpgui-progress' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill' style='left: 0px; width: {{math.Mul 100 (math.Div $wordCount  40000.0)}}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div></div>
+			</div>
 		</section>
 	</nav>
 	<section class="right">
