@@ -32,7 +32,7 @@
 	<style>
 		body 
 		{
-			background: #222;
+			background: #4D4A4E;
 			text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 			color: white;
 			font-size:18px;
@@ -108,7 +108,7 @@
 			background-origin: padding-box;
 			background-size: 100% 80%;
 			padding-top: 5px;
-			overflow: visible;
+			overflow: hidden;
 			border: none;
 			height: 60px;
 			display: block;
@@ -121,7 +121,7 @@
 			color: #fff;
 			text-align: center;
 			font-family:"Press Start 2P";
-			font-size: 0.75em;
+			font-size: 0.70em;
 		}
 		.golden-button:before {
 			background: url(/img/button-golden-left.png) right center no-repeat;
@@ -150,10 +150,9 @@
 			background-clip: padding-box;
 			background-origin: padding-box;
 			background-size: 100% 100%;
-			font-size: 0.75em;
+			font-size: 0.70em;
 			display: block;
 			border: none;
-			min-width: 140px;
 			height: 60px;
 			padding-left: 35px;
 			padding-right: 35px;
@@ -185,7 +184,7 @@
 		<aside class="frame border-frame">
 			
 		</aside>
-		<section class="content">
+		<section class="content frame wooden-frame">
 		{{ block "main" . }}{{ end }}
 		</section>
 	</section>
