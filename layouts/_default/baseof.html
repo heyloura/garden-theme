@@ -163,6 +163,7 @@
 			text-align: center;
 			font-family:"Press Start 2P";
 		}
+		.content { margin-top: 1em; }
 		.content img 
 		{
 			max-width: 100%;
@@ -182,7 +183,14 @@
 	</nav>
 	<section class="right">
 		<aside class="frame border-frame">
-			
+			<header>
+				<h2>Welcome</h2>
+			</header>
+			<p>
+				Hi, I'm Loura and this is my digital space. 
+				Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
+				<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
+			</p>
 		</aside>
 		<section class="content frame wooden-frame">
 		{{ block "main" . }}{{ end }}
