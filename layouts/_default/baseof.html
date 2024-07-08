@@ -27,7 +27,30 @@
 	<link rel="canonical" href="{{ .Permalink }}"> 
 	<style>html{color:#1d1d1d;font-family:sans-serif;max-width:70ch;padding:1em;margin:auto;line-height:1.75;font-size:1.25em}h1,h2,h3,h4,h5,h6{margin:2em 0 1em;font-family:serif;}ol,p,ul{margin-bottom:2em;}img{max-width:100%;height:auto;background-color:ivory}legend{padding:0;display:table;font-weight: bold;}fieldset{border:0;padding:.01em 0 0;margin:0;min-width:0}body:not(:-moz-handler-blocked) fieldset{display:table-cell}</style>
 	<style>
-		main 
+		body 
+		{
+			background: #222;
+		}
+		.left-sidebar {
+			display:flex;
+			flex-wrap:wrap;
+		}
+		
+		.left-sidebar > * {
+			width:100%;
+			padding:1rem;
+		}
+		
+		@media (min-width:768px) {
+			.left-sidebar > *:nth-child(1) {
+				width:calc(100% / 3 * 2);
+			}
+			.left-sidebar > *:nth-child(2) {
+				width:calc(100% / 3);
+				order:-1;
+			}
+		}
+		.golden-frame 
 		{
 			image-rendering: pixelated;
 			border-image-width:18px;
@@ -49,9 +72,9 @@
   	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
-<main>
+<main class="left-sidebar">
+	<section class="golden-frame">{{ block "main" . }}{{ end }}</section>
 	<nav>hello</nav>
-	<section>{{ block "main" . }}{{ end }}</section>
 </main>
 </body>
 </html>
