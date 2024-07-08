@@ -36,6 +36,7 @@
 			text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 			color: white;
 			font-size:18px;
+			line-height: 22px;
 			cursor: url(/img/cursor/default.png), auto !important;
 			font-family: Consolas, monaco, monospace;
 		}
@@ -57,41 +58,37 @@
 				order:-1;
 			}
 		}
-		.wooden-frame 
-		{
+		.frame {
 			image-rendering: pixelated;
-			border-image-width:18px;
-			border-width:15px;
-			box-sizing:border-box;
-			border-image-repeat:repeat;
-			padding:12px;
 			border-style:solid;
-			border-image-source:url(/img/border-image-golden.png);
-			border-image-slice:4 4 4 4;
+			border-width:15px;
+			border-image-repeat:repeat;
+			border-image-width:18px;
+			padding:12px;
+			box-sizing:border-box;
 			-moz-box-sizing:border-box;
 			-webkit-box-sizing:border-box;
-			background:url(/img/background-image-golden.png) center;
 			background-clip:padding-box;
-			background-origin:padding-box;
+			background-origin:padding-box
 		}
-		.golden-frame{
-			image-rendering: pixelated;
-			border-image-width:18px;
-			border-width:15px;
-			box-sizing:border-box;
-			border-image-repeat:repeat;
-			padding:12px;
-			border-style:solid;
+		.wooden-frame 
+		{
+			border-image-source:url(/img/border-image-golden.png);
+			border-image-slice:4 4 4 4;
+			background:url(/img/background-image-golden.png) center;
+		}
+		.golden-frame {
 			background-clip:padding-box;
 			background-origin:padding-box;
 			border-image-source:url(/img/border-image-golden2.png);
 			border-image-slice:8 8 8 8;
-			-moz-box-sizing:border-box;
-			-webkit-box-sizing:border-box;
 			background:url(/img/background-image-golden2.png) center;
-			background-clip:padding-box;
-			background-origin:padding-box;
 	        }
+		.border-frame  {
+			border-image-source:url(/img/border-image.png);
+			border-image-slice:6 6 6 6;
+			background:url(/img/background-image.png) center;
+		}
 		a {
 			color: yellow;
 			font-size: 1.0em;
@@ -103,8 +100,8 @@
   	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
-<main class="left-sidebar golden-frame">
-	<section>{{ block "main" . }}{{ end }}</section>
+<main class="left-sidebar frame golden-frame">
+	<section class="frame border-frame">{{ block "main" . }}{{ end }}</section>
 	<menu>
 		<li style='margin-bottom: 1em;'><a class='golden' href='/categories/rpg/'>{{ .Site.Title }}</a></li>
 		<li class='avatar-li'><img class='avatar' style='image-rendering: pixelated;' height='125' src='https://heyloura.com/uploads/2024/3a04add34b.png'><br/><small>Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Indie Webmaster</small></li>
