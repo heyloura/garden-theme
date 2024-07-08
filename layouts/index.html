@@ -10,19 +10,21 @@
 </aside>
 <section class="content">
 
-	<section class="h-feed frame golden-frame">
+	<section class="h-feed">
 
 
 
 
 
 		
-		<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif" />
 		{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 20) }}
 		{{ range ($paginator.Pages).GroupByDate "2006"  }}
-			<h4 style='margin-top:2em;' id='{{ .Key }}'>📜 The year was {{ .Key }}</h4>
+			<h4>📜 Adventure Log {{ .Key }}</h4>
+			<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif" />
+
+			<div class="frame golden-frame">
 		{{ range .Pages  }}
-	
+			
 			{{ if .Title }}
 				<dl class="h-entry frame grey-frame">
 					<dt>
@@ -79,8 +81,9 @@
 			    // TODO: nothing for now…
 			  });
 			</script>
-		
+			
 		{{ end }}
+				</div>
 		{{ end }} <!-- group by -->
 		
 		{{ $pag := $.Paginator }}
