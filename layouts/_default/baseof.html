@@ -29,7 +29,7 @@
 		body { background-color:#222; } 
 		main
 		{
-			max-width:70ch;	
+			max-width:100ch;	
 			padding:1em;
 			margin:auto;
 			font-size:18px;
@@ -38,28 +38,21 @@
 			height: 100vh;  
 			color: #000000;
 		}
-		aside
-		{
-			float: right;
-			max-width:30ch;	
-			padding:1em;
+		
+		@media (min-width:768px) {
+		    main {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		    }
 		}
 	</style>
   	<!--<link href="rpgui.min.css" rel="stylesheet" type="text/css" >
   	<script src="rpgui.min.js"></script>-->
 </head>
 <body>
-<aside>
-	Welcome
-Hi, I'm Loura and this is my digital space. Please feel free to explore, learn more about me, my work and what I'm up to now.
-
-My Interests
-These are the things that have interested me enough to post something. It could be a quick note or a longer musing. Sometimes I attach photos/screenshots, books I've read, or I'll bookmark something on the web. Take a look:
-
-
-</aside>
 <main>
-	{{ block "main" . }}{{ end }}
+	<nav>hello</nav>
+	<section>{{ block "main" . }}{{ end }}</section>
 </main>
 </body>
 </html>
