@@ -173,7 +173,7 @@
 	</style>
 </head>
 <body>
-<main class="">
+<main class="frame wooden-frame">
 	<nav class="left frame border-frame">
 		<a style="font-size: 0.55em;" class='golden-button' href='/'>{{ .Site.Title }}!</a>		
 		<p>
@@ -185,7 +185,7 @@
 		<a class="button" href='/archive'>🏛️ Archive</a>
 		<a class="button" href='/search-space'>🔎 Search</a>
 		<section>
-			<header><h2>Categories</h2></header>
+			<p>Categories</p>
 			<style>.dates span { display: none; } .dates span:first-child { display: inline-block; }</style>
 			<p><small>
 			{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
@@ -216,18 +216,17 @@
 			</small></p>
 		</section>
 	</nav>
-	<section class="right frame wooden-frame">
-		<aside class="frame golden-frame">
-			<p>
-				Hi, I'm Loura and this is my digital space. 
-				Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
-				<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
-			</p>
+	<section class="right">
+		<aside class="frame border-frame">
+			Hi, I'm Loura and this is my digital space. 
+			Please feel free to <a href="/surprise-me">explore</a>, learn more <a href="/about">about me</a>, 
+			<a href="/work">my work</a> and what I'm up to <a href="/now">now</a>.
 		</aside>
-		<section class="content frame wooden-frame">
+		<section class="content">
 		{{ block "main" . }}{{ end }}
 		</section>
 	</section>
+	<div style="clear:both;"></div>
 </main>
 </body>
 </html>
