@@ -1,7 +1,7 @@
 {{ define "main" }}
-
+<div class="frame border-frame">
   {{ if .Title }}
-  <header class="p-name"><h2>{{ .Title }}</h2></header>
+  <header class="p-name"><h4>{{ .Title }}</h4></header>
   {{ end }}
 
   {{ if .Params.reply_to_url }} 
@@ -14,7 +14,7 @@
   <article id="post-content">
     {{ .Content }}
   </article>
-
+</div>
 <script>
 // when everything is loaded
 // set up an identifier so we have something to scope off of.
