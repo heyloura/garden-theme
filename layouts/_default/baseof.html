@@ -307,19 +307,15 @@
 			{{ $wordCount := $scratch.Get "wordcount" }}
 			{{ $maxWordCount := $scratch.Get "longestPost" }}
 			{{ $avgPostLength := float (div $wordCount $postCount) }}
-			<div class='bar'>
-				<!--<label>Micro Posts: {{ $microPostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>-->
-				<small>Micro Posts</small>
-				<div id='mana-bar' class='rpgui-progress red'>
-					<div class=' rpgui-progress-track'>
-						<div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $microPostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
-					</div>
-					<div class=' rpgui-progress-left-edge'></div>
-					<div class=' rpgui-progress-right-edge'></div>
+			<small>Micro posts</small>
+			<div id='mana-bar' class='rpgui-progress red'>
+				<div class=' rpgui-progress-track'>
+					<div class=' rpgui-progress-fill red' style='left: 0px; width: {{math.Mul 100 (math.Div $microPostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
 				</div>
+				<div class=' rpgui-progress-left-edge'></div>
+				<div class=' rpgui-progress-right-edge'></div>
 			</div>
-			<!--<label>Health: {{ $titlePostsCount }}/{{ math.Add $titlePostsCount   $microPostsCount}}</label><br/>-->
-			<small>Long Posts</small>
+			<small>Long posts</small>
 			<div id='hp-bar' class='rpgui-progress blue'>
 				<div class='rpgui-progress-track'>
 					<div class=' rpgui-progress-fill blue' style='left: 0px; width: {{math.Mul 100 (math.Div $titlePostsCount (math.Add $titlePostsCount $microPostsCount))}}%;'></div>
@@ -327,19 +323,15 @@
 				<div class=' rpgui-progress-left-edge'></div>
 				<div class=' rpgui-progress-right-edge'></div>
 			</div>
+			<small>Average word count</small>
+			<div id='stamina-bar' class='rpgui-progress green'>
+				<div class=' rpgui-progress-track'><div class=' rpgui-progress-fill green' style='left: 0px; width:{{ with $scratch.Get "longestPost" }}{{math.Mul 100 (math.Div $avgPostLength .WordCount)}}{{ end }}%;'></div></div>
+				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div>
 			</div>
-
-			<div class='bar'>
-			<!--<label style='margin-top:1em;'>Stamina: {{ $avgPostLength }}/{{ with $scratch.Get "longestPost" }}{{lang.FormatNumberCustom 0 .WordCount "- . ,"}}{{ end }}</label><br/>-->
-			<small>avg / longest</small>
-			<div id='stamina-bar' data-value='0.2' class='rpgui-progress green' data-rpguitype='progress'><div class=' rpgui-progress-track'><div class=' rpgui-progress-fill green' style='left: 0px; width:{{ with $scratch.Get "longestPost" }}{{math.Mul 100 (math.Div $avgPostLength .WordCount)}}{{ end }}%;'></div></div><div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
-			</div>
-			<div class='bar'>
-			<!--<label style='margin-top:1em;'>Experience: {{ lang.FormatNumberCustom 0 $wordCount "- . ,"}}/40,000</label>-->
-			<br/><small>Total Words</small>
+			<small>Total words (goal 40,000)</small>
 			<div id='stamina-bar' class='rpgui-progress' ><div class=' rpgui-progress-track'>
 				<div class=' rpgui-progress-fill' style='left: 0px; width: {{math.Mul 100 (math.Div $wordCount  40000.0)}}%;'></div></div>
-				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div></div>
+				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
 			</div>
 		</section>
 	</nav>
