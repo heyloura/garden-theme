@@ -29,7 +29,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="/css/prism.css">
 	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-	<style>html{color:#1d1d1d;font-family:sans-serif;max-width:106ch;padding:1em;margin:auto;}h1,h2,h3,h4,h5,h6{margin:2em 0 1em;font-family:"Press Start 2P",Consolas,system-ui,serif;}ol,p,ul{margin-bottom:2em;}</style>
+	<style>html{font-family:sans-serif;max-width:106ch;margin:auto;}h1,h2,h3,h4,h5,h6{margin:2em 0 1em;font-family:"Press Start 2P",Consolas,system-ui,serif;}ol,p,ul{margin-bottom:2em;}</style>
 	<style>
 		body 
 		{
@@ -77,38 +77,6 @@
 		
 		.slideout-open .slideout-menu {
 			display: block;
-		}
-		@media (min-width:768px) {
-			.left 
-			{
-				width: 27%;
-				float: left;
-			}
-			.right 
-			{
-				width: 69%;
-				float: right;
-			}
-			.bottom-frames {
-				display: grid;
-				grid-template-columns: 50% 50%;
-			}
-			.bottom-frames aside { margin: 1em; }
-			.toggle-button { display: none; }
-			.slideout-panel {
-				margin-left: 0px;
-			}
-			.slideout-menu {
-				display: block;
-				position: relative;
-				padding: 0;
-				float: left;
-				background-color: unset;
-				overflow: unset;
-			}
-			.btn-hamburger {
-				display: none;
-			}
 		}
 		::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
 			background-image: url(/img/scrollbar-button.png);
@@ -376,6 +344,42 @@
 		}
 		img[src='/photos/christmas_cat.jpg'] {
 			display: none;
+		}
+				@media (min-width:768px) {
+			html 
+			{
+				padding:1em;
+			}
+			.left 
+			{
+				width: 27%;
+				float: left;
+			}
+			.right 
+			{
+				width: 69%;
+				float: right;
+			}
+			.bottom-frames {
+				display: grid;
+				grid-template-columns: 50% 50%;
+			}
+			.bottom-frames aside { margin: 1em; }
+			.toggle-button { display: none; }
+			.slideout-panel {
+				margin-left: 0px;
+			}
+			.slideout-menu {
+				display: block;
+				position: relative;
+				padding: 0;
+				float: left;
+				background-color: unset;
+				overflow: unset;
+			}
+			.btn-hamburger {
+				display: none;
+			}
 		}
 	</style>
 </head>
