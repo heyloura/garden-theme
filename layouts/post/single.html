@@ -7,6 +7,32 @@
 	margin-bottom: 3em;
 	margin-top: -1em;
 }
+	.rpgui-icon.sword {
+    background-image: url(/images/sword.png);
+}
+.rpgui-icon.shield {
+    background-image: url(/images/shield.png);
+}
+.rpgui-icon.potion-red {
+    background-image: url(/images/potion-red.png);
+}
+.rpgui-icon.potion-green {
+    background-image: url(/images/potion-green.png);
+}
+.rpgui-icon.potion-blue {
+    background-image: url(/images/potion-blue.png);
+}
+.rpgui-icon {
+    display: inline-block;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+}
+.icon-menu {
+display:flex;
+flex-wrap:wrap; 
+}
 </style>
 <section class="h-entry">
 
@@ -26,9 +52,50 @@
 </section>
 <section id="conversation">
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
-	<header><h2>Conversation</h2></header>
-	{{ if .Site.Params.include_conversation }}
-	<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
-	{{ end }}
+	 <h3>Join the conversation!</h3>
+	<div class='frame-grey'>
+		<div class='icon-menu'>
+		<div class='rpgui-icon sword'></div>
+		<p> Send along a <a href='https://indieweb.org/Webmention'>webmention</a></p>
+		</div>
+		<!--<div class='icon-menu'>
+		<div class='rpgui-icon shield'></div>
+		<p> <a target='_blank' href='{{ $fallback_url }}' class='conversation-on-mb conversation-on-mb-fallback'>{{ $fallback_link_text }}</a> <span style='display:none;' class='conversation-on-lilli-show'>or on 🐸 <a target='_blank' href='#' class='conversation-on-lilli-link'>Lillihub</a></span></p>
+		</div>-->
+		<div class='icon-menu'>
+		<div class='rpgui-icon potion-red'></div>
+		<p> Follow <a target='_blank' href='https://micro.blog/heyloura?remote_follow=1' target='_blank'>@heyloura@heyloura.com</a></p>
+		</div>
+		<div class='icon-menu'>
+		<div class='rpgui-icon potion-blue'></div>
+		<p style='margin:0'> Grant a simple like  <button class='golden-button tinylytics_kudos'>💖 3</button></p>
+		</div>
+	</div>
+	<div id='conversation' style='margin-top: 2em;'>
+		{{ if .Site.Params.include_conversation }}
+		<script type='text/javascript' src='https://micro.blog/conversation.js?url={{ .Permalink }}'></script>
+		{{ end }}
+	</div>
+	<script>
+	// TODO: Temporary, will handle multiple instances in the future.
+	const conversationLink = document.querySelector('.conversation-on-mb');
+	const lillihubLink = document.querySelector('.conversation-on-lilli-link');
+	const lillihub = document.querySelector('.conversation-on-lilli-show');
+	const currentPageURLEncoded = encodeURIComponent('{{ .Permalink }}');
+	fetch('https://micro.blog/conversation.js?format=jsonfeed&url=' + currentPageURLEncoded)
+	.then(response => response.json())
+	.then(conversation => {
+	conversationLink.setAttribute('href', conversation.home_page_url);
+	conversationLink.innerText = '{{ $link_text }}';
+	conversationLink.classList.remove('conversation-on-mb-fallback');
+	
+	lillihubLink.setAttribute('href', 'https://lillihub.com/timeline/' + conversation.home_page_url.split('/').slice(-1));
+	lillihub.style.display = 'inline-block';
+	
+	})
+	.catch((error) => {
+	// TODO: nothing for now…
+	});
+	</script>
 </section>
 {{ end }}
