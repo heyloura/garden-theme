@@ -348,6 +348,10 @@
 		dd {
 			margin-inline-start: 0px;
 		}
+		#menu 
+		{
+			background-color: #362632;
+		}
 		@media (min-width:768px) {
 			html 
 			{
@@ -377,7 +381,7 @@
 				position: relative;
 				padding: 0;
 				float: left;
-				background-color: unset;
+				background-color: unset !important;
 				overflow: unset;
 			}
 			.btn-hamburger {
@@ -392,7 +396,7 @@
 <body>
 <div class="btn-hamburger"><button style="float: right;" class="toggle-button button">Menu ☰</button></div>
 <main style="clear: both;" class="frame wooden-frame">
-	<nav style="background-color: #764D32;" class="left" id="menu">
+	<nav class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
