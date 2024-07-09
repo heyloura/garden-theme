@@ -367,7 +367,7 @@
 <body>
 <button style="float: right;" class="toggle-button button">Menu ☰</button>
 <main style="clear: both;" class="frame wooden-frame">
-	<nav class="left" id="menu">
+	<nav style="background-color: #764D32;" class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
