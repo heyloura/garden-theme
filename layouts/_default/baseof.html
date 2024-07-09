@@ -100,6 +100,9 @@
 			}
 			.slideout-menu {
 				display: block;
+				position: relative;
+				padding: 0;
+				float: right;
 			}
 			.btn-hamburger {
 				display: none;
@@ -375,7 +378,7 @@
 	</style>
 </head>
 <body>
-<button style="float: right;" class="toggle-button button">Menu ☰</button>
+<div class="btn-hamburger"><button style="float: right;" class="toggle-button button">Menu ☰</button></div>
 <main style="clear: both;" class="frame wooden-frame">
 	<nav style="background-color: #764D32;" class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
