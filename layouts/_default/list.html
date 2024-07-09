@@ -116,7 +116,9 @@
 </div>
 
 
-<header id="bookmarks"><h2>Bookmarks</h2></header>
+<header id="bookmarks"><h4>Bookmarks</h4></header>
+<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
+<div class="frame golden-frame">
 <section>
 {{ $feed_url := $.Site.Params.feeds.bookmarks_json }}
 {{ $response := getJSON $feed_url }}
@@ -161,6 +163,12 @@
 {{ end }}
 
 </section>
+</div>
+
+
+
+
+
 
 <section>
 	<header id="books"><h2>Books</h2></header>
