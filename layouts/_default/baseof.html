@@ -326,11 +326,70 @@
 		img[src='/photos/christmas_cat.jpg'] {
 			display: none;
 		}
+
+
+
+		body {
+  width: 100%;
+  height: 100%;
+}
+
+.slideout-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  min-height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+  display: none;
+}
+
+.slideout-menu-left {
+  left: 0;
+}
+
+.slideout-menu-right {
+  right: 0;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+  background-color: #FFF; /* A background-color is required */
+  min-height: 100vh;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
 	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+	<script>
+  var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 256,
+    'tolerance': 70
+  });
+
+  // Toggle button
+  document.querySelector('.toggle-button').addEventListener('click', function() {
+    slideout.toggle();
+  });
+</script>
 </head>
 <body>
 <main class="frame wooden-frame">
-	<nav class="left">
+	<nav class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
@@ -454,7 +513,8 @@
 			<p><a target='_blank' href='https://github.com/RonenNess/RPGUI'>RPG UI</a><br><a href='https://www.avatarsinpixels.com/'>Avatars in Pixels</a></p>
 		</aside>
 	</nav>
-	<section class="right content">
+	<section id="panel" class="right content">
+		<button class="toggle-button button">☰</button>
 		{{ block "main" . }}{{ end }}
 	</section>
 	<div style="clear:both;"></div>
