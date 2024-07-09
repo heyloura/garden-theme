@@ -50,6 +50,10 @@ flex-wrap:wrap;
   </article>
 
 </section>
+    {{ $link_text := or $.Site.Params.conversation_on_mb_link_text "Reply on Micro.blog" }}
+    {{ $fallback_url := print "https://micro.blog/" .Site.Author.username }}
+    {{ $fallback_url = or $.Site.Params.conversation_on_mb_fallback_url $fallback_url }}
+    {{ $fallback_link_text := or $.Site.Params.conversation_on_mb_fallback_link_text "Find me on Micro.blog" }}
 <section id="conversation">
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
 	 <h3>Join the conversation!</h3>
