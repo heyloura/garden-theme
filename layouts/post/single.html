@@ -34,11 +34,11 @@ display:flex;
 flex-wrap:wrap; 
 }
 </style>
-<section class="h-entry">
+<section class="h-entry frame border-frame">
 
   <header>
 	{{ if .Title }}
-	  	<header><h2 class="p-name">{{ .Title }}</h2></header>
+	  	<header><h4 class="p-name">{{ .Title }}</h4></header>
   	{{ end }}
     <header><h2>
 	<time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
@@ -53,7 +53,7 @@ flex-wrap:wrap;
 <section id="conversation">
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
 	 <h3>Join the conversation!</h3>
-	<div class='frame-grey'>
+	<div class='frame grey-frame'>
 		<div class='icon-menu'>
 		<div class='rpgui-icon sword'></div>
 		<p> Send along a <a href='https://indieweb.org/Webmention'>webmention</a></p>
