@@ -30,7 +30,7 @@
 			{{ if .Title }}
 				<dl class="h-entry frame grey-frame">
 					<dt>
-						<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> {{ $random }} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+						<a href="{{ .Permalink }}" class="u-url p-name"> {{ .Title }} </a> {{ $random }} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>&nbsp;
 						{{- range $index, $category := .Page.Params.categories -}}
 							{{ $random }}&nbsp;<a href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a>&nbsp;
 						{{- end -}}
