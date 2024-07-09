@@ -66,7 +66,6 @@
 			position: relative;
 			z-index: 1;
 			will-change: transform;
-			/*background-color: #FFF;  A background-color is required */
 			min-height: 100vh;
 		}
 		
@@ -95,7 +94,16 @@
 				grid-template-columns: 50% 50%;
 			}
 			.bottom-frames aside { margin: 1em; }
-			.toggle-button { display: none;}
+			.toggle-button { display: none; }
+			.slideout-panel {
+				margin-left: 256px;
+			}
+			.slideout-menu {
+				display: block;
+			}
+			.btn-hamburger {
+				display: none;
+			}
 		}
 		::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
 			background-image: url(/img/scrollbar-button.png);
