@@ -8,19 +8,19 @@
 	margin-top: -1em;
 }
 	.rpgui-icon.sword {
-    background-image: url(/images/sword.png);
+    background-image: url(/img/sword.png);
 }
 .rpgui-icon.shield {
-    background-image: url(/images/shield.png);
+    background-image: url(/img/shield.png);
 }
 .rpgui-icon.potion-red {
-    background-image: url(/images/potion-red.png);
+    background-image: url(/img/potion-red.png);
 }
 .rpgui-icon.potion-green {
-    background-image: url(/images/potion-green.png);
+    background-image: url(/img/potion-green.png);
 }
 .rpgui-icon.potion-blue {
-    background-image: url(/images/potion-blue.png);
+    background-image: url(/img/potion-blue.png);
 }
 .rpgui-icon {
     display: inline-block;
@@ -56,16 +56,16 @@ flex-wrap:wrap;
     {{ $fallback_link_text := or $.Site.Params.conversation_on_mb_fallback_link_text "Find me on Micro.blog" }}
 <section id="conversation">
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
-	 <h3>Join the conversation!</h3>
+	 <h5>Join the conversation!</h5>
 	<div class='frame grey-frame'>
 		<div class='icon-menu'>
 		<div class='rpgui-icon sword'></div>
 		<p> Send along a <a href='https://indieweb.org/Webmention'>webmention</a></p>
 		</div>
-		<!--<div class='icon-menu'>
+		<div class='icon-menu'>
 		<div class='rpgui-icon shield'></div>
 		<p> <a target='_blank' href='{{ $fallback_url }}' class='conversation-on-mb conversation-on-mb-fallback'>{{ $fallback_link_text }}</a> <span style='display:none;' class='conversation-on-lilli-show'>or on 🐸 <a target='_blank' href='#' class='conversation-on-lilli-link'>Lillihub</a></span></p>
-		</div>-->
+		</div>
 		<div class='icon-menu'>
 		<div class='rpgui-icon potion-red'></div>
 		<p> Follow <a target='_blank' href='https://micro.blog/heyloura?remote_follow=1' target='_blank'>@heyloura@heyloura.com</a></p>
@@ -75,7 +75,7 @@ flex-wrap:wrap;
 		<p style='margin:0'> Grant a simple like  <button class='golden-button tinylytics_kudos'>💖 3</button></p>
 		</div>
 	</div>
-	<div id='conversation' style='margin-top: 2em;'>
+	<div id='conversation' style='margin-top: 2em;' class="frame golden-frame">
 		{{ if .Site.Params.include_conversation }}
 		<script type='text/javascript' src='https://micro.blog/conversation.js?url={{ .Permalink }}'></script>
 		{{ end }}
