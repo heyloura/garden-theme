@@ -2,7 +2,7 @@
        <div class="frame border-frame">
 	<header>
 	       <h4>{{ strings.FirstUpper .Title }}</h4>
-       	       <nav style="margin-bottom: 2em;"> 🐉 <a href="#intro">into</a> ⚔️ <a href="#posts">posts</a> 👑 <a href="#photos">photos</a> 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a></nav>
+       	       <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> 👑 <a href="#photos">photos</a> 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
        </header>
 	<iframe aria-busy="true"
 	      id="main_calendar"
@@ -73,7 +73,7 @@
 		        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
 		        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
 			let postSpan = document.createElement('span');
-			postSpan.innerHTML = '◊ ';
+			postSpan.innerHTML = '{{ $random }} ';
 		        repliesLink.prepend(postA);
 			repliesLink.prepend(postSpan);
 		    } else {
@@ -101,14 +101,14 @@
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
 
 <div class="frame golden-frame">
-	{{- $list := where .Pages ".Params.photos" "!=" nil -}}
+	{{- $list := where .Pages ".Params.images" "!=" nil -}}
 	{{- $len := (len $list) -}}
 			<section>
 				<div class="photos-grid-container" style="max-width: 100%;width: calc( 100vw - 5em );display: grid; grid-column-gap: 15px; grid-row-gap: 15px; grid-template-columns: 33% 33% 33%;">
 			
 				{{ range $index, $value := $list }}
 					<a href="{{ .Permalink }}">
-						{{ range first 1 .Params.photos }}
+						{{ range first 1 .Params.images }}
 							<img src="{{ . }}" width="300" height="300" style="border-radius: 5px; max-width: 100%; height: auto;" class="photos-grid-item" loading="lazy" />
 						{{ end }}
 					</a>
