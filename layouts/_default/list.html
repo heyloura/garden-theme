@@ -142,22 +142,22 @@
 
     {{ if eq $tag $title }}
 
-   <ul>
+
    {{ range $response.items }}
    {{ $url := urls.Parse .url }}
      {{ if not (hasPrefix .id "link") }}
         {{ if strings.Contains .tags $tag }}
-                <li><figure style="margin: var(--space-m) 0;">
-        <figcaption><cite><a target="_blank" class="u-bookmark-of" href="{{ .url }}">{{ $url.Host }}</a><br/><small>Bookmarked: {{ time.Format "Jan 2, 2006" .date_published}}</small></cite></figcaption>
-        <blockquote style="padding-left: var(--space-s);border-left: 1px solid var(--text)">
-          <p>{{ replace (replace ( .content_html | plainify | truncate 300 ) "Reader: " "") $url.Host "" }}</p>
+	<figure>
+        <figcaption><cite style="font-style: italic;"><a target="_blank" class="u-bookmark-of" href="{{ .url }}">{{ $url.Host }}</a><br/><small>Bookmarked: {{ time.Format "Jan 2, 2006" .date_published}}</small></cite></figcaption>
+        <blockquote>
+          <p style="overflow-wrap: anywhere;">{{ replace (replace ( .content_html | plainify | truncate 300 ) "Reader: " "") $url.Host "" }}</p>
         </blockquote>
 
-      </figure></li>
+      	</figure>
         {{ end }}
      {{ end }}
     {{ end }}
-    </ul>
+
 
     {{ end }}
 
