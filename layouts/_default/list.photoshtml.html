@@ -35,8 +35,8 @@
 	<h4>📜 Adventure Photos</h4>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
 
-	<div class="frame golden-frame square-gallery">
-
+	<div class="frame golden-frame">
+	<div class="square-gallery">
 	{{- $list := where .Site.Pages ".Params.photos" "!=" nil -}}
 	{{- $len := (len $list) -}}
 	{{ range $index, $value := $list }}
@@ -46,7 +46,7 @@
 			{{ end }}
 		</a>
 	{{ end }}
-
+	</div>
 	</div>
 	</section>
 {{ end }}
