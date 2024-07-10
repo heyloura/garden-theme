@@ -3,13 +3,13 @@
 	.square-gallery {
 		  display: grid;
 		  grid-template-columns: repeat(3, 1fr);
-		  width: 73vw;
+		  width: min(73vw, 548px);
 	}
 	.gallery-item {
 		display: flex;
 		justify-content: center;
-		width: calc(73vw / 3);
-		height: calc(73vw/ 3);
+		width: calc(min(73vw, 548px) / 3);
+		height: calc(min(73vw, 548px)/ 3);
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -18,13 +18,13 @@
 		.square-gallery {
 			  display: grid;
 			  grid-template-columns: repeat(3, 1fr);
-			  width: 54vw;
+			  width: min(54vw, 548px);
 		}
 		.gallery-item {
 			display: flex;
 			justify-content: center;
-			width: calc(54vw / 3);
-			height: calc(54vw / 3);
+			width: calc(min(54vw, 548px) / 3);
+			height: calc(min(54vw, 548px) / 3);
 			background-position: center center;
 			background-size: cover;
 			background-repeat: no-repeat;
