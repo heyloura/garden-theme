@@ -6,7 +6,7 @@
        </header>
 	<iframe aria-busy="true"
 	      id="main_calendar"
-	      src="/{{ replace (strings.ToLower .Title) ' ' '-' }}" 
+	      src="/{{ urlize (strings.ToLower .Title) }}" 
 	      loading="lazy"
 	      onload="disappear(this)"></iframe>
 	</div>
