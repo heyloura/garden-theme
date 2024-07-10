@@ -102,28 +102,32 @@
 
 <style>
 .square-gallery {
-	  --items: 7;
-	  --width: 50vw;
+	  --items: 3;
+	  --width: 55vw;
 	  display: grid;
 	  grid-template-columns: repeat(var(--items), 1fr);
-	  background: white;
 	  width: var(--width);
 }
 .gallery-item {
 	display: flex;
 	justify-content: center;
 	width: calc(var(--width) / var(--items));
-	padding-bottom: calc(var(--width) / var(--items));
+	height: calc(var(--width) / var(--items));
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+@media (min-width:768px) {
+	.square-gallery {
+		--width: 55vw;
+	}
 }
 </style>
 <div class="frame golden-frame">
 	{{- $list := where .Pages ".Params.images" "!=" nil -}}
 	{{- $len := (len $list) -}}
 			<section>
-				<div class="photos-grid-container">
+				<div class="photos-grid-container square-gallery">
 			
 				{{ range $index, $value := $list }}
 					<a class="gallery-item" href="{{ .Permalink }}">
