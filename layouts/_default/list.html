@@ -100,16 +100,35 @@
 	<header id="photos"><h4>Photos</h4></header>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121/http://hk.geocities.com/footprints_kayi/border.gif" />
 
+<style>
+.square-gallery {
+	  --items: 7;
+	  --width: 50vw;
+	  display: grid;
+	  grid-template-columns: repeat(var(--items), 1fr);
+	  background: white;
+	  width: var(--width);
+}
+.gallery-item {
+	display: flex;
+	justify-content: center;
+	width: calc(var(--width) / var(--items));
+	padding-bottom: calc(var(--width) / var(--items));
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+</style>
 <div class="frame golden-frame">
 	{{- $list := where .Pages ".Params.images" "!=" nil -}}
 	{{- $len := (len $list) -}}
 			<section>
-				<div class="photos-grid-container" style="max-width: 100%;width: calc( 100vw - 5em );display: grid; grid-column-gap: 15px; grid-row-gap: 15px; grid-template-columns: 33% 33% 33%;">
+				<div class="photos-grid-container">
 			
 				{{ range $index, $value := $list }}
-					<a href="{{ .Permalink }}">
+					<a class="gallery-item" href="{{ .Permalink }}">
 						{{ range first 1 .Params.images }}
-							<img src="{{ . }}" width="300" height="300" style="border-radius: 5px; max-width: 100%; height: auto;" class="photos-grid-item" loading="lazy" />
+							<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
 						{{ end }}
 					</a>
 				{{ end }}
