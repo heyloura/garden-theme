@@ -102,34 +102,30 @@
 
 <style>
 .square-gallery {
-	  --items: 3;
-	  --width: 73vw;
 	  display: grid;
-	  grid-template-columns: repeat(var(--items), 1fr);
-	  width: var(--width);
+	  grid-template-columns: repeat(3, 1fr);
+	  width: 73vw;
 }
 .gallery-item {
 	display: flex;
 	justify-content: center;
-	width: calc(var(--width) / var(--items));
-	height: calc(var(--width) / var(--items));
+	width: calc(73vw / 3);
+	height: calc(73vw/ 3);
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 @media (min-width:768px) {
 	.square-gallery {
-		  --items: 3;
-		  --width: 73vw;
 		  display: grid;
-		  grid-template-columns: repeat(var(--items), 1fr);
-		  width: var(--width);
+		  grid-template-columns: repeat(3, 1fr);
+		  width: 55vw;
 	}
 	.gallery-item {
 		display: flex;
 		justify-content: center;
-		width: calc(var(--width) / var(--items));
-		height: calc(var(--width) / var(--items));
+		width: calc(55vw / 3);
+		height: calc(55vw / 3);
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -293,38 +289,6 @@ h3.bookshelf__title {
 /* Copy the contents of the iframe into the DOM and execute scripts  */
 function disappear(frame) {
 let body = (frame.contentDocument.body||frame.contentDocument);
-// let children = [...body.children];
-
-// for(let child of children) {
-//   let scope = child.getAttribute('data-scope');
-
-//   if(child.tagName === 'SCRIPT'){
-//     let script = document.createElement("script");
-//     script.setAttribute('data-scope', scope);    
-//     script.text = child.innerHTML;
-//     document.body.appendChild( script );
-//   } else if(child.tagName === 'STYLE'){
-//     let doc = document.implementation.createHTMLDocument("");
-//     let styleElement = document.createElement("style");
-//     styleElement.textContent = child.innerHTML;
-//     doc.body.appendChild(styleElement); // to compute the css rules
-//     child.innerHTML = '';
-    
-//     // scope out the styles
-//     for(var style of styleElement.sheet.cssRules) {
-//       let selectors = style.selectorText;
-//       let scoped = [];
-      
-//       for(var selector of selectors.split(',')){
-//         scoped.push(`[data-scope='${scope}'] ${selector}`);
-//       }
-      
-//       child.innerHTML += style.cssText.replace(selectors, scoped.join(', ')) + ' ';
-//     }
-
-//     frame.before(child);
-//   }
-// }
 
 frame.before(frame.contentDocument.getElementById('post-content'));
 
