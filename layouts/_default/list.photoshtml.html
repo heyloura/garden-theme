@@ -1,16 +1,48 @@
 {{ define "main" }}
+	<style>
+	.square-gallery {
+		  display: grid;
+		  grid-template-columns: repeat(3, 1fr);
+		  width: 73vw;
+	}
+	.gallery-item {
+		display: flex;
+		justify-content: center;
+		width: calc(73vw / 3);
+		height: calc(73vw/ 3);
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	@media (min-width:768px) {
+		.square-gallery {
+			  display: grid;
+			  grid-template-columns: repeat(3, 1fr);
+			  width: 54vw;
+		}
+		.gallery-item {
+			display: flex;
+			justify-content: center;
+			width: calc(54vw / 3);
+			height: calc(54vw / 3);
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	}
+	</style>
 	<section>
 	<h4>📜 Adventure Photos</h4>
 	<img style="display:block;margin: 0px auto;" width="562" height="19" src="https://web.archive.org/web/20091027102121im_/http://hk.geocities.com/footprints_kayi/border.gif">
 
-	<div style="display: grid; grid-column-gap: 15px; grid-row-gap: 15px; grid-template-columns: 33% 33% 33%;" class="frame golden-frame">
+	<div class="frame golden-frame square-gallery">
 
 	{{- $list := where .Site.Pages ".Params.photos" "!=" nil -}}
 	{{- $len := (len $list) -}}
 	{{ range $index, $value := $list }}
 		<a href="{{ .Permalink }}">
 			{{ range first 1 .Params.photos }}
-				<img src="{{ . }}" width="300" height="300" style="border-radius: 5px; max-width: 100%; height: auto;" class="photos-grid-item" loading="lazy" />
+				<img src="{{ . }}" width="300" height="300" class="photos-grid-item gallery-item" loading="lazy" />
 			{{ end }}
 		</a>
 	{{ end }}
