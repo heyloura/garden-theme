@@ -680,14 +680,7 @@
 <script>
 const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
-if (!!isReduced) {
-    // DON'T use an amination here!
-} else {
-	var x = 10;
-	var interval = 30 * 1000;
-	
-	for (var i = 0; i < x; i++) {
-	    setTimeout(function () {
+function emoji() {
   floating({
     content: "👻",
     number: 3,
@@ -721,7 +714,7 @@ if (!!isReduced) {
   });
   floating({
     content: "🦇",
-    number: 5,
+    number: 3,
     duration: 24,
     repeat: 1,
   });
@@ -744,7 +737,18 @@ if (!!isReduced) {
     duration: 20,
     repeat: 1,
     size: 5
-  });}
+  });
+}
+	
+if (!!isReduced) {
+    // DON'T use an amination here!
+} else {
+	var x = 10;
+	var interval = 30 * 1000;
+	emoji();
+	for (var i = 0; i < x; i++) {
+	    setTimeout(function () {
+emoji();
 	    }, i * interval)
 	}
 }
