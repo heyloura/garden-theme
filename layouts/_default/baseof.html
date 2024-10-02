@@ -683,19 +683,19 @@ const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true
 function emoji() {
   floating({
     content: "👻",
-    number: 3,
+    number: 1,
     duration: 26,
     repeat: 1,
   });
   floating({
     content: "🎃",
-    number: 5,
+    number: 1,
     duration: 24,
     repeat: 1,
   });
   floating({
     content: "🧟‍♀️",
-    number: 3,
+    number: 1,
     duration: 33,
     repeat: 1,
   });
@@ -708,19 +708,19 @@ function emoji() {
   });
   floating({
     content: "🪦",
-    number: 3,
+    number: 1,
     duration: 26,
     repeat: 1,
   });
   floating({
     content: "🦇",
-    number: 3,
+    number: 1,
     duration: 24,
     repeat: 1,
   });
   floating({
     content: "🍬",
-    number: 3,
+    number: 1,
     duration: 33,
     repeat: 1,
   });
@@ -743,9 +743,8 @@ function emoji() {
 if (!!isReduced) {
     // DON'T use an amination here!
 } else {
-	var x = 10;
+	var x = 5;
 	var interval = 6 * 1000;
-	emoji();
 	for (var i = 0; i < x; i++) {
 	    setTimeout(function () {
 emoji();
