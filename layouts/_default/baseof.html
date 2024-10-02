@@ -31,6 +31,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 	<style>html{font-family:sans-serif;max-width:106ch;margin:auto;}h1,h2,h3,h4,h5,h6{margin:2em 0 1em;font-family:Consolas,system-ui,serif;}ol,p,ul{margin-bottom:2em;}</style>
 	<style>
+		html { cursor: url(/img/cursor/default.png), auto !important; }
 		body 
 		{
 			background: #3C2533;
@@ -480,7 +481,7 @@
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
-			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="https://heyloura.com/uploads/2024/avatar-halloween.png" width="250" height="250" alt="">			
+			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="https://heyloura.com/uploads/2024/avatar-halloween.png">			
 		</p>
 		<p>
 			Hi, I'm Loura and this is my digital space. 
@@ -682,6 +683,11 @@ const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true
 if (!!isReduced) {
     // DON'T use an amination here!
 } else {
+	var x = 10;
+	var interval = 30 * 1000;
+	
+	for (var i = 0; i < x; i++) {
+	    setTimeout(function () {
   floating({
     content: "👻",
     number: 3,
@@ -739,6 +745,9 @@ if (!!isReduced) {
     repeat: 1,
     size: 5
   });}
+	    }, i * interval)
+	}
+}
 </script>
 </body>
 </html>
