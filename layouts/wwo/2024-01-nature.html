@@ -41,8 +41,8 @@ img {
   height: auto;
 }
 html {line-height: 1.5;font-family: system-ui; background: black; color: white;}
-body {max-width: 70ch;margin: auto; width:100%; margin-top: 3rem; padding: 0.4rem;}
-h1, h2, h3, h4, h5, h6 {text-wrap: balance; font-size: unset !important;}
+body {width: 100vw;height: 100vh;padding: 0.4rem;}
+h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 </style>
 </head>
 
@@ -54,6 +54,125 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance; font-size: unset !important;}
 	  <ul></ul>
   </nav>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.min.js"></script>
+  <script>
+	// Global Vars
+	var fr = 60;
+	var stage;
+	var initialSize;
+	// Colors
+	var hue;
+	var bgHue;
+	// Tree
+	var tree = [];
+	var angle;
+	
+	
+	// Setup
+	function setup() {
+		// Create Stage
+		stage = createVector(document.body.offsetWidth, document.body.offsetHeight); 
+		createCanvas(stage.x, stage.y);
+	  frameRate(fr);
+	
+		// Set Background Color
+		colorMode(HSB);
+		mousePressed();
+		resize();
+	
+	  window.addEventListener("resize", resize);
+	  // gskinner lab export
+	  // LabTemplate.loadComplete();
+	}
+	
+	
+	// TREE
+	function branch(len, w, a, b) {
+		var myHue =  bgHue.x + 60 + random(-15, 15);
+		myHue = createVector(correctRotation(myHue), 50, b);	
+		
+		
+		strokeWeight(w);
+		strokeCap(ROUND); // SQUARE OR PROJECT
+		stroke(myHue.x, myHue.y, myHue.z);
+	
+		line(0, 0, 0, -len);
+		translate(0, -len);
+	
+		
+		if (len > 10) {
+			push();
+			var len1 = len * random(.99, .45);
+			var w1 = w * random(.9, .5);
+			var a1 = angle + random(-.4, 0);
+			var b1 = b * 1.15;
+			rotate(a1);
+			branch(len1, w1, a1, b1);
+			pop();
+	
+			push();
+			var len2 = len * random(.99, .45);
+			var w2 = w * random(.9, .5);
+			var a2 = angle + random(-.4, 0);
+			var b2 = b * 1.15;
+			rotate(-a2);
+			branch(len2, w2, a2, b2);
+			pop();
+		}
+		
+		noLoop();
+	
+	}
+	
+	
+	
+	// Update Canvas
+	function draw() {
+		// clear();	
+		background(bgHue.x, bgHue.y, bgHue.z);
+		angle = PI / 6;
+	
+		// Draw Tree
+		push();
+		translate(width/2, height);
+		branch(height/6, width/50, angle, 20);				
+		pop();
+	}
+	
+	
+	// MOUSE EVENTS
+	function mousePressed() {
+		hue = 360 + random(360);
+		bgHue = createVector(correctRotation(hue), 80, 10);
+		background(bgHue.x, bgHue.y, bgHue.z);
+		draw();
+	}
+	
+	
+	// UTILITIES
+	// Correct Rotation – Works for colors and anything that uses 360 degree rotational values
+	function correctRotation(deg) {
+	/*
+	  Corrects a rotation and if it:
+	  exceed 360 degrees or is less than 0
+	*/
+	  if (deg > 360) {
+	    deg -= 360;
+	  } else if(deg < 0) {
+	    deg += 360;
+	  } 
+	  return(deg);
+	}
+	
+	// Handle Window Resize
+	function resize () {
+	  resizeCanvas(window.innerWidth, window.innerHeight);
+		if(window.innerWidth>window.innerHeight) {
+			// initialSize = window.innerWidth/5;	
+		} else {
+			// initialSize = window.innerHeight/5;		
+		}
+	}
+  </script>
 </body>
 
 </html>
