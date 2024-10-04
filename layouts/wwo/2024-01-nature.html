@@ -41,7 +41,7 @@ img {
   max-width: 100%;
   height: auto;
 }
-html {line-height: 1.5;font-family: system-ui; background: black; color: white;}
+html {line-height: 1.5;font-family: system-ui; background: #332D1A; color: white;}
 body {min-width: 100vw;min-height: 100vh; width: 100%; height: 100%; padding: 0.4rem; overflow:hidden;}
 h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 p{padding-bottom: 0.5em;}
@@ -227,7 +227,7 @@ frame.remove();
 		hue = 360 + random(360);
 		bgHue = createVector(correctRotation(hue), 80, 10);
 		background(bgHue.x, bgHue.y, bgHue.z);
-		document.querySelector('html').style.backgroundColor = 'rgb(' + bgHue.x + ',' + bgHue.y + ',' + bgHue.z + ')';
+		//document.querySelector('html').style.backgroundColor = 'rgb(' + bgHue.x + ',' + bgHue.y + ',' + bgHue.z + ')';
 		draw();
 	}
 	
