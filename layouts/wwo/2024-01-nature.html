@@ -49,35 +49,26 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
   right: 2vw;
   line-height: 0;
   opacity: 1;
-  font-family: "Raleway", sans-serif;
   font-size: 12px;
   margin-top: 1em;
   color: white;
 }
-#title {
+#content {
   display: block;
   position: absolute;
-  top: 75%;
-  left: 50%;
-  font-family: "Knewave", cursive;
-  font-size: 24px;
-  text-align: center;
+  top: 20%;
+  left: 20%;
   color: white;
   transform: translateX(-50%) translateY(-50%);
   pointer-events: none;
-}
-#title::after {
-  content: "A "Weird Website October 2024" submission by HeyLoura";
-  display: block;
-  font-family: "Raleway", sans-serif;
-  font-size: 12px;
-  margin-top: 1em;
+  width: 100%;
+  max-width: 70ch;
 }
 #navigation {
   display: block;
   position: absolute;
   top: 20%;
-  left: 20%;
+  right: 20%;
   color: white;
   transform: translateX(-50%) translateY(-50%);
   pointer-events: none;
@@ -86,7 +77,9 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 </head>
 
 <body>
-  <h1 id="title">Recursive Tree 1</h1>
+  <main id="content">
+	  <h1>Jumping along trees</h1>
+  </main>
   <h1 id="instruction">Click to make a new tree</h1>
   <nav id="navigation">
 	  <p>Weird Web October 2024 Submissions</p>
@@ -162,25 +155,25 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 		push();
 		// Draw Tree
 		push();
-		translate(width, height);
+		translate(width/random(1, 5), height);
 		branch(height/6, width/50, angle, 20);				
 		pop();
 		
 		// Draw Tree
 		push();
-		translate(width/2, height);
+		translate(width/random(1, 5), height);
 		branch(height/6, width/50, angle, 20);				
 		pop();
 
 		// Draw Tree
 		push();
-		translate(width/3, height);
+		translate(width/random(1, 5), height);
 		branch(height/6, width/50, angle, 20);				
 		pop();
 
 		// Draw Tree
 		push();
-		translate(width/4, height);
+		translate(width/random(1, 5), height);
 		branch(height/6, width/50, angle, 20);				
 		pop();
 
