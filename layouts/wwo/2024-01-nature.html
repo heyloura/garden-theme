@@ -80,7 +80,7 @@ p{padding-bottom: 0.5em;}
 
 <body>
   <main id="content">
-	  <div style="padding-bottom: 3em; min-height: 100vh;">
+	  <div style="padding-bottom: 3em;">
 	  <h1 style="padding-bottom: 1em;">Jumping along trees</h1>
 	  <p>
 		  When I was a child my father would take me and my sibling for long car rides on the weekend.
@@ -227,6 +227,7 @@ frame.remove();
 		hue = 360 + random(360);
 		bgHue = createVector(correctRotation(hue), 80, 10);
 		background(bgHue.x, bgHue.y, bgHue.z);
+		document.querySelector('html').style.backgroundColor = 'rgb(' + bgHue.x + ',' + bgHue.y + ',' + bgHue.z + ')';
 		draw();
 	}
 	
