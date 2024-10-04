@@ -94,7 +94,13 @@ p{padding-bottom: 0.5em;}
 	  <p>
 		  P.S. As an adult I still daydream about jumping around the treetops.
 	  </p>
-	  <details><summary>Weird Web October 2024 Submissions</summary></details>
+	  <details><summary>Weird Web October 2024 Submissions</summary>
+	  	<iframe aria-busy="true"
+		      id="wwo-index"
+		      src="/wwo-2024-index" 
+		      loading="lazy"
+		      onload="disappear(this)"></iframe>
+	  </details>
 	  <details><summary>Credits</summary>
 	  	<p>Inspired by: <a href="https://codepen.io/chriscaldwell/pen/zWQVPo">Recuresive Trees</a>
 		<br/>Using: <a href="https://p5js.org/">P5.js</a>
@@ -102,6 +108,26 @@ p{padding-bottom: 0.5em;}
 	  </details>
   </main>
   <h1 id="instruction">Click to make a new forest</h1>
+<script>
+	/* Make the iframe hidden while loading  */
+(async () => {
+  let div = document.createElement('div');
+  let ref = document.getElementsByTagName('base')[0] || 
+            document.getElementsByTagName('script')[0];
+
+  div.innerHTML = '<style> iframe { visibility: hidden; } </style>';
+  ref.parentNode.insertBefore(div, ref);
+})();  
+
+/* Copy the contents of the iframe into the DOM and execute scripts  */
+function disappear(frame) {
+let body = (frame.contentDocument.body||frame.contentDocument);
+
+frame.before(frame.contentDocument.getElementById('post-content'));
+
+frame.remove();
+}
+</script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.min.js"></script>
   <script>
 	// Global Vars
