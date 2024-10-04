@@ -115,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 		// Set Background Color
 		colorMode(HSB);
 		//mousePressed();
-		resize();
+		//resize();
 	}
 		
 	// TREE
@@ -164,6 +164,18 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 		translate(width/2, height);
 		branch(height/6, width/50, angle, 20);				
 		pop();
+
+		// Draw Tree
+		push();
+		translate(width/3, height);
+		branch(height/6, width/50, angle, 20);				
+		pop();
+
+		// Draw Tree
+		push();
+		translate(width/4, height);
+		branch(height/6, width/50, angle, 20);				
+		pop();
 	}
 	
 	
@@ -192,14 +204,14 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 	}
 	
 	// Handle Window Resize
-	// function resize () {
-	//   resizeCanvas(window.innerWidth, window.innerHeight);
-	// 	if(window.innerWidth>window.innerHeight) {
-	// 		// initialSize = window.innerWidth/5;	
-	// 	} else {
-	// 		// initialSize = window.innerHeight/5;		
-	// 	}
-	// }
+	function resize () {
+	  resizeCanvas(window.innerWidth, window.innerHeight);
+		if(window.innerWidth>window.innerHeight) {
+			// initialSize = window.innerWidth/5;	
+		} else {
+			// initialSize = window.innerHeight/5;		
+		}
+	}
   </script>
 </body>
 
