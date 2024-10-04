@@ -41,13 +41,13 @@ img {
   height: auto;
 }
 html {line-height: 1.5;font-family: system-ui; background: black; color: white;}
-body {width: 100vw;height: 100vh;padding: 0.4rem; overflow:hidden;}
+body {min-width: 100vw;min-height: 100vh; width: 100%; height: 100%; padding: 0.4rem; overflow:hidden;}
 h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 p{padding-bottom: 0.5em;}
 #instruction {
   position: absolute;
   top: 2vw;
-  right: 2vw;
+  left: 2vw;
   line-height: 0;
   opacity: 1;
   font-size: 12px;
@@ -171,30 +171,16 @@ p{padding-bottom: 0.5em;}
 		angle = PI / 6;
 
 		push();
-		// Draw Tree
-		push();
-		translate(width/random(1, 5), height);
-		branch(height/6, width/50, angle, 20);				
-		pop();
+
+		var count = random(3, 6);
+		for(vat i = 0; i < count; i++ ) {
+			// Draw Tree
+			push();
+			translate(width/random(1, 5), height);
+			branch(height/6, width/50, angle, 20);				
+			pop();
+		}
 		
-		// Draw Tree
-		push();
-		translate(width/random(1, 5), height);
-		branch(height/6, width/50, angle, 20);				
-		pop();
-
-		// Draw Tree
-		push();
-		translate(width/random(1, 5), height);
-		branch(height/6, width/50, angle, 20);				
-		pop();
-
-		// Draw Tree
-		push();
-		translate(width/random(1, 5), height);
-		branch(height/6, width/50, angle, 20);				
-		pop();
-
 		pop();
 	}
 	
