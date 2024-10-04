@@ -20,7 +20,11 @@
 	<link rel="microsub" href="https://micro.blog/microsub" />
 	<link rel="webmention" href="https://micro.blog/webmention" />
 	<link rel="subscribe" href="https://micro.blog/users/follow" />
+	  <meta name="color-scheme" content="dark">
 <style>
+:root {
+  color-scheme: dark;
+}
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -61,8 +65,9 @@ p{padding-bottom: 0.5em;}
     max-width: 70ch;
     background-color: rgba(0, 0, 0, 0.65);
     padding: 1em;
-    overflow-x: scroll;
+    overflow-x: auto;
     height: 100%;
+	min-height: 100vh;
 }
 	a {
 		color: #8caaee;
@@ -75,7 +80,7 @@ p{padding-bottom: 0.5em;}
 
 <body>
   <main id="content">
-	  <div style="padding-bottom: 3em;">
+	  <div style="padding-bottom: 3em; min-height: 100vh;">
 	  <h1 style="padding-bottom: 1em;">Jumping along trees</h1>
 	  <p>
 		  When I was a child my father would take me and my sibling for long car rides on the weekend.
