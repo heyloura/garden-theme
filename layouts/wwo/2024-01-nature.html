@@ -67,7 +67,6 @@ p{padding-bottom: 0.5em;}
     padding: 1em;
     overflow-x: auto;
     height: 100%;
-	min-height: 100vh;
 }
 	a {
 		color: #8caaee;
@@ -226,8 +225,9 @@ frame.remove();
 	function mousePressed() {
 		hue = 360 + random(360);
 		bgHue = createVector(correctRotation(hue), 80, 10);
+		var shade_factor = 10;
 		background(bgHue.x, bgHue.y, bgHue.z);
-		//document.querySelector('html').style.backgroundColor = 'rgb(' + bgHue.x + ',' + bgHue.y + ',' + bgHue.z + ')';
+		document.querySelector('html').style.backgroundColor = 'rgb(' + bgHue.x * (1 - shade_factor) + ',' + bgHue.y * (1 - shade_factor) + ',' + bgHue.z * (1 - shade_factor) + ')';
 		draw();
 	}
 	
