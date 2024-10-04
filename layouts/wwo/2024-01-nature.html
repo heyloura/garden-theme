@@ -158,7 +158,8 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 		// clear();	
 		background(bgHue.x, bgHue.y, bgHue.z);
 		angle = PI / 6;
-	
+
+		push();
 		// Draw Tree
 		push();
 		translate(width/2, height);
@@ -175,6 +176,8 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 		push();
 		translate(width/4, height);
 		branch(height/6, width/50, angle, 20);				
+		pop();
+
 		pop();
 	}
 	
