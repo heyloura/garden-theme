@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
   font-size: 12px;
   margin-top: 1em;
 }
-#title {
+#navigation {
   display: block;
   position: absolute;
   top: 20%;
@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 	
 		// Set Background Color
 		colorMode(HSB);
-		//mousePressed();
+		mousePressed();
 		//resize();
 	}
 		
@@ -155,16 +155,17 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 	
 	// Update Canvas
 	function draw() {
-		hue = 360 + random(360);
-		bgHue = createVector(correctRotation(hue), 80, 10);
-		background(bgHue.x, bgHue.y, bgHue.z);
-		//draw();
-		
 		// clear();	
 		background(bgHue.x, bgHue.y, bgHue.z);
 		angle = PI / 6;
 
 		push();
+		// Draw Tree
+		push();
+		translate(width, height);
+		branch(height/6, width/50, angle, 20);				
+		pop();
+		
 		// Draw Tree
 		push();
 		translate(width/2, height);
@@ -188,12 +189,12 @@ h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
 	
 	
 	// MOUSE EVENTS
-	// function mousePressed() {
-	// 	hue = 360 + random(360);
-	// 	bgHue = createVector(correctRotation(hue), 80, 10);
-	// 	background(bgHue.x, bgHue.y, bgHue.z);
-	// 	draw();
-	// }
+	function mousePressed() {
+		hue = 360 + random(360);
+		bgHue = createVector(correctRotation(hue), 80, 10);
+		background(bgHue.x, bgHue.y, bgHue.z);
+		draw();
+	}
 	
 	
 	// UTILITIES
