@@ -23,11 +23,7 @@
 	<link rel="microsub" href="https://micro.blog/microsub" />
 	<link rel="webmention" href="https://micro.blog/webmention" />
 	<link rel="subscribe" href="https://micro.blog/users/follow" />
-	  <meta name="color-scheme" content="dark">
 <style>
-:root {
-  color-scheme: dark;
-}
             /* https://alvaromontoro.com/blog/68055/ten-css-one-liners-for-almost-every-project */
             /* https://www.swyx.io/css-100-bytes */
             body, input, select {
@@ -71,14 +67,19 @@
 </head>
 
 <body>
-  <main>
-	  <details><summary>Weird Web October 2024 Submissions</summary>
+  <aside>
+	<details><summary>Weird Web October 2024 Submissions</summary>
 	  	<iframe aria-busy="true"
 		      id="wwo-index"
 		      src="/wwo-2024-00-index" 
 		      loading="lazy"
 		      onload="disappear(this)"></iframe>
-	  </details>
+	  </details>  
+  </aside>
+  <main>
+	  <dl>
+		  <dd style="color:black;">Black</dd><dt>#000000</dt>
+	  </dl>
   </main>
 <script>
 	/* Make the iframe hidden while loading  */
