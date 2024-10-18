@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Nature - Weird Website October 2024</title>
+  <meta name="description" content="Wierd Website October 2024">
+  <!--<link rel="preload" as="fetch" href="https://octothorp.es/?uri=https://heyloura.com/wwo-2024-03-color/" >
+  <link rel="octo:octothorpes" href="weirdweboctober" >
+  <link rel="octo:octothorpes" href="Color" >-->
+  <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon" />
+    {{ if .RSSLink -}}
+      <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+      <link href="{{ "podcast.xml" | absURL }}" rel="alternate" type="application/rss+xml" title="Podcast" />
+      <link rel="alternate" type="application/json" title="{{ .Site.Title }}" href="{{ "feed.json" | absURL }}" />
+      <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
+    {{ end -}}
+	<link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
+	<link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
+	<link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
+	<link rel="micropub" href="https://micro.blog/micropub" />
+	<link rel="microsub" href="https://micro.blog/microsub" />
+	<link rel="webmention" href="https://micro.blog/webmention" />
+	<link rel="subscribe" href="https://micro.blog/users/follow" />
+	  <meta name="color-scheme" content="dark">
+<style>
+:root {
+  color-scheme: dark;
+}
+            /* https://alvaromontoro.com/blog/68055/ten-css-one-liners-for-almost-every-project */
+            /* https://www.swyx.io/css-100-bytes */
+            body, input, select {
+                max-width: clamp(320px, 90%, 1000px);
+                margin: auto;
+                font-size: 1.25rem;
+                line-height: 1.5;
+                accent-color: #080;
+                padding: 1em;
+                font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+                color: #1d1d1d;
+            }
+            input, select {
+                padding: 0.25em;
+            }
+            img {
+                max-width: 100%;
+            }
+            p, ul {
+                max-width: 65ch;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                text-wrap: balance;
+                font-size: 1.5rem;
+                margin: 2em 0 1em;
+            }
+            :is(tbody, table) > tr:nth-child(odd) {
+                background: #0001;
+            }
+            td, th {
+                padding: 0.5em;
+            }
+            @media (prefers-reduced-motion) {
+                *, *::before, *::after {
+                    animation-duration: 0s !important;
+                    transition: none !important;
+                    scroll-behavior: auto !important;
+                }
+            }
+</style>
+</head>
+
+<body>
+  <main>
+	  <details><summary>Weird Web October 2024 Submissions</summary>
+	  	<iframe aria-busy="true"
+		      id="wwo-index"
+		      src="/wwo-2024-00-index" 
+		      loading="lazy"
+		      onload="disappear(this)"></iframe>
+	  </details>
+  </main>
+<script>
+	/* Make the iframe hidden while loading  */
+(async () => {
+  let div = document.createElement('div');
+  let ref = document.getElementsByTagName('base')[0] || 
+            document.getElementsByTagName('script')[0];
+
+  div.innerHTML = '<style> iframe { visibility: hidden; } </style>';
+  ref.parentNode.insertBefore(div, ref);
+})();  
+
+/* Copy the contents of the iframe into the DOM and execute scripts  */
+function disappear(frame) {
+let body = (frame.contentDocument.body||frame.contentDocument);
+
+frame.before(body);
+
+frame.remove();
+}
+</script>
+  
+  <script src='https://tinylytics.app/embed/ty-z3nCjHzz9nhTen2UU.js?hits' defer></script>
+</body>
+
+</html>
