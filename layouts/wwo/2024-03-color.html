@@ -63,8 +63,8 @@
                     scroll-behavior: auto !important;
                 }
             }
-	dd {text-shadow: 0 1px 1px rgba(255, 255, 255, 0.20);}
-	dt {width:3em;height:3em;}
+	td {text-shadow: 0 1px 1px rgba(255, 255, 255, 0.20);}
+	tr td:first {width:3em;height:3em;}
 </style>
 </head>
 
@@ -81,11 +81,16 @@
   <main>
 	  <h1>HTML Named Colors</h1>
 	  <h2>Black/Grey/White</h2>
-	  <dl>
-		<dt style="background-color:black;"></dt><dd style="color:black;">black #000000</dd>
-		<dt style="background-color:gray;"></dt><dd style="color:black;">gray #808080</dd>
-		<dt style="background-color:silver;"></dt><dd style="color:silver;">silver #c0c0c0</dd>
-	  </dl>
+	  <table>
+		  <thead>
+			  <tr><th>Color</th><th>Name</th><th>Hex</th></tr>	  
+		  </thead>
+		  <tbody>
+			  <tr><td style="background-color:black;"></td><td>black</td><td>#000000</td></tr>
+			  <tr><td style="background-color:gray;"></td><td>gray</td><td>#808080</td></tr>
+			  <tr><td style="background-color:silver;"></td><td>silver</td><td>#c0c0c0</td></tr>
+		  </tbody>
+	  </table>
   </main>
 <script>
 	/* Make the iframe hidden while loading  */
