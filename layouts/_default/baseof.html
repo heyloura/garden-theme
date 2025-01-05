@@ -116,19 +116,6 @@
 			background-clip:padding-box;
 			background-origin:padding-box
 		}
-		.wooden-frame 
-		{
-			border-image-source:url(/img/border-image-golden.png);
-			border-image-slice:4 4 4 4;
-			background:url(/img/background-image-golden.png) center;
-		}
-		.golden-frame {
-			background-clip:padding-box;
-			background-origin:padding-box;
-			border-image-source:url(/img/border-image-golden2.png);
-			border-image-slice:8 8 8 8;
-			background:url(/img/background-image-golden2.png) center;
-	        }
  		.border-frame, .microblog_post, .microblog_reply_form  {
 			border-image-source:url(/img/border-image.png);
 			border-image-slice:6 6 6 6;
@@ -391,14 +378,33 @@
 				background-repeat: no-repeat;
 			}
 		}
+		.wooden-frame, .golden-frame 
+		{
+			padding: 0;
+			border: 0;
+			background: unset;
+		}
 		@media (min-width:768px) {
+			.wooden-frame 
+			{
+				border-image-source:url(/img/border-image-golden.png);
+				border-image-slice:4 4 4 4;
+				background:url(/img/background-image-golden.png) center;
+			}
+			.golden-frame {
+				background-clip:padding-box;
+				background-origin:padding-box;
+				border-image-source:url(/img/border-image-golden2.png);
+				border-image-slice:8 8 8 8;
+				background:url(/img/background-image-golden2.png) center;
+		        }
 			html 
 			{
 				padding:1em;
 			}
 			.left 
 			{
-				width: 27%;
+				width: 28%;
 				float: left;
 			}
 			.right 
