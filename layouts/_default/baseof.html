@@ -80,6 +80,9 @@
 		.slideout-open .slideout-menu {
 			display: block;
 		}
+		.slideout-open .slideout-panel {
+			opacity: 0.5;
+		}
 		::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
 			background-image: url(/img/scrollbar-button.png);
 			background-size: 100% 100%;
@@ -384,7 +387,19 @@
 			border: 0;
 			background: unset;
 		}
+		#closeMenu {
+			display: none;
+		}
+		#openMenu {
+			display: inline-block;
+		}
 		@media (min-width:768px) {
+			#openMenu {
+				display: none;
+			}
+			#closeMenu {
+				display: inline-block;
+			}
 			.wooden-frame 
 			{
 				border-image-source:url(/img/border-image-golden.png);
@@ -481,7 +496,7 @@
 	</style>
 </head>
 <body>
-<div class="btn-hamburger"><button style="float: right;" class="toggle-button button">Menu ☰</button></div>
+<div class="btn-hamburger"><button id="openMenu" style="float: right;" class="toggle-button button">Menu ☰</button><button id="closeMenu" style="float: right;" class="toggle-button">x</button></div>
 <main style="clear: both;" class="frame wooden-frame">
 	<nav class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
