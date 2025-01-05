@@ -387,18 +387,6 @@
 			border: 0;
 			background: unset;
 		}
-		#closeMenu {
-			display: none;
-		}
-		#openMenu {
-			display: inline-block;
-		}
-		.slideout-open #openMenu {
-			display: none;
-		}
-		.slideout-open #closeMenu {
-			display: inline-block;
-		}
 		.slideout-open #panel {
 			padding: 2em;
 		}
@@ -500,7 +488,7 @@
 	</style>
 </head>
 <body>
-<div class="btn-hamburger"><button id="openMenu" style="float: right;" class="toggle-button button">Menu ☰</button><button id="closeMenu" style="float: right;" class="toggle-button">x</button></div>
+<div class="btn-hamburger"><button id="openMenu" style="float: right;" class="toggle-button button">☰</button></div>
 <main style="clear: both;" class="frame wooden-frame">
 	<nav class="left" id="menu">
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
