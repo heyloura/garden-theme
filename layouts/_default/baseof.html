@@ -393,13 +393,17 @@
 		#openMenu {
 			display: inline-block;
 		}
+		.slideout-open #openMenu {
+			display: none;
+		}
+		.slideout-open #closeMenu {
+			display: inline-block;
+		}
+		.slideout-open #panel {
+			padding: 2em;
+		}
 		@media (min-width:768px) {
-			#openMenu {
-				display: none;
-			}
-			#closeMenu {
-				display: inline-block;
-			}
+			
 			.wooden-frame 
 			{
 				border-image-source:url(/img/border-image-golden.png);
