@@ -3,7 +3,8 @@
 	<header><h5>Dear Visitor #<span class="tinylytics_hits"></span></h5></header>
 	<p>
 		Welcome to my spot on the internet. You get +5XP for visiting. 
-		Below you can find my recent posts. Wanna chat about one? Click on the hyperlink (～￣▽￣)～
+		Below you can find my longer blog posts. Want my micro posts? You can
+		see them under <a href="https://heyloura.com/categories/jots/">Jots</a>.
 	</p>
 	<p>You can also strike up a <a href="/replies">conversation</a> on <a href="https://micro.blog/heyloura">micro.blog</a> or on the fediverse at <a href="https://micro.blog/heyloura?remote_follow=1">@heyloura@heyloura.com</a></p>
 	<p>Yours truly, <a rel="author" class="p-author h-card" href="/">Loura</a></p>
@@ -15,9 +16,9 @@
 
 
 
-
-		
-		{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 20) }}
+		{{ $pages := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+		{{ $pages = where $pages "Params.title" "ne" nil }}
+		{{- $paginator := .Paginate $pages (index .Site.Params "archive-paginate" | default 20) }}
 		{{ range ($paginator.Pages).GroupByDate "2006"  }}
 			<h4>📜 Adventure Log {{ .Key }}</h4>
 			<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
