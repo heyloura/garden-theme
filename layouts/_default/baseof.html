@@ -481,7 +481,7 @@
 		<a class='golden-button' href='/'>{{ .Site.Title }}</a>
 		<p>
 			Lvl {{ len ((where .Site.Pages "Type" "post").GroupByDate "2006" )}} Webmaster<br/>
-			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="https://heyloura.com/uploads/2024/avatar-halloween.png">			
+			<img class='avatar' style='image-rendering: pixelated; border: 4px solid #BB7E34' height='125' src="https://heyloura.com/uploads/2024/avatar.png">	
 		</p>
 		<p>
 			Hi, I'm Loura and this is my digital space. 
@@ -567,9 +567,9 @@
 				<div class=' rpgui-progress-track'><div class=' rpgui-progress-fill green' style='left: 0px; width:{{ with $scratch.Get "longestPost" }}{{math.Mul 100 (math.Div $avgPostLength .WordCount)}}{{ end }}%;'></div></div>
 				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div>
 			</div>
-			<small>Total words (goal 40,000)</small>
+			<small>Total words (goal 100,000)</small>
 			<div id='stamina-bar' class='rpgui-progress' ><div class=' rpgui-progress-track'>
-				<div class=' rpgui-progress-fill' style='left: 0px; width: {{math.Mul 100 (math.Div $wordCount  40000.0)}}%;'></div></div>
+				<div class=' rpgui-progress-fill' style='left: 0px; width: {{math.Mul 100 (math.Div $wordCount  100000.0)}}%;'></div></div>
 				<div class=' rpgui-progress-left-edge'></div><div class=' rpgui-progress-right-edge'></div></div>
 			</div>
 		</section>
@@ -676,7 +676,7 @@
     slideout.toggle();
   });
 </script>
-<script src="https://unpkg.com/floating.js"></script>
+<!--<script src="https://unpkg.com/floating.js"></script>
 <script>
 const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
@@ -751,6 +751,6 @@ emoji();
 	    }, i * interval)
 	}
 }
-</script>
+</script>-->
 </body>
 </html>
