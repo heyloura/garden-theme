@@ -29,6 +29,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="/css/prism.css">
 	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ "custom.css" | relURL }}?{{ .Site.Params.theme_seconds }}">
+	{{ range .Site.Params.plugins_css }}
+	  <link rel="stylesheet" href="{{ . }}">
+	{{ end }}
 	<style>html{font-family:sans-serif;max-width:106ch;margin:auto;}h1,h2,h3,h4,h5,h6{margin:2em 0 1em;font-family:Consolas,system-ui,serif;}ol,p,ul{margin-bottom:2em;}</style>
 	<style>
 		html { cursor: url(/img/cursor/default.png), auto !important; }
@@ -776,5 +780,8 @@ emoji();
 	}
 }
 </script>-->
+    {{ range .Site.Params.plugins_js }}
+      <script src="{{ . }}"></script>
+    {{ end }}
 </body>
 </html>
