@@ -401,6 +401,8 @@
 		dialog {
 		  width: 640px;
 		  height: 360px;
+		  position:fixed;
+		  z-index:5;
 		}
 		@media (min-width:768px) {
 			
@@ -646,7 +648,7 @@
 	</section>
 	<div style="clear:both;"></div>
 	<div class="frame border-frame" id="gamePrompt" style="position:fixed;bottom:1em;left:1em;">
-		<button onclick="document.getElementById('gameModal').show();" id="gameLaunch" type="button" class='golden-button'>Save the blog</button>
+		<button onclick="document.getElementById('gameModal').showModal();" id="gameLaunch" type="button" class='golden-button'>Save the blog</button>
 		<div id="monsterContainer"></div>
 	</div>
 </main>
