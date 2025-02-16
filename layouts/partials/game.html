@@ -6,10 +6,10 @@
             {{ range (seq 10)}}
                 {{ $y := 0 }}
                 {{ range (seq 10)}}
-                    <button data-x="{{ $x }}" data-4="{{ $y }}" class="sprite grass-tall"></button>
-                    {{ $y = add 1 . }}
+                    <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass-tall"></button>
+                    {{ $y = . }}
                 {{ end }}
-                {{ $x = add 1 . }}
+                {{ $x = . }}
             {{ end }}
         </div>
     </div>

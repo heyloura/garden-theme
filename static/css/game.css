@@ -1,23 +1,26 @@
 /* Starter set is 17x14*/
 :root {
-    --season: 2;
+    /* Starter set is 17x14*/
+    /* red, season 0 */
+    /* purple, season 60928 */
+    --season: 60928;
     --c0: 0px;
-    --c1: calc(calc(16px * -1) * var(--season));
-    --c2: calc(calc(16px * -2) * var(--season));
-    --c3: calc(calc(16px * -3) * var(--season));
-    --c4: calc(calc(16px * -4) * var(--season));
-    --c5: calc(calc(16px * -5) * var(--season));
-    --c6: calc(calc(16px * -6) * var(--season));
-    --c7: calc(calc(16px * -7) * var(--season));
-    --c8: calc(calc(16px * -8) * var(--season));
-    --c9: calc(calc(16px * -9) * var(--season));
-    --c10: calc(calc(16px * -10) * var(--season));
-    --c11: calc(calc(16px * -11) * var(--season));
-    --c12: calc(calc(16px * -12) * var(--season));
-    --c13: calc(calc(16px * -13) * var(--season));
-    --c14: calc(calc(16px * -14) * var(--season));
-    --c15: calc(calc(16px * -15) * var(--season));
-    --c16: calc(calc(16px * -16) * var(--season));
+    --c1: calc(calc(16px * -1) + var(--season));
+    --c2: calc(calc(16px * -2) + var(--season));
+    --c3: calc(calc(16px * -3) + var(--season));
+    --c4: calc(calc(16px * -4) + var(--season));
+    --c5: calc(calc(16px * -5) + var(--season));
+    --c6: calc(calc(16px * -6) + var(--season));
+    --c7: calc(calc(16px * -7) + var(--season));
+    --c8: calc(calc(16px * -8) + var(--season));
+    --c9: calc(calc(16px * -9) + var(--season));
+    --c10: calc(calc(16px * -10) + var(--season));
+    --c11: calc(calc(16px * -11) + var(--season));
+    --c12: calc(calc(16px * -12) + var(--season));
+    --c13: calc(calc(16px * -13) + var(--season));
+    --c14: calc(calc(16px * -14) + var(--season));
+    --c15: calc(calc(16px * -15) + var(--season));
+    --c16: calc(calc(16px * -16) + var(--season));
 }
 
 button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:32px;}
