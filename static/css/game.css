@@ -30,6 +30,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .sprite { transform-style: preserve-3d; margin: 8px; image-rendering: pixelated; background-image:url(../img/sprites/RoguelikeStarter.png); width:16px; height:16px; transform: scale(2); }
 .empty { background-position: var(--c0) var(--c0); }
 .small-rock { background-position:var(--c1) var(--c1); }
+.tree-narrow { background-position:var(--c5) var(--c1); }
 
 
 /* FLOORING */

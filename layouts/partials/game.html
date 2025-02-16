@@ -15,7 +15,11 @@
                 {{ range (seq 10)}}
                     {{ $y := 0 }}
                     {{ range (seq 10)}}
-                        <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass-tall"></button>
+                        {{ if and (eq area 0) (eq x 0)}}
+                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass-tall"></button>
+                        {{ else }}
+                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite tree-narrow"></button>
+                        {{ end }}
                         {{ $y = . }}
                     {{ end }}
                     {{ $x = . }}
