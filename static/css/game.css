@@ -1,0 +1,116 @@
+/* Starter set is 17x14*/
+:root {
+    --season: 1;
+    --c0: 0px;
+    --c1: calc(calc(16px * -1) * var(--season));
+    --c2: calc(calc(16px * -2) * var(--season));
+    --c3: calc(calc(16px * -3) * var(--season));
+    --c4: calc(calc(16px * -4) * var(--season));
+    --c5: calc(calc(16px * -5) * var(--season));
+    --c6: calc(calc(16px * -6) * var(--season));
+    --c7: calc(calc(16px * -7) * var(--season));
+    --c8: calc(calc(16px * -8) * var(--season));
+    --c9: calc(calc(16px * -9) * var(--season));
+    --c10: calc(calc(16px * -10) * var(--season));
+    --c11: calc(calc(16px * -11) * var(--season));
+    --c12: calc(calc(16px * -12) * var(--season));
+    --c13: calc(calc(16px * -13) * var(--season));
+    --c14: calc(calc(16px * -14) * var(--season));
+    --c15: calc(calc(16px * -15) * var(--season));
+    --c16: calc(calc(16px * -16) * var(--season));
+}
+
+button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:32px;}
+.area { background-color: black; display: grid; grid-template-columns: repeat(10, 1fr); width: 320px; height: 320px; }
+.world { background-color: black; display: grid; grid-template-columns: repeat(4, 1fr); width: 1280px; height: 960px; }
+[data-type="wall"] { pointer-events: none; }
+.sprite { transform-style: preserve-3d; margin: 8px; image-rendering: pixelated; background-image:url(sprites/RoguelikeStarter.png); width:16px; height:16px; transform: scale(2); }
+.empty { background-position: var(--c0) var(--c0); }
+.small-rock { background-position:var(--c1) var(--c1); }
+
+
+/* FLOORING */
+.grass:after{
+    background-position: var(--c4) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.dirt:after{
+    background-position: var(--c2) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.grass-tall:after{
+    background-position: var(--c3) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.cobblestone:after{
+    background-position: var(--c6) var(--c0); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.waves:after{
+    background-position: var(--c7) var(--c0); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+
+/* ANIMATED ITEMS */
+.torch { background-position:var(--c11) var(--c2); animation: torchAnimation 1s steps(4, jump-none) infinite; }
+.shard { background-position:var(--c11) var(--c3); animation: shardAnimation 1s steps(4, jump-none) infinite; }
+.campfire-lit { background-position:var(--c11) var(--c4); animation: campfireAnimation 1s steps(4, jump-none) infinite; }
+.potion { background-position:var(--c11) var(--c5); animation: potionAnimation 1s steps(4, jump-none) infinite; }
+.crystal { background-position:var(--c11) var(--c6); animation: crystalAnimation 1s steps(4, jump-none) infinite; }
+
+
+@keyframes torchAnimation {
+    from { background-position: var(--c11) var(--c2); }
+    to { background-position: var(--c14) var(--c2); }
+}
+@keyframes shardAnimation {
+    from { background-position: var(--c11) var(--c3); }
+    to { background-position: var(--c14) var(--c3); }
+}
+@keyframes campfireAnimation {
+    from { background-position: var(--c11) var(--c4); }
+    to { background-position: var(--c14) var(--c4); }
+}
+@keyframes potionAnimation {
+    from { background-position: var(--c11) var(--c5); }
+    to { background-position: var(--c14) var(--c5); }
+}
+@keyframes crystalAnimation {
+    from { background-position: var(--c11) var(--c6); }
+    to { background-position: var(--c14) var(--c6); }
+}
+
+/* WALKING ANIMATIONS */
+.knight-left { background-position: var(--c0) var(--c9); animation: knightAnimation 1s steps(4, jump-none) infinite;}
+.knight-right { transform: scale(-2,2); background-position: var(--c0) var(--c9); animation: knightAnimation 1s steps(4, jump-none) infinite;}
+.slime-left { background-position: var(--c0) var(--c8); animation: slimeAnimation 1s steps(4, jump-none) infinite;}
+.slime-right { transform: scale(-2,2); background-position: var(--c0) var(--c8); animation: slimeAnimation 1s steps(4, jump-none) infinite;}
+.thief-left { background-position: var(--c0) var(--c10); animation: thiefAnimation 1s steps(4, jump-none) infinite;}
+.thief-right { transform: scale(-2,2); background-position: var(--c0) var(--c10); animation: thiefAnimation 1s steps(4, jump-none) infinite;}
+.mummy-left { background-position: var(--c0) var(--c11); animation: mummyAnimation 1s steps(4, jump-none) infinite;}
+.mummy-right { transform: scale(-2,2); background-position: var(--c0) var(--c11); animation: mummyAnimation 1s steps(4, jump-none) infinite;}
+.racoon-left { background-position: var(--c0) var(--c12); animation: racoonAnimation 1s steps(4, jump-none) infinite;}
+.racoon-right { transform: scale(-2,2); background-position: var(--c0) var(--c12); animation: racoonAnimation 1s steps(4, jump-none) infinite;}
+.mushroom-left { background-position: var(--c0) var(--c13); animation: mushroomAnimation 1s steps(4, jump-none) infinite;}
+.mushroom-right { transform: scale(-2,2); background-position: var(--c0) var(--c13); animation: mushroomAnimation 1s steps(4, jump-none) infinite;}
+
+
+@keyframes knightAnimation {
+    from { background-position: var(--c0) var(--c9); }
+    to { background-position: var(--c3) var(--c9);}
+}
+@keyframes slimeAnimation {
+    from { background-position: var(--c0) var(--c8); }
+    to { background-position: var(--c3) var(--c8);}
+}
+@keyframes thiefAnimation {
+    from { background-position: var(--c0) var(--c10); }
+    to { background-position: var(--c3) var(--c10);}
+}
+@keyframes mummyAnimation {
+    from { background-position: var(--c0) var(--c11); }
+    to { background-position: var(--c3) var(--c11);}
+}
+@keyframes racoonAnimation {
+    from { background-position: var(--c0) var(--c12); }
+    to { background-position: var(--c3) var(--c12);}
+}
+@keyframes mushroomAnimation {
+    from { background-position: var(--c0) var(--c13); }
+    to { background-position: var(--c3) var(--c13);}
+}

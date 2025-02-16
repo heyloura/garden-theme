@@ -1,0 +1,19 @@
+<dialog id="gameModal" class="frame border-frame">
+	<button onclick="document.getElementById('gameModal').close();">close</button>
+	<div id="gameContainer" class="world">
+        <div class="area">
+            <button class="sprite knight-left grass-tall"></button>
+            <button class="sprite knight-right"></button>
+            <button class="sprite empty"></button>
+            <button class="sprite empty"></button>
+            <button class="sprite torch"></button>
+            <button class="sprite small-rock"></button>
+            <button class="sprite torch"></button>
+            <button class="sprite small-rock"></button>
+            <button class="sprite torch"></button>
+            <button class="sprite small-rock"></button>
+
+        </div>
+    </div>
+    Hi random {{ index (seq 18 | shuffle) 0 }}
+</dialog>
