@@ -9,16 +9,16 @@
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
         {{ $area := 0 }}
-        {{ range (seq 12)}}
+        {{ range (seq 4)}}
             <div class="area">
                 {{ $x := 0 }}
                 {{ range (seq 10)}}
                     {{ $y := 0 }}
                     {{ range (seq 10)}}
                         {{ if and (eq $area 0) (eq $x 0)}}
-                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass-tall"></button>
-                        {{ else }}
                             <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite tree-narrow"></button>
+                        {{ else }}
+                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass"></button>
                         {{ end }}
                         {{ $y = . }}
                     {{ end }}
