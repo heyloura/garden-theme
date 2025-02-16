@@ -2,17 +2,15 @@
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
         <div class="area">
-            <button class="sprite knight-left grass-tall"></button>
-            <button class="sprite knight-right"></button>
-            <button class="sprite empty"></button>
-            <button class="sprite empty"></button>
-            <button class="sprite torch"></button>
-            <button class="sprite small-rock"></button>
-            <button class="sprite torch"></button>
-            <button class="sprite small-rock"></button>
-            <button class="sprite torch"></button>
-            <button class="sprite small-rock"></button>
-
+            {{ $x := 0 }}
+            {{ range (seq 10)}}
+                {{ $y := 0 }}
+                {{ range (seq 10)}}
+                    <button data-x="{{ $x }}" data-4="{{ $y }}" class="sprite grass-tall"></button>
+                    {{ $y = add 1 . }}
+                {{ end }}
+                {{ $x = add 1 . }}
+            {{ end }}
         </div>
     </div>
     Hi random {{ index (seq 18 | shuffle) 0 }}

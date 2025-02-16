@@ -1,6 +1,6 @@
 /* Starter set is 17x14*/
 :root {
-    --season: 1;
+    --season: 2;
     --c0: 0px;
     --c1: calc(calc(16px * -1) * var(--season));
     --c2: calc(calc(16px * -2) * var(--season));
