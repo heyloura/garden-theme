@@ -1,6 +1,6 @@
 <dialog id="gameModal" class="frame border-frame">
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
-        {{ partial "areas/area_0.html" . }}
+        {{ partial "areas/area_0.html" . | safeJS }}
     </div>
 </dialog>
