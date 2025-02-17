@@ -3,21 +3,7 @@
 	<div id="gameContainer" class="world">
         {{ $area := 0 }}
         {{ range (seq 4)}}
-            <div class="area">
-                {{ $x := 0 }}
-                {{ range (seq 10)}}
-                    {{ $y := 0 }}
-                    {{ range (seq 10)}}
-                        <!-- partial for the area here -->
-
-                        {{ partial (printf "areas/area_%s.html" "0") . }}
-
-
-                        {{ $y = . }}
-                    {{ end }}
-                    {{ $x = . }}
-                {{ end }}
-            </div>
+            {{ partial (printf "areas/area_%s.html" "0") . }}
             {{ $area = . }}
         {{ end }}
     </div>
