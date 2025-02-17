@@ -1,32 +1,6 @@
-<!--    The world contains 12 area 
-        Area 1, 4, 9, 12 are corners
-        Area 1, 2, 3, 4 are tops
-        Area 1, 5, 9 are left
-        Area 4, 8, 12 are right
-        Area 9, 10, 11, 12 are bottom
--->
 <dialog id="gameModal" class="frame border-frame">
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
-        {{ $area := 0 }}
-        {{ range (seq 4)}}
-            <div class="area">
-                {{ $x := 0 }}
-                {{ range (seq 10)}}
-                    {{ $y := 0 }}
-                    {{ range (seq 10)}}
-                        {{ if and (eq $area 0) (eq $x 0)}}
-                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite tree-narrow"></button>
-                        {{ else }}
-                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass"></button>
-                        {{ end }}
-                        {{ $y = . }}
-                    {{ end }}
-                    {{ $x = . }}
-                {{ end }}
-            </div>
-            {{ $area = . }}
-        {{ end }}
+        {{ partial "areas/area_0.html" . }}
     </div>
-    Hi random {{ index (seq 18 | shuffle) 0 }}
 </dialog>

@@ -1,0 +1,29 @@
+<div id="area_0" class="area">
+    
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let tiles = [
+            ["tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","","","","","","","tree-narrow"],
+            ["tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow"],
+        ];      
+        {{ partial "walls.html" . }}
+        let html = '';
+        for(var y = 0; y < tiles.length; y++) {
+            for(var x = 0; y < tiles[y].length; x++) {
+                
+                html += `<button ${walls.includes(tiles[y][x]) ? 'data-wall disabled' : ''} data-x="${x}" data-y="${y}" class="sprite ${tiles[y][x]}"></button>`
+
+            }   
+        }
+
+        document.getElementById("area_0").insertAdjacentHTML("afterbegin", html);
+    });
+</script>
