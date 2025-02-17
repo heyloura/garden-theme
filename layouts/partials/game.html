@@ -1,10 +1,9 @@
 <dialog id="gameModal" class="frame border-frame">
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
-        {{ $area := 0 }}
-        {{ range (seq 4)}}
-            {{ partial (printf "areas/area_%s.html" "0") . }}
-            {{ $area = . }}
-        {{ end }}
+        {{ partial (printf "areas/area_%s.html" "0") . }}
+        {{ partial (printf "areas/area_%s.html" "1") . }}
+        {{ partial (printf "areas/area_%s.html" "2") . }}
+        {{ partial (printf "areas/area_%s.html" "3") . }}
     </div>
 </dialog>

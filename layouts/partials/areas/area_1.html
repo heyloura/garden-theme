@@ -1,0 +1,95 @@
+{{ $trees := slice "tree-narrow" "tree-wide" }}
+{{ $ground := slice "grass" "grass-tall" "dirt" " " " " " " " " " " " " " " " " }}
+{{ $campfire := slice "campfire-lit" "campfire"}}
+<div id="area_1" class="area">
+    <!-- 1st row -->
+    <button id="b9" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b10" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b11" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b12" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b13" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b14" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b15" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b16" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <button id="b17" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 2nd row -->
+    <button id="b27" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b28" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b29" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b30" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b31" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b32" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b33" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b34" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b35" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 3rd row -->
+    <button id="b45" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b46" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b47" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b48" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b49" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b50" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b51" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b52" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b53" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 4th row -->
+    <button id="b63" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b64" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b65" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b66" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b67" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b68" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b69" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b70" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b71" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 5th row -->
+    <button id="b81" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b82" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b83" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b84" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b85" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b86" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b87" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b88" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b89" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 6th row -->
+    <button id="b99" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b100" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b101" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b102" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b103" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b104" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b105" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b106" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b107" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 7th row -->
+    <button id="b117" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b118" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b119" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b120" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b121" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b122" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b123" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b124" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b125" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 8th row -->
+    <button id="b126" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b127" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b128" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b129" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b130" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b131" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b132" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b133" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b134" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+    <!-- 9th row -->
+    <button id="b144" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b145" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b146" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b147" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b148" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b149" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b150" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b151" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button id="b152" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
+</div>
