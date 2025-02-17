@@ -1,9 +1,11 @@
 /* Starter set is 17x14*/
 :root {
     /* Starter set is 17x14*/
-    /* red, season 0 */
-    /* purple, season 224 */
-    --season: 224;
+    /* red, season 0px */
+    /* purple, season -224px */
+    /* yello, season -448px */
+    /* grey, season -672px */
+    --season: -448px;
     --y0: 0px;
     --y1: calc(calc(16px * -1) + var(--season));
     --y2: calc(calc(16px * -2) + var(--season));
