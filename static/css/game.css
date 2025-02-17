@@ -29,26 +29,40 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 [data-type="wall"] { pointer-events: none; }
 .sprite { transform-style: preserve-3d; margin: 8px; image-rendering: pixelated; background-image:url(../img/sprites/RoguelikeStarter.png); width:16px; height:16px; transform: scale(2); }
 .empty { background-position: var(--c0) var(--c0); }
-.small-rock { background-position:var(--c1) var(--c1); }
-.tree-narrow { background-position:var(--c5) var(--c1); }
 
+/* WALLS */
+.rock-small { background-position:var(--c0) var(--c1); }
+.rock-big { background-position:var(--c1) var(--c1); }
+.tree-narrow { background-position:var(--c5) var(--c1); }
+.tree-wide { background-position:var(--c6) var(--c1); }
+.wall-brick { background-position:var(--c4) var(--c0); }
+.wall-brick-top-uneven { background-position:var(--c5) var(--c0); }
+.wall-stone-left-corner { background-position:var(--c8) var(--c0); }
+.wall-stone { background-position:var(--c9) var(--c0); }
+.wall-stone-right-corner { background-position:var(--c10) var(--c0); }
+
+
+/* OBJECTS */
+.tent { background-position:var(--c7) var(--c1); }
 
 /* FLOORING */
-.grass:after{
-    background-position: var(--c4) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
-}
-.dirt:after{
-    background-position: var(--c2) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
-}
-.grass-tall:after{
-    background-position: var(--c3) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
-}
 .cobblestone:after{
     background-position: var(--c6) var(--c0); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
 }
 .waves:after{
     background-position: var(--c7) var(--c0); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
 }
+.grass:after{
+    background-position: var(--c4) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.grass-tall:after{
+    background-position: var(--c3) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+.dirt:after{
+    background-position: var(--c2) var(--c1); content: " "; position: absolute; margin: -8px; image-rendering: pixelated; background-image: url(../img/sprites/RoguelikeStarter.png); width: 16px; height: 16px; transform: translateZ(-1px);
+}
+
+
 
 /* ANIMATED ITEMS */
 .torch { background-position:var(--c11) var(--c2); animation: torchAnimation 1s steps(4, jump-none) infinite; }
