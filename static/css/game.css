@@ -43,6 +43,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .area { background-color: black; display: grid; grid-template-columns: repeat(9, 1fr); width: 288px; height: 288px; }
 .world { background-color: black; display: grid; grid-template-columns: repeat(2, 1fr); width: 576px; height: 576px; }
 [data-type="wall"] { pointer-events: none; }
+[data-player] { border: 1px solid yellow; }
 .sprite { transform-style: preserve-3d; margin: 8px; image-rendering: pixelated; background-image:url(../img/sprites/RoguelikeStarter.png); width:16px; height:16px; transform: scale(2); }
 .empty { background-position: var(--x0) var(--y0); }
 
@@ -53,16 +54,28 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .tree-wide { background-position:var(--x6) var(--y1); }
 .wall-brick { background-position:var(--x4) var(--y0); }
 .wall-brick-top-uneven { background-position:var(--x5) var(--y0); }
-.wall-stone-left-corner { background-position:var(--x8) var(--y0); }
-.wall-stone { background-position:var(--x9) var(--y0); }
-.wall-stone-right-corner { background-position:var(--x10) var(--y0); }
+.wall-stone-left-corner { background-position:var(--x8) var(--y1); }
+.wall-stone { background-position:var(--x9) var(--y1); }
+.wall-stone-right-corner { background-position:var(--x10) var(--y1); }
+.wall-brick-left-corner { background-position:var(--x0) var(--y2); }
+.wall-brick { background-position:var(--x1) var(--y2); }
+.wall-brick-right-corner { background-position:var(--x2) var(--y2); }
+.fence { background-position:var(--x3) var(--y2); }
+
 
 
 /* OBJECTS */
 .tent { background-position:var(--x7) var(--y1); }
-.sack { background-position:var(--x7) var(--y2); }
 .chest-closed { background-position:var(--x11) var(--y1); }
 .chest-open { background-position:var(--x12) var(--y1); }
+.fence { background-position:var(--x3) var(--y2); }
+.pot { background-position:var(--x3) var(--y2); }
+.pot-broken { background-position:var(--x3) var(--y2); }
+.cave { background-position:var(--x6) var(--y2); }
+.sack { background-position:var(--x7) var(--y2); }
+
+
+
 
 /* FLOORING */
 .cobblestone:after{
@@ -91,6 +104,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .crystal { background-position:var(--x11) var(--y6); animation: crystalAnimation 1s steps(4, jump-none) infinite; }
 .minecart-left-right { background-position:var(--x13) var(--y1); animation: minecart1Animation 1s steps(2, jump-none) infinite; }
 .minecart-up-down { background-position:var(--x15) var(--y1); animation: minecart2Animation 1s steps(2, jump-none) infinite; }
+
 
 @keyframes minecart2Animation {
     from { background-position: var(--x15) var(--y1); }

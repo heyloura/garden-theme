@@ -1,5 +1,5 @@
 {{ $trees := slice "tree-narrow" "tree-wide" }}
-{{ $ground := slice "grass" "grass-tall" "dirt" " " " " " " " " }}
+{{ $ground := slice "grass" "grass-tall" "dirt" " " " " " " " " " " " " " " " " }}
 {{ $campfire := slice "campfire-lit" "campfire"}}
 <div id="area_0" class="area">
     <!-- 1st row -->
@@ -40,7 +40,7 @@
     <button id="b55" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button id="b56" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button id="b57" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button id="b58" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-player id="b58" class="sprite knight-left {{ index ($ground | shuffle) 0 }}"></button>
     <button id="b59" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button id="b60" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button id="b61" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
