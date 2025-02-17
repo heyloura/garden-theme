@@ -4,7 +4,7 @@
     {{ range (seq 9)}}
         {{ $y := 0 }}
         {{ range (seq 9)}}
-            {{ if and (eq $area 0) (or (eq $x 0) (eq $y 0))}}
+            {{ if or (eq $x 0) (eq $y 0)}}
                 <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite {{ index ($trees | shuffle) 0 }}"></button>
             {{ else }}
                 <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite grass"></button>
