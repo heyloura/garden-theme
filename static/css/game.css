@@ -44,6 +44,8 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 
 /* OBJECTS */
 .tent { background-position:var(--c7) var(--c1); }
+.chest-closed { background-position:var(--c11) var(--c1); }
+.chest-open { background-position:var(--c12) var(--c1); }
 
 /* FLOORING */
 .cobblestone:after{
@@ -70,8 +72,17 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .campfire-lit { background-position:var(--c11) var(--c4); animation: campfireAnimation 1s steps(4, jump-none) infinite; }
 .potion { background-position:var(--c11) var(--c5); animation: potionAnimation 1s steps(4, jump-none) infinite; }
 .crystal { background-position:var(--c11) var(--c6); animation: crystalAnimation 1s steps(4, jump-none) infinite; }
+.minecart-left-right { background-position:var(--c13) var(--c1); animation: minecart1Animation 1s steps(2, jump-none) infinite; }
+.minecart-up-down { background-position:var(--c15) var(--c1); animation: minecart2Animation 1s steps(2, jump-none) infinite; }
 
-
+@keyframes minecart2Animation {
+    from { background-position: var(--c15) var(--c1); }
+    to { background-position: var(--c16) var(--c1); }
+}
+@keyframes minecart1Animation {
+    from { background-position: var(--c13) var(--c1); }
+    to { background-position: var(--c14) var(--c1); }
+}
 @keyframes torchAnimation {
     from { background-position: var(--c11) var(--c2); }
     to { background-position: var(--c14) var(--c2); }

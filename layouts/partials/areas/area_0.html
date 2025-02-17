@@ -14,7 +14,7 @@
             ["tree-narrow","","","","","","","tree-narrow"],
             ["tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow","tree-narrow"],
         ];      
-        {{ partial "walls.html" . }}
+        let walls = ["campfire-lit", "tree-narrow"];
         let html = '';
         for(var y = 0; y < tiles.length; y++) {
             for(var x = 0; y < tiles[y].length; x++) {
