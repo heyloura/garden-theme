@@ -44,6 +44,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 
 /* OBJECTS */
 .tent { background-position:var(--c7) var(--c1); }
+.sack { background-position:var(--c7) var(--c2); }
 .chest-closed { background-position:var(--c11) var(--c1); }
 .chest-open { background-position:var(--c12) var(--c1); }
 
