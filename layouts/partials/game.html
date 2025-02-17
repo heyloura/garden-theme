@@ -1,6 +1,24 @@
 <dialog id="gameModal" class="frame border-frame">
 	<button onclick="document.getElementById('gameModal').close();">close</button>
 	<div id="gameContainer" class="world">
-        {{ partial "areas/area_0.html" . | safeJS }}
+        {{ $area := 0 }}
+        {{ range (seq 4)}}
+            <div class="area">
+                {{ $x := 0 }}
+                {{ range (seq 10)}}
+                    {{ $y := 0 }}
+                    {{ range (seq 10)}}
+                        {{ if and (eq $area 0) (or (eq $x 0) (eq $y 0))}}
+                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite tree-narrow"></button>
+                        {{ else }}
+                            <button data-x="{{ $x }}" data-y="{{ $y }}" class="sprite"></button>
+                        {{ end }}
+                        {{ $y = . }}
+                    {{ end }}
+                    {{ $x = . }}
+                {{ end }}
+            </div>
+            {{ $area = . }}
+        {{ end }}
     </div>
 </dialog>
