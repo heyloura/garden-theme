@@ -31,30 +31,22 @@
                     element.classList.remove('move');
                 });
 
-                var w;
-                var a;
-                var s;
-                var d;
-                console.log(player, destination);
+                var w = document.querySelector('[data-id="' + (destination - 18) + '"]');
+                var a = document.querySelector('[data-id="' + (destination - 1) + '"]');
+                var s = document.querySelector('[data-id="' + (destination + 18) + '"]');
+                var d = document.querySelector('[data-id="' + (destination + 1) + '"]');
+
                 if(player - destination == 1) {
-                    console.log('a','[data-id="' + (destination - 1) + '"]')
                     event.target.classList.add('knight-left');
-                    a = document.querySelector('[data-id="' + (destination - 1) + '"]');
                 }
                 if(player - destination == -1) {
-                    console.log('d','[data-id="' + (destination +1) + '"]')
                     event.target.classList.add('knight-right');
-                    d = document.querySelector('[data-id="' + (destination + 1) + '"]');
                 }
                 if(player - destination < -1) {
-                    console.log('s','[data-id="' + (destination +18) + '"]')
                     event.target.classList.add('knight-right');
-                    s = document.querySelector('[data-id="' + (destination + 18) + '"]');
                 }
                 if(player - destination > 1) {
-                    console.log('w','[data-id="' + (destination -18) + '"]')
-                    event.target.classList.add('knight-left');
-                    w = document.querySelector('[data-id="' + (destination - 18) + '"]');
+                    event.target.classList.add('knight-left');                    
                 }
 
                 // check valid moves
