@@ -13,7 +13,24 @@
             }
 
             if(event.target.classList.contains('move')) {
-                //get player
+                
+                var player = document.querySelector('[data-player]').getAttribute('data-id');
+                var destination = event.target.getAttribute('data-id');
+
+                alert('move me: player - ' + player + ', destination - ' + destination);
+
+                if(parseInt(player) - parseInt(destination) == 1) {
+                    alert('moving d');
+                }
+                if(parseInt(player) - parseInt(destination) == -1) {
+                    alert('moving a');
+                }
+                if(parseInt(player) - parseInt(destination) < -1) {
+                    alert('moving s');
+                }
+                if(parseInt(player) - parseInt(destination) > 1) {
+                    alert('moving w');
+                }
                 //change all the move
             }
         });    

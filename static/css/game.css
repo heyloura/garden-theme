@@ -43,7 +43,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .area { background-color: black; display: grid; grid-template-columns: repeat(9, 1fr); width: 288px; height: 288px; }
 .world { background-color: black; display: grid; grid-template-columns: repeat(2, 1fr); width: 576px; height: 576px; }
 [data-type="wall"] { pointer-events: none; }
-.move { border: 1px solid #081723; }
+.move { background-color: #081723; }
 .sprite { transform-style: preserve-3d; margin: 8px; image-rendering: pixelated; background-image:url(../img/sprites/RoguelikeStarter.png); width:16px; height:16px; transform: scale(2); }
 .empty { background-position: var(--x0) var(--y0); }
 
