@@ -35,23 +35,24 @@
                 var a;
                 var s;
                 var d;
+                console.log(player, destination);
                 if(player - destination == 1) {
-                    alert('a','[data-id="' + (destination - 1) + '"]')
+                    console.log('a','[data-id="' + (destination - 1) + '"]')
                     event.target.classList.add('knight-left');
                     a = document.querySelector('[data-id="' + (destination - 1) + '"]');
                 }
                 if(player - destination == -1) {
-                    alert('d','[data-id="' + (destination +1) + '"]')
+                    console.log('d','[data-id="' + (destination +1) + '"]')
                     event.target.classList.add('knight-right');
                     d = document.querySelector('[data-id="' + (destination + 1) + '"]');
                 }
                 if(player - destination < -1) {
-                    alert('s','[data-id="' + (destination +18) + '"]')
+                    console.log('s','[data-id="' + (destination +18) + '"]')
                     event.target.classList.add('knight-right');
                     s = document.querySelector('[data-id="' + (destination + 18) + '"]');
                 }
                 if(player - destination > 1) {
-                    alert('w','[data-id="' + (destination -18) + '"]')
+                    console.log('w','[data-id="' + (destination -18) + '"]')
                     event.target.classList.add('knight-left');
                     w = document.querySelector('[data-id="' + (destination - 18) + '"]');
                 }
