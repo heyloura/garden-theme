@@ -17,21 +17,59 @@
                 var player = document.querySelector('[data-player]').getAttribute('data-id');
                 var destination = event.target.getAttribute('data-id');
 
-                alert('move me: player - ' + player + ', destination - ' + destination);
+                // remove player graphic
+                player.removeAttribute('data-player')
+                player.classList.remove('knight-left');
+                player.classList.remove('knight-right');
+                destination.addAttribute('data-player');
 
+                //remove moves
+                var moves = [...document.querySelectorAll('.move')];
+
+                moves.forEach(element => {
+                    element.classList.remove('move');
+                });
+
+                var w;
+                var a;
+                var s;
+                var d;
                 if(parseInt(player) - parseInt(destination) == 1) {
-                    alert('moving d');
+                    alert('moving a, ' + parseInt(player) - parseInt(destination));
+                    destination.classList.add('knight-left');
+                    a = document.querySelector('[data-id="' + (parseInt(destination) - 1) + '"]');
                 }
                 if(parseInt(player) - parseInt(destination) == -1) {
-                    alert('moving a');
+                    alert('moving d, ' + parseInt(player) - parseInt(destination));
+                    destination.classList.add('knight-right');
+                    d = document.querySelector('[data-id="' + (parseInt(destination) + 1) + '"]');
                 }
                 if(parseInt(player) - parseInt(destination) < -1) {
-                    alert('moving s');
+                    alert('moving s, ' + parseInt(player) - parseInt(destination));
+                    destination.classList.add('knight-right');
+                    s = document.querySelector('[data-id="' + (parseInt(destination) + 18) + '"]');
                 }
                 if(parseInt(player) - parseInt(destination) > 1) {
-                    alert('moving w');
+                    alert('moving w, ' + parseInt(player) - parseInt(destination));
+                    destination.classList.add('knight-left');
+                    w = document.querySelector('[data-id="' + (parseInt(destination) - 18) + '"]');
                 }
-                //change all the move
+
+                // check valid moves
+                if(a) {
+                    a.classList.add('move');
+                }
+                if(d) {
+                    d.classList.add('move');
+                }
+                if(w) {
+                    w.classList.add('move');
+                }
+                if(s) {
+                    s.classList.add('move');
+                }
+                
+                // Make the bad guys move ...
             }
         });    
     </script>
