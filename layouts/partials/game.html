@@ -22,7 +22,7 @@
                 playerEl.removeAttribute('data-player')
                 playerEl.classList.remove('knight-left');
                 playerEl.classList.remove('knight-right');
-                event.target.addAttribute('data-player');
+                event.target.setAttribute('data-player','');
 
                 //remove moves
                 var moves = [...document.querySelectorAll('.move')];
