@@ -6,4 +6,16 @@
         {{ partial (printf "areas/area_%s.html" "2") . }}
         {{ partial (printf "areas/area_%s.html" "3") . }}
     </div>
+    <script>
+        document.addEventListener("click", function(event){
+            if(event.target.hasAttribute('data-player')) {
+
+            }
+
+            if(event.target.classList.contains('move')) {
+                //get player
+                //change all the move
+            }
+        });    
+    </script>
 </dialog>
