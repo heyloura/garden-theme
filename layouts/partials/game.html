@@ -15,8 +15,8 @@
             if(event.target.classList.contains('move')) {
                 
                 var playerEl = document.querySelector('[data-player]');
-                var player = document.querySelector('[data-player]').getAttribute('data-id');
-                var destination = event.target.getAttribute('data-id');
+                var player = parseInt(document.querySelector('[data-player]').getAttribute('data-id'));
+                var destination = parseInt(event.target.getAttribute('data-id'));
 
                 // remove player graphic
                 playerEl.removeAttribute('data-player')
@@ -35,25 +35,25 @@
                 var a;
                 var s;
                 var d;
-                if(parseInt(player) - parseInt(destination) == 1) {
-                    alert('moving a, ' + parseInt(player) - parseInt(destination));
+                if(player - destination == 1) {
+                    alert('a','[data-id="' + (destination - 1) + '"]')
                     event.target.classList.add('knight-left');
-                    a = document.querySelector('[data-id="' + (parseInt(destination) - 1) + '"]');
+                    a = document.querySelector('[data-id="' + (destination - 1) + '"]');
                 }
-                if(parseInt(player) - parseInt(destination) == -1) {
-                    alert('moving d, ' + parseInt(player) - parseInt(destination));
+                if(player - destination == -1) {
+                    alert('d','[data-id="' + (destination +1) + '"]')
                     event.target.classList.add('knight-right');
-                    d = document.querySelector('[data-id="' + (parseInt(destination) + 1) + '"]');
+                    d = document.querySelector('[data-id="' + (destination + 1) + '"]');
                 }
-                if(parseInt(player) - parseInt(destination) < -1) {
-                    alert('moving s, ' + parseInt(player) - parseInt(destination));
+                if(player - destination < -1) {
+                    alert('s','[data-id="' + (destination +18) + '"]')
                     event.target.classList.add('knight-right');
-                    s = document.querySelector('[data-id="' + (parseInt(destination) + 18) + '"]');
+                    s = document.querySelector('[data-id="' + (destination + 18) + '"]');
                 }
-                if(parseInt(player) - parseInt(destination) > 1) {
-                    alert('moving w, ' + parseInt(player) - parseInt(destination));
+                if(player - destination > 1) {
+                    alert('w','[data-id="' + (destination -18) + '"]')
                     event.target.classList.add('knight-left');
-                    w = document.querySelector('[data-id="' + (parseInt(destination) - 18) + '"]');
+                    w = document.querySelector('[data-id="' + (destination - 18) + '"]');
                 }
 
                 // check valid moves
