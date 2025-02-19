@@ -80,11 +80,14 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .fence { background-position:var(--x3) var(--y2); }
 .fence-door-closed { background-position:var(--x4) var(--y3); }
 .fence-door-open { background-position:var(--x5) var(--y3); }
-.pot { background-position:var(--x3) var(--y2); }
-.pot-broken { background-position:var(--x3) var(--y2); }
+.pot { background-position:var(--x4) var(--y2); }
+.pot-broken { background-position:var(--x5) var(--y2); }
 .cave { background-position:var(--x6) var(--y2); }
 .sack { background-position:var(--x7) var(--y2); }
 .campfire { background-position:var(--x10) var(--y4); }
+.box { background-position:var(--x6) var(--y3); }
+.bush-small { background-position:var(--x7) var(--y3); }
+.bush { background-position:var(--x8) var(--y3); }
 
 
 
