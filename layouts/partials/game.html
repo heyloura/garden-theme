@@ -79,9 +79,9 @@
             var player = parseInt(playerEl.getAttribute('data-id'));
             var badGuys = [...document.querySelectorAll('[data-monster]')];
             badGuys.forEach(monsterEl => {
-                var monster = parseInt(playerEl.getAttribute('data-id'));
+                var monster = parseInt(monsterEl.getAttribute('data-id'));
 
-                console.log(`player ${player} monter ${monster}`);
+                console.log(`player ${player} monster ${monster}`);
 
                 //will code attack later
                 //basically they are in the wasd range
