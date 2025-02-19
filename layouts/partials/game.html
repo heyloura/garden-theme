@@ -1,5 +1,10 @@
-<dialog id="gameModal" class="frame border-frame">
-	<button onclick="document.getElementById('gameModal').close();">close</button>
+<dialog id="gameModal" class="frame wooden-frame" style="display: flex;">
+    <div class="grey-frame" style="max-width: 250px;">
+        <p>Move using the WASD keys or by clicking the boxes around the player.</p>
+        <button class="button" style="width:135px;" onclick="document.getElementById('gameModal').close();">Close</button>
+        <a href="/game" class="button" style="width:135px;">About</a>
+    </div>
+	
 	<div id="gameContainer" class="world">
         {{ partial (printf "areas/area_%s.html" "0") . }}
         {{ partial (printf "areas/area_%s.html" "1") . }}
