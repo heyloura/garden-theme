@@ -1,5 +1,5 @@
 {{ $trees := slice "tree-narrow" "tree-wide" }}
-{{ $ground := slice "grass" "grass-tall" "dirt" " " " " " " " " " " " " " " " " }}
+{{ $ground := slice "grass" "grass-tall" "dirt" " " " " " " " " " " " " " " " " " " " " " " }}
 {{ $campfire := slice "campfire-lit" "campfire"}}
 <div id="area_0" class="area">
     <!-- 1st row -->
@@ -86,7 +86,7 @@
     <button data-id="129" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="130" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="131" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="132" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="132" disabled class="sprite pot {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="133" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="134" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <!-- 135, 136, 137, 138, 139, 140, 141, 142, 143 -->
@@ -94,11 +94,11 @@
     <button data-id="144" disabled class="sprite {{ index ($trees | shuffle) 0 }}"></button>
     <button data-id="145" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="146" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="147" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="148" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="149" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="150" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
-    <button data-id="151" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="147" disabled class="sprite rock-small {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="148" disabled class="sprite fence {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="149" disabled class="sprite fence {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="150" disabled class="sprite fence {{ index ($ground | shuffle) 0 }}"></button>
+    <button data-id="151" disabled class="sprite fence {{ index ($ground | shuffle) 0 }}"></button>
     <button data-id="152" class="sprite {{ index ($ground | shuffle) 0 }}"></button>
     <!-- 153, 154, 155, 156, 157, 158, 159, 160, 161 -->
 </div>
