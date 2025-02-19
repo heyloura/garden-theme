@@ -44,7 +44,7 @@ button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:3
 .world { background-color: black; display: grid; grid-template-columns: repeat(2, 1fr); width: 576px; height: 576px; }
 [data-type="wall"] { pointer-events: none; }
 .move { border: 1px solid #081723; }
-.move:nth-of-type(1):before { content: "w" }
+.move:nth-of-type(1):before { content: "w"; color:antiquewhite; }
 .move:nth-of-type(2):before { content: "a" }
 .move:nth-of-type(3):before { content: "s" }
 .move:nth-of-type(4):before { content: "d" }
