@@ -83,6 +83,9 @@ button { padding: 0; margin: 0; border: 0; background:none;}
 .box { background-position:var(--x6) var(--y3); }
 .bush-small { background-position:var(--x7) var(--y3); }
 .bush { background-position:var(--x8) var(--y3); }
+.bars { background-position:var(--x9) var(--y3); }
+.bars-key { background-position:var(--x10) var(--y3); }
+.tablet { background-position:var(--x2) var(--y5); }
 
 
 
