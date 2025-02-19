@@ -7,22 +7,108 @@
         {{ partial (printf "areas/area_%s.html" "3") . }}
     </div>
     <script>
-        document.addEventListener("click", function(event){
+        document.addEventListener("keydown", function(event) { 
+            if(document.getElementById('gameModal').open) {
+                var playerEl = document.querySelector('[data-player]');
+                var player = parseInt(playerEl.getAttribute('data-id'));
+                var destination = 0;
+                switch (event.key) {
+                    case 'w':
+                        destination = player - 18;
+                        console.log('W key pressed');
+                        break;
+                    case 'a':
+                        destination = player - 1;
+                        console.log('A key pressed');
+                        break;
+                    case 's':
+                        destination = player + 1;
+                        console.log('S key pressed');
+                        break;
+                    case 'd':
+                        destination = player + 18;
+                        console.log('D key pressed');
+                        break;
+                }
+
+                movePlayer(playerEl, document.querySelector('[data-id="'+destination+'"]'));
+            }
+            return;
+        });
+        document.addEventListener("click", function(event) {
             if(event.target.hasAttribute('data-player')) {
 
             }
 
             if(event.target.classList.contains('move')) {
+                movePlayer(document.querySelector('[data-player]'), event.target); 
                 
-                var playerEl = document.querySelector('[data-player]');
-                var player = parseInt(document.querySelector('[data-player]').getAttribute('data-id'));
-                var destination = parseInt(event.target.getAttribute('data-id'));
+                // var playerEl = document.querySelector('[data-player]');
+                // var player = parseInt(document.querySelector('[data-player]').getAttribute('data-id'));
+                // var destination = parseInt(event.target.getAttribute('data-id'));
+
+                // // remove player graphic
+                // playerEl.removeAttribute('data-player')
+                // playerEl.classList.remove('knight-left');
+                // playerEl.classList.remove('knight-right');
+                // event.target.setAttribute('data-player','');
+
+                // //remove moves
+                // var moves = [...document.querySelectorAll('.move')];
+
+                // moves.forEach(element => {
+                //     element.classList.remove('move');
+                // });
+
+                // var w = document.querySelector('[data-id="' + (destination - 18) + '"]');
+                // var a = document.querySelector('[data-id="' + (destination - 1) + '"]');
+                // var s = document.querySelector('[data-id="' + (destination + 18) + '"]');
+                // var d = document.querySelector('[data-id="' + (destination + 1) + '"]');
+
+                // if(player - destination == 1) {
+                //     event.target.classList.add('knight-left');
+                // }
+                // if(player - destination == -1) {
+                //     event.target.classList.add('knight-right');
+                // }
+                // if(player - destination < -1) {
+                //     event.target.classList.add('knight-right');
+                // }
+                // if(player - destination > 1) {
+                //     event.target.classList.add('knight-left');                    
+                // }
+
+                // // check valid moves
+                // if(a) {
+                //     a.classList.add('move');
+                // }
+                // if(d) {
+                //     d.classList.add('move');
+                // }
+                // if(w) {
+                //     w.classList.add('move');
+                // }
+                // if(s) {
+                //     s.classList.add('move');
+                // }
+                
+                // Make the bad guys move ...
+            }
+
+            function movePlayer(playerEl, destinationEl) {
+                if(destinationEl.disabled) {
+                    console.log('invalid move');
+                    return false;
+                }
+
+                var player = parseInt(playerEl.getAttribute('data-id'));
+                var destination = parseInt(destinationEl.getAttribute('data-id'));
 
                 // remove player graphic
                 playerEl.removeAttribute('data-player')
                 playerEl.classList.remove('knight-left');
                 playerEl.classList.remove('knight-right');
-                event.target.setAttribute('data-player','');
+                destinationEl.setAttribute('data-player','');
 
                 //remove moves
                 var moves = [...document.querySelectorAll('.move')];
@@ -37,19 +123,18 @@
                 var d = document.querySelector('[data-id="' + (destination + 1) + '"]');
 
                 if(player - destination == 1) {
-                    event.target.classList.add('knight-left');
+                    destinationEl.classList.add('knight-left');
                 }
                 if(player - destination == -1) {
-                    event.target.classList.add('knight-right');
+                    destinationEl.classList.add('knight-right');
                 }
                 if(player - destination < -1) {
-                    event.target.classList.add('knight-right');
+                    destinationEl.classList.add('knight-right');
                 }
                 if(player - destination > 1) {
-                    event.target.classList.add('knight-left');                    
+                    destinationEl.classList.add('knight-left');                    
                 }
 
-                // check valid moves
                 if(a) {
                     a.classList.add('move');
                 }
@@ -62,8 +147,6 @@
                 if(s) {
                     s.classList.add('move');
                 }
-                
-                // Make the bad guys move ...
             }
         });    
     </script>
