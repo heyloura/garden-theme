@@ -406,11 +406,77 @@
 		  height: 510px; */
 		  position:fixed;
 		  z-index:5;
+		  cursor: url(/img/cursor/default.png) 10 0, auto;
 		}
-		#game {
-			background-color: #081723;
-			border: 3px solid #2B3139;
+		.rpgui-content input[type=checkbox].rpgui-checkbox {
+			display: none;
 		}
+		.rpgui-content input, .rpgui-content textarea {
+    		-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			font-size: .9em;
+			line-height: 32px;
+			background: #4e4a4e;
+			max-width: 100%;
+			width: 100%;
+			padding-left: 10px;
+			min-height: 30px;
+			-webkit-touch-callout: text;
+			-webkit-user-select: text;
+			-khtml-user-select: text;
+			-moz-user-select: text;
+			-ms-user-select: text;
+			user-select: text;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, .5);
+		}
+		.rpgui-content input, .rpgui-content textarea, .rpgui-list-imp, .rpgui-list-imp li {
+			text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+			color: #fff;
+		}
+		.rpgui-content input, .rpgui-content textarea, .rpgui-cursor-select {
+			cursor: url(/img/cursor/select.png) 10 0, auto;
+		}
+		.rpgui-content label, .rpgui-content li {
+			color: #fff;
+			text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+			font-size: 1em;
+		}
+		.rpgui-content label {
+			line-height: 20px;
+			display: inline;
+		}
+		.rpgui-content input[type=checkbox].rpgui-checkbox+label {
+			background: url(/img/checkbox-off.png) no-repeat;
+			line-height: 24px;
+			display: inline-block;
+			background-size: auto 100%;
+			padding-left: 34px;
+			height: 24px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.rpgui-button, .rpgui-content a, .rpgui-content button, .rpgui-content input[type=checkbox].rpgui-checkbox+label, .rpgui-content input[type=radio].rpgui-radio+label, .rpgui-dropdown-imp, .rpgui-list-imp, .rpgui-slider-container {
+			cursor: url(/img/cursor/point.png) 10 0, auto;
+		}
+		.rpgui-content input[type=checkbox].rpgui-checkbox:checked+label {
+			background: url(/img/checkbox-on.png) no-repeat;
+			line-height: 24px;
+			display: inline-block;
+			background-size: auto 100%;
+			padding-left: 34px;
+			height: 24px;
+		}
+		.rpgui-content input[type=checkbox].rpgui-checkbox.golden+label {
+			background: url(/img/checkbox-golden-off.png) no-repeat;
+			background-size: auto 100%;
+		}
+		.rpgui-content input[type=checkbox].rpgui-checkbox.golden:checked+label {
+			background: url(/img/checkbox-golden-on.png) no-repeat;
+			background-size: auto 100%;
+		}
+
+
 		@media (min-width:768px) {
 			
 			.wooden-frame 

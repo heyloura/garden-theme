@@ -1,8 +1,15 @@
 <dialog id="gameModal" class="frame wooden-frame" style="display: flex;">
-    <div class="grey-frame" style="max-width: 250px;">
+    <div class="frame border-frame" style="max-width: 250px; color: wheat;">
         <p>Move using the WASD keys or by clicking the boxes around the player.</p>
-        <button class="button" style="width:135px;" onclick="document.getElementById('gameModal').close();">Close</button>
-        <a href="/game" class="button" style="width:135px;">About</a>
+        <div class="frame border-frame">
+            <h1>Inventory</h1>
+        </div>
+        
+        <a href="/game" class="button">About</a>
+        <div class="rpgui-content">
+            <input class="rpgui-checkbox golden" type="checkbox" checked=""><label>Always open in game mode</label>
+        </div>
+        <button class="button" style="width:205px;" onclick="document.getElementById('gameModal').close();">Close</button>
     </div>
 	
 	<div id="gameContainer" class="world">
