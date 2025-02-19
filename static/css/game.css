@@ -39,7 +39,7 @@
     --x16: calc(16px * -16);
 }
 
-#gameModal button { padding: 0; margin: 0; border: 0; background:none; width:32px; height:32px;}
+button { padding: 0; margin: 0; border: 0; background:none;}
 #gameModal .area { background-color: black; display: grid; grid-template-columns: repeat(9, 1fr); width: 288px; height: 288px; }
 #gameModal .world { background-color: black; display: grid; grid-template-columns: repeat(2, 1fr); width: 576px; height: 576px; }
 #gameModal .move { border: 1px solid #081723; }
