@@ -81,6 +81,8 @@
             badGuys.forEach(monsterEl => {
                 var monster = parseInt(playerEl.getAttribute('data-id'));
 
+                console.log(`player ${player} monter ${monster}`);
+
                 //will code attack later
                 //basically they are in the wasd range
                 let cant = false;
@@ -99,6 +101,8 @@
                         key = 'd';
                     }
                 }
+
+                console.log(`moster moving ${key}`);
 
                 switch (key) {
                     case 'w':
