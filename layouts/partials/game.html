@@ -21,7 +21,8 @@
     <script>
         function movePlayer(playerEl, destinationEl) {
             if(destinationEl.disabled) {
-                console.log('invalid move');
+                console.log('invalid player move');
+                moveEnemy(playerEl);
                 return false;
             }
 
@@ -71,6 +72,61 @@
             if(s) {
                 s.classList.add('move');
             }
+
+            moveEnemy(destinationEl);
+        }
+        function moveEnemy(playerEl) {
+            var player = parseInt(playerEl.getAttribute('data-id'));
+            var badGuys = [...document.querySelectorAll('[data-monster]')];
+            badGuys.forEach(monsterEl => {
+                var monster = parseInt(playerEl.getAttribute('data-id'));
+
+                //will code attack later
+                //basically they are in the wasd range
+                let cant = false;
+                let key = '';
+                let destination = 0;
+                if(player < monster) {
+                    if(player < monster - 18) {
+                        key = 'w';
+                    } else {
+                        key = 'a';
+                    }
+                } else {
+                    if(player > monster + 18) {
+                        key = 's';
+                    } else {
+                        key = 'd';
+                    }
+                }
+
+                switch (key) {
+                    case 'w':
+                        destination = monster - 18;
+                        break;
+                    case 'a':
+                        destination = monster - 1;
+                        break;
+                    case 's':
+                        destination = monster + 18;
+                        break;
+                    case 'd':
+                        destination = monster + 1;
+                        break;
+                }
+
+                let destinationEl = document.querySelector('[data-id="'+destination+'"]');
+
+                if(destinationEl.disabled) {
+                    console.log('invalid monster move');
+                    return false;
+                }
+
+                monsterEl.removeAttribute('data-monster')
+                monsterEl.classList.remove('racoon-right');
+                destinationEl.setAttribute('data-monster','');
+                destinationEl.classList.add('racoon-right');
+            });
         }
         document.addEventListener("keydown", function(event) { 
             if(document.getElementById('gameModal').open) {
@@ -80,19 +136,15 @@
                 switch (event.key) {
                     case 'w':
                         destination = player - 18;
-                        console.log('W key pressed');
                         break;
                     case 'a':
                         destination = player - 1;
-                        console.log('A key pressed');
                         break;
                     case 's':
                         destination = player + 18;
-                        console.log('S key pressed');
                         break;
                     case 'd':
                         destination = player + 1;
-                        console.log('D key pressed');
                         break;
                 }
 
