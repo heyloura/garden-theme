@@ -1,23 +1,27 @@
-<dialog id="gameModal" class="frame wooden-frame" style="display: flex;">
-    <div class="frame border-frame" style="max-width: 250px; color: wheat;">
-        <p>Move using the WASD keys or by clicking the boxes around the player.</p>
-        <h1 style="margin-top:0;">Inventory</h1>
-        <div class="frame grey-frame">
-            
-        </div>  
-        <div class="rpgui-content">
-            <input class="rpgui-checkbox golden" type="checkbox" checked=""><label>Auto-start game</label>
+<dialog id="gameModal" class="frame wooden-frame">
+    <div style="display: flex;">
+        <div class="frame border-frame" style="max-width: 250px; color: wheat;">
+            <p>Move using the WASD keys or by clicking the boxes around the player.</p>
+            <h1 style="margin-top:0;">Inventory</h1>
+            <div class="frame grey-frame">
+                
+            </div>  
+            <div class="rpgui-content">
+                <input class="rpgui-checkbox golden" type="checkbox" checked=""><label>Auto-start game</label>
+            </div>
+            <a href="/game" class="button">About</a>
+            <button class="button" style="width:205px;" onclick="document.getElementById('gameModal').close();">Close</button>
         </div>
-        <a href="/game" class="button">About</a>
-        <button class="button" style="width:205px;" onclick="document.getElementById('gameModal').close();">Close</button>
+        
+        <div id="gameContainer" class="world">
+            {{ partial (printf "areas/area_%s.html" "0") . }}
+            {{ partial (printf "areas/area_%s.html" "1") . }}
+            {{ partial (printf "areas/area_%s.html" "2") . }}
+            {{ partial (printf "areas/area_%s.html" "3") . }}
+        </div>
+
     </div>
-	
-	<div id="gameContainer" class="world">
-        {{ partial (printf "areas/area_%s.html" "0") . }}
-        {{ partial (printf "areas/area_%s.html" "1") . }}
-        {{ partial (printf "areas/area_%s.html" "2") . }}
-        {{ partial (printf "areas/area_%s.html" "3") . }}
-    </div>
+
     <script>
         function movePlayer(playerEl, destinationEl) {
             if(destinationEl.disabled) {
