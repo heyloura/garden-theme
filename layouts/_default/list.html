@@ -109,15 +109,7 @@
 				{{ range $index, $value := $list }}
 					<a class="gallery-item" href="{{ .Permalink }}">
 						{{ range first 1 .Params.images }}
-							{{ if .sizes.small }}
-								<img src="{{ .sizes.small }}" width="300" height="300" class="photos-grid-item" loading="lazy">
-							{{ else }}
-								{{ if .sizes.medium }}
-									<img src="{{ .sizes.medium }}" width="300" height="300" class="photos-grid-item" loading="lazy">
-								{{ else }}
-									<img src="{{ .url }}" width="300" height="300" class="photos-grid-item" loading="lazy">
-								{{ end }}
-							{{ end }}
+							<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
 						{{ end }}
 					</a>
 				{{ end }}
