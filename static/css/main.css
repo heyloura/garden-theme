@@ -130,6 +130,7 @@ html { cursor: url(/img/cursor/default.png), auto !important; }
 			padding-top: 5px;
 			overflow: hidden;
 			border: none;
+            cursor: url(/img/cursor/point.png) 10 0, auto;
 			height: 60px;
 			display: block;
 			padding-left: 43px;
@@ -171,6 +172,7 @@ html { cursor: url(/img/cursor/default.png), auto !important; }
 			background: url(/img/button.png) center no-repeat no-repeat;
 			background-clip: padding-box;
 			background-origin: padding-box;
+            cursor: url(/img/cursor/point.png) 10 0, auto;
 			background-size: 100% 100%;
 			font-size: 0.70em;
 			display: block;
