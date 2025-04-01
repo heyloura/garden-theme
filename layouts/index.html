@@ -21,11 +21,6 @@
         {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
     {{ end }}
 </table>
-<table>
-    {{ range $key, $value := .Site.Main }}
-        {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
-    {{ end }}
-</table>
 <main class="h-feed">
 	{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 	{{ range .Paginator.Pages }}
