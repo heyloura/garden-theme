@@ -25,9 +25,9 @@
   }
   
   body {
-	display: grid;
-	grid-template-rows: max-content 1fr max-content;
-	height: 100%;
+	width: 100%;
+	max-width: 960px;
+	overflow: hidden;
   }
   
   header {
@@ -129,7 +129,7 @@
   ul,
   figure,
   form,
-  main > div {
+  .h-entry {
 	max-width: calc(1rem * var(--width));
 	margin: 0 auto;
 	padding: 1rem 1.25rem 0;
