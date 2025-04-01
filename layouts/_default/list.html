@@ -1,225 +1,75 @@
 {{ define "main" }}
-       <div class="frame border-frame">
-	<header>
-	       <h4>{{ strings.FirstUpper .Title }}</h4>
-       	       <nav style="margin-bottom: 2em; text-align:center;"> 🐉 <a href="#posts">posts</a> 👑 <a href="#photos">photos</a> 🐦‍⬛ <a href="#bookmarks">bookmarks</a> 🧌 <a href="#books">books</a> ⚔️</nav>
-       </header>
-	<iframe aria-busy="true"
-	      id="main_calendar"
-	      src="/{{ urlize (strings.ToLower .Title) }}" 
-	      loading="lazy"
-	      onload="disappear(this)"></iframe>
-	</div>
-	       
-	
-      	<header id="posts"><h4>{{ strings.FirstUpper .Title }} Posts</h4></header>
-	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
+{{ if templates.Exists "partials/microhook-archive-post-list.html" }}
+{{ partial "microhook-archive-post-list.html" . }}
+{{ else }}
+<div class="archive h-feed {{ .Title }}">
 
-<div class="frame golden-frame">
-  {{- $title := .Title -}}
-	{{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 10) }}
-  <section  class="h-feed">
-	{{ range $paginator.Pages  }}
-	  			{{ $slice := slice "⚔️" "🐉" "🗡️" "🔮" "⚒️" "👻" "🧛‍♀️" "🦇" "🛡️" "👑" "🐦‍⬛" "🪙" }}
-			{{ $shuffled := shuffle $slice }}
-			{{ $random := index $shuffled 0 }}
-		<dl  class="h-entry frame grey-frame">
-    			<dt>
-						{{ if .Title }}
-							<a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a> {{$random}} <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-						{{ else }}
-							<a class="u-url p-name" href="{{ .Permalink }}"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
-						{{ end }}
-  			{{- range $index, $category := .Page.Params.categories -}}
-					{{ if eq $category $title }}
-					{{ else }}
-	   				{{$random}}&nbsp;<a class="subheading" href="/categories/{{ $category | anchorize }}/">#{{ $category }}</a> 
-					{{ end }}
-  			{{- end -}}
-				<span data-id="{{ .RelPermalink }}"></span>
-		</dt>
-		{{ if in .RawContent "<!--more-->" }}
-			<dd class="p-summary">
-					<p>
-					{{ $splitContents := split .RawContent "<!--more-->" }}
-					{{ $summary := index $splitContents 0 }}
-					{{ $summary := replaceRE "\\[\\^.*?\\]" "" $summary }}
-					{{ $summary := replaceRE "\\n\\[\\^.*?\\]:.*" "" $summary }}
-					{{ $summary | markdownify }}
-					</p>
-					<p><a href="{{ .Permalink }}">Read More →</a></p>
-			</dd>
-		{{ else }}
-				{{ if .Title }}
-				<dd class="e-content">
-					{{ .Content | safeHTML | truncate 300 }}
-					<p><a href="{{ .Permalink }}">Read More →</a></p>
-				</dd>
-			{{ else }}
-				<dd class="e-content">
-					{{ .Content }}
-				</dd>
-			{{ end }}
-		{{ end }}
-		</dl>
-
-	  		<script>
-		  fetch('https://micro.blog/conversation.js?format=jsonfeed&url=https%3A%2F%2Fheyloura.com' + encodeURIComponent('{{ .RelPermalink }}'))
-		  .then(response => response.json())
-		  .then(conversation => {
-		    const repliesLink = document.querySelector('[data-id="{{ .RelPermalink }}"]');
-		    if(conversation.items.length > 0) {
-		        let postA = document.createElement('a');
-		        postA.setAttribute("href", '{{ .RelPermalink }}#conversation');
-		        postA.innerHTML =  conversation.items.length + (conversation.items.length == 1 ? ' comment' : ' comments');
-			let postSpan = document.createElement('span');
-			postSpan.innerHTML = '{{ $random }} ';
-		        repliesLink.prepend(postA);
-			repliesLink.prepend(postSpan);
-		    } else {
-		        repliesLink.remove()
-		    }
-		  })
-		  .catch((error) => {
-		    // TODO: nothing for now…
-		  });
-		</script>
-	{{ end }}
-  </section>
-</div>
-	<nav>
-		{{ if $paginator.HasPrev }}
-			<a class="button" style="display: inline-block;" rel='prev' href='{{ $paginator.Prev.URL }}' title='Previous Page'>← Newer Posts</a>
-		{{ end }}
-		{{ if $paginator.HasNext }}
-			<a class="button" style="display: inline-block;" rel='next' href='{{ $paginator.Next.URL }}'>Older Posts →</a>
-		{{ end }}
-	</nav>
-
-	
-	<header id="photos"><h4>Photos</h4></header>
-	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
-
-<div class="frame golden-frame">
-	{{- $list := where .Pages ".Params.images" "!=" nil -}}
-	{{- $len := (len $list) -}}
-			<section>
-				<div class="photos-grid-container square-gallery">
-			
-				{{ range $index, $value := $list }}
-					<a class="gallery-item" href="{{ .Permalink }}">
-						{{ range first 1 .Params.images }}
-							<img src="{{ . }}" width="300" height="300" class="photos-grid-item" loading="lazy" />
-						{{ end }}
-					</a>
-				{{ end }}
-			
-				</div>
-      </section>
-</div>
-
-
-<header id="bookmarks"><h4>Bookmarks</h4></header>
-<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
-<div class="frame golden-frame">
-<section>
-{{ $feed_url := $.Site.Params.feeds.bookmarks_json }}
-{{ $response := getJSON $feed_url }}
-{{ $title := .Title }}
-
-{{ if isset $response "items" }}
-
-{{ $tags := slice }}
-{{ range $response.items }}
- {{ if not (hasPrefix .id "link") }}
-    {{ $tags = $tags | append (split .tags ", ") }}
- {{ end }}
+  <h2 class="p-name category-title">{{ .Title }}</h2>
+{{ if templates.Exists "partials/microhook-category-header.html" }}
+  {{ partial "microhook-category-header.html" . }}
 {{ end }}
-{{ $tags = uniq $tags }}
-
-{{ range sort $tags }}
-    {{ $tag := . }}
-
-    {{ if eq $tag $title }}
-
-
-   {{ range $response.items }}
-   {{ $url := urls.Parse .url }}
-     {{ if not (hasPrefix .id "link") }}
-        {{ if strings.Contains .tags $tag }}
-	<figure>
-        <figcaption><cite style="font-style: italic;"><a target="_blank" class="u-bookmark-of" href="{{ .url }}">{{ $url.Host }}</a><br/><small>Bookmarked: {{ time.Format "Jan 2, 2006" .date_published}}</small></cite></figcaption>
-        <blockquote>
-          <p style="overflow-wrap: anywhere;">{{ replace (replace ( .content_html | plainify | truncate 300 ) "Reader: " "") $url.Host "" }}</p>
-        </blockquote>
-
-      	</figure>
-        {{ end }}
-     {{ end }}
+  <ul class="post-list">
+    {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") }}
+    {{ range .Paginator.Pages  }}
+    <div class="post-preview h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+      {{ if templates.Exists "partials/microhook-post-list-byline.html" }}
+      {{ partial "microhook-post-list-byline.html" . }}
+      {{ else }}
+      <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> ∞</a>
+      {{ end }}
+      {{ if .Title }}
+          <h2 class="post-title p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+              {{ if in .RawContent "<!--more-->" }}
+              <div class="p-summary">
+                  {{ $splitContents := split .RawContent "<!--more-->" }}
+                  {{ index $splitContents 0 | markdownify }}
+                  <p><a class="read-more" href="{{ .Permalink }}">
+                      {{ if templates.Exists "partials/microhook-read-more-text.html" }}
+                      {{ partial "microhook-read-more-text.html" . }}
+                      {{ else }}
+                      Read More →
+                      {{ end }}
+                  </a></p>
+              </div>
+              {{ else if .Params.custom_summary }}
+              <div class="p-summary">
+                  <p>{{ .Summary | safeHTML }}<p>
+              </div>
+              {{ else }}
+              <div class="e-content">
+                  {{ .Content }}
+              </div>
+              {{ end }}
+      {{ else }}
+          <div class="e-content">
+              {{ .Content }}
+          </div>
+      {{ end }}
+      {{ if templates.Exists "partials/microhook-below-post-in-list.html" }}
+      {{ partial "microhook-below-post-in-list.html" . }}
+      {{ end }}
+      {{ if .Params.bluesky }}
+      <a class="u-syndication" {{ printf "href=%q" .Params.bluesky.url | safeHTMLAttr }} style="display: none;">Also on Bluesky</a>
+      {{ end }}
+    </div>
     {{ end }}
-
-
-    {{ end }}
-
-{{ end }}
-
-{{ end }}
-
-</section>
+  </ul>
 </div>
-
-
-
-
-
-
-
-	<header id="books"><h4>Books</h4></header>
-	<img style="display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif" />
-<div class="frame golden-frame">
-<section>
-	{{ $bookshelf := .Title  }}
-
-<ul class="bookshelf bookshelf--variant-grid">
-  {{ range (index .Site.Data.bookshelves $bookshelf) }}
-    <li>
-      <div class="bookshelf__item" title="{{ .title }} by {{ .author }}">
-        <a href="https://micro.blog/books/{{ .isbn }}">
-          <img class="bookshelf__cover" src="{{ .cover_url }}" />
-        </a>
-        <div class="bookshelf__meta">
-          <a href="https://micro.blog/books/{{ .isbn }}">
-            <h3 class="bookshelf__title">{{ .title }}</h3>
-          </a>
-          <span class="bookshelf__by">by</span>
-          <span class="bookshelf__author">{{ .author }}</span>
-        </div>
-      </div>
-    </li>
+{{ if templates.Exists "partials/microhook-pagination.html" }}
+{{ partial "microhook-pagination.html" . }}
+{{ else }}
+<div class="post-nav">
+  {{ if $paginator.HasPrev }}
+  <span class="prev">
+    <a href="{{ $paginator.Prev.URL }}" title="Previous Page"><span class="arrow">← Newer Posts</span></a>
+  </span>
   {{ end }}
-</ul>
-</section>
+  {{ if $paginator.HasNext }}
+  <span class="next">
+    <a href="{{ $paginator.Next.URL }}"><span class="arrow">Older Posts →</span></a>
+  </span>
+  {{ end }}
 </div>
-
-<script>
-	/* Make the iframe hidden while loading  */
-(async () => {
-  let div = document.createElement('div');
-  let ref = document.getElementsByTagName('base')[0] || 
-            document.getElementsByTagName('script')[0];
-
-  div.innerHTML = '<style> iframe { visibility: hidden; } </style>';
-  ref.parentNode.insertBefore(div, ref);
-})();  
-
-/* Copy the contents of the iframe into the DOM and execute scripts  */
-function disappear(frame) {
-let body = (frame.contentDocument.body||frame.contentDocument);
-
-frame.before(frame.contentDocument.getElementById('post-content'));
-
-frame.remove();
-}
-</script>
-{{ partial "game.html" . }}
+{{ end }}
+{{ end }}
 {{ end }}

@@ -1,27 +1,35 @@
 {{ define "main" }}
+<main>
+	<h2>Archive</h2>
+	{{ if templates.Exists "partials/microhook-archive-lead.html" }}
+	{{ partial "microhook-archive-lead.html" . }}
+	{{ end }}
 	{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
-	
-	{{ $list := (where .Site.Pages "Type" "post") }}
-	<div class="h-feed">
-		<!--<h4 class="frame border-frame">Post Archive</h4>-->
-		
-
-			<h4>📜 Adventure Log</h4>
-			<img style="margin-bottom:3em;display:block;margin: 0px auto;" width="562" height="19" src="/img/border.gif">
-		<div class="frame golden-frame">
+	{{ if gt (len $list) 0 }}
+	<section class="archive-categories">
+		<h3>Categories</h3>
+		<ul>
+			{{ range $list }}
+			<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+			{{ end }}
+		</ul>
+	</section>
+	{{ end }}
+	<div class="full-archives h-feed">
+		<h3 class="p-name">Full Post List</h3>
+		{{ $list := (where .Site.Pages "Type" "post") }}
 		{{ range $list }}
-		<div style="margin-top:1em;" class="h-entry frame grey-frame">
-			<p class="">
-				<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "2006-01-02" }}</time></a>:
-				{{ if .Title }}
-					<span class="p-name"><b>{{ .Title }}</b></span> 
-				{{ end }}
-				<span class="p-summary">{{ .Summary | truncate 100 }}</span>
-			</p>
-		</div>
-		{{ end }}
 
-		</div>
+		<p class="h-entry">
+			<a href="{{ .Permalink }}" class="u-url"><span class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "Jan 2, 2006" }}</span></a>:
+			{{ if .Title }}
+			<span class="p-name"><b>{{ .Title }}</b></span>
+			{{ end }}
+			<span class="p-summary">{{ .Summary | truncate 150 }}</span>
+		</p>
+
+		{{ end }}
 	</div>
-	{{ partial "game.html" . }}
+
+</main>
 {{ end }}
