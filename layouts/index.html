@@ -22,18 +22,6 @@
 
 
 
-	{{ range .Site.Pages }}
-	{{- if (in .Params.Navigation "false")}}
-	<table>
-		{{ range $key, $value := .Params }}
-			{{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
-		{{ end }}
-	</table>
-	{{- end}}
-{{ end }}
-
-
-
 
 
 
@@ -49,6 +37,13 @@
         </a>
 		<ol role="list">
 			{{ $category := .Title }}
+			{{ range .Site.Pages }}
+				{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
+				<li>
+					{{ .Content }}
+				</li>
+				{{- end}}
+			{{ end }}
 			{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 				{{ if (in .Params.categories $category) }}
 				{{ if .Title }}
