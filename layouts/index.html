@@ -25,14 +25,14 @@
 
 	{{ range $list }}
 	{{ $category := .Title }}
+	{{ range .Site.Pages }}
+		{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
+		<li>
+			{{ .Content }}
+		</li>
+		{{- end}}
+	{{ end }}
 	<li>
-		{{ range .Site.Pages }}
-			{{- if and (in .Params.Navigation "false") (eq .Params.Title $category)}}
-			<li>
-				{{ .Content }}
-			</li>
-			{{- end}}
-		{{ end }}
 		<a href="{{ .Permalink }}">
             <span class="title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
             <span data-href="{{ .Permalink }}" class="page">🥕</span>
