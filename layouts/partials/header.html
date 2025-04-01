@@ -2,7 +2,7 @@
 	{{ if templates.Exists "partials/microhook-profile-photo.html" }}
 	{{ partial "microhook-profile-photo.html" . }}
 	{{ else }}
-	<a href="/"><img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="profile_photo u-photo" width="80" height="80"></a>
+	<a href="/"></a>
 	{{ end }}
 	{{ if templates.Exists "partials/microhook-title.html" }}
 	{{ partial "microhook-title.html" . }}
@@ -36,7 +36,7 @@
 	</nav>
 	{{ end }}
 </header>
-<ol class="toc-list" role="list">
+<ol class="toc-list h-feed" role="list">
     <li>
         <a href="/">
             <span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page"><img src="https://s1.ezgif.com/tmp/0d00b0fc3635-sprite-png/tile006.png" style="
@@ -49,36 +49,36 @@
             {{ partial "microhook-inline-nav-begin.html" . }}
             {{ end }}
             {{ range .Site.Menus.main }}
-            <table>
+            <table style="display:none;">
                 {{ range $key, $value := .Page.Params }}
                     {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
                 {{ end }}
             </table>
             {{ if .Page.Params.redirect_url }}
-            <li>
+            <li class="h-entry">
                 <a class="u-url" href="{{ .Page.Params.redirect_url }}">
-                    <span class="title">{{ .Name }}
+                    <span class="p-name title">{{ .Name }}
                         <span class="leaders" aria-hidden="true"></span>
                     </span>
                     <span class="page">
                         {{- if .Page.Params.Lastmod }}
-                        <time datetime="{{ .Page.Params.Lastmod }}" title="{{ .Page.Params.Lastmod }}">
-                            {{ .Page.Params.Lastmod.Format "2006.02.01" }}
+                        <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+                            {{ .Page.Params.Lastmod.Format "2006.01.02" }}
                         </time>
                         {{- end}}
                     </span>
                 </a>
             </li>
             {{ else }}
-            <li>
+            <li class="h-entry">
                 <a class="u-url" href="{{ .URL | relLangURL | safeURL }}">
-                    <span class="title">{{ .Name }}
+                    <span class="p-name title">{{ .Name }}
                         <span class="leaders" aria-hidden="true"></span>
                     </span>
                     <span class="page">
                         {{- if .Page.Params.Lastmod }}
-                        <time datetime="{{ .Page.Params.Lastmod }}" title="{{ .Page.Params.Lastmod }}">
-                            {{ .Page.Params.Lastmod.Format "2006.02.01" }}
+                        <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+                            {{ .Page.Params.Lastmod.Format "2006.01.02" }}
                         </time>
                         {{- end}}
                     </span>
