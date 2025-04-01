@@ -58,7 +58,7 @@
 	background: var(--accent);
   }
   
-  header nav svg {
+  header nav img {
 	height: 1.6rem;
 	fill: #fff;
   }
