@@ -33,13 +33,20 @@
 			{{ $category := .Title }}
 			{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 				{{ if (in .Params.categories $category) }}
+				{{ if .Title }}
 				<li>
-					<a href="#Promise-Basics-The-Promise-Lifecycle">
-						<span class="title">The Promise Lifecycle<span class="leaders" aria-hidden="true"></span></span>
-						<span data-href="#Promise-Basics-The-Promise-Lifecycle" class="page"><span
-								class="visually-hidden">Page&nbsp;</span>17</span>
+					<a href="{{ .Permalink }}">
+						<span class="title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+						<span class="page">
+							{{- if .Page.Params.Lastmod }}
+							<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+								{{ .Page.Params.Lastmod.Format "2006.01.02" }}
+							</time>
+							{{- end}}
+						</span>
 					</a>
 				</li>
+				{{- end}}
 				{{- end}}
 			{{end}}
 		</ol>
