@@ -31,7 +31,7 @@
         </a>
 		<ol role="list">
 			{{ $category := .Title }}
-			{{ range .Site.Pages.ByDate.Reverse "Type" "post"  }}
+			{{ range (.Site.Pages.ByDate.Reverse "Type" "post").Pages  }}
 				{{ if (in .Params.categories $category) }}
 				<li>
 					<a href="#Promise-Basics-The-Promise-Lifecycle">
