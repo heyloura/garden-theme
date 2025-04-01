@@ -38,31 +38,27 @@
 </header>
 <header>
     <nav>
-        <a href="/"><img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="u-photo"></a>
-        {{ $count := len .Site.Menus.main }}
-        {{ $half := div $count 2 }}
-        <div>
-        {{ range $index, $element := .Site.Menus.main }}
-            {{ if lt $index $half }}
-			{{ if .Page.Params.redirect_url }}
-			<a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a>
-			{{ else }}
-			<a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
-			{{ end }}
-            {{ end }}
-        {{ end }}
-        </div>
-
-        <div>
-        {{ range $index, $element := .Site.Menus.main }}
-            {{ if ge $index $half }}
-			{{ if .Page.Params.redirect_url }}
-			<a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a>
-			{{ else }}
-			<a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
-			{{ end }}
-            {{ end }}
-        {{ end }}
-        </div>
+        <ol class="toc-list" role="list">
+            <li>
+                <a href="/">
+                    <span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page"><span class="">🏵️</span></span>
+                </a>
+                <ol role="list">
+        			{{ if templates.Exists "partials/microhook-inline-nav-begin.html" }}
+                    {{ partial "microhook-inline-nav-begin.html" . }}
+                    {{ end }}
+                    {{ range .Site.Menus.main }}
+                    {{ if .Page.Params.redirect_url }}
+                    <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}<span class="leaders" aria-hidden="true"></span></a></li>
+                    {{ else }}
+                    <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}<span class="leaders" aria-hidden="true"></span></a></li>
+                    {{ end }}
+                    {{ end }}
+                    {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
+                    {{ partial "microhook-inline-nav-end.html" . }}
+                    {{ end }}
+                </ol>
+            </li>
+        </ol>
     </nav>
 </header>
