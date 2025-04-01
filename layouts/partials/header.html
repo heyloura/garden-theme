@@ -49,6 +49,11 @@
             {{ partial "microhook-inline-nav-begin.html" . }}
             {{ end }}
             {{ range .Site.Menus.main }}
+            <table>
+                {{ range $key, $value := .Page.Params }}
+                    {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+                {{ end }}
+            </table>
             {{ if .Page.Params.redirect_url }}
             <li>
                 <a class="u-url" href="{{ .Page.Params.redirect_url }}">
@@ -56,9 +61,9 @@
                         <span class="leaders" aria-hidden="true"></span>
                     </span>
                     <span class="page">
-                        {{- if .Lastmod }}
-                        <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
-                            {{ .Lastmod.Format "2006.02.01" }}
+                        {{- if .Page.Params.Lastmod }}
+                        <time datetime="{{ .Page.Params.Lastmod }}" title="{{ .Page.Params.Lastmod }}">
+                            {{ .Page.Params.Lastmod.Format "2006.02.01" }}
                         </time>
                         {{- end}}
                     </span>
@@ -71,9 +76,9 @@
                         <span class="leaders" aria-hidden="true"></span>
                     </span>
                     <span class="page">
-                        {{- if .Lastmod }}
-                        <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
-                            {{ .Lastmod.Format "2006.02.01" }}
+                        {{- if .Page.Params.Lastmod }}
+                        <time datetime="{{ .Page.Params.Lastmod }}" title="{{ .Page.Params.Lastmod }}">
+                            {{ .Page.Params.Lastmod.Format "2006.02.01" }}
                         </time>
                         {{- end}}
                     </span>
