@@ -1,1 +1,1 @@
-# another-rpg-mb-theme
+# garden-theme
