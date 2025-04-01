@@ -23,7 +23,7 @@
 
 
 	{{ range .Site.Pages }}
-	{{- if (in .Params.Menu "main")}}
+	{{- if (in .Params.Navigation "false")}}
 	<table>
 		{{ range $key, $value := .Params }}
 			{{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
