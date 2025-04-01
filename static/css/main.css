@@ -49,8 +49,8 @@
   }
   
   header nav > a.section,
-  header nav > a:hover {
-	background: var(--accent);
+  header nav > a > img:hover {
+	border: 2px solid var(--accent);
   }
   
   header nav img {
