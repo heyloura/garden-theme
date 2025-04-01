@@ -6,12 +6,12 @@
 {{ if templates.Exists "partials/microhook-before-post-list.html" }}
 {{ partial "microhook-before-post-list.html" . }}
 {{ end }}
-<table>
+<table style="display: none;">
     {{ range $key, $value := .Site.Params }}
         {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
     {{ end }}
 </table>
-<table>
+<table style="display: none;">
     {{ range .Site.Pages }}
 	<table>
 		{{ range $key, $value := .Params }}
