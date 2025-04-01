@@ -11,3 +11,8 @@
         {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
     {{ end }}
 </table>
+<table>
+    {{ range $key, $value := .Site }}
+        {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+    {{ end }}
+</table>
