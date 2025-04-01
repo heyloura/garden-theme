@@ -17,8 +17,12 @@
     {{ end }}
 </table>
 <table>
-    {{ range $key, $value := .Site.Pages }}
-        {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+    {{ range .Site.Pages }}
+	<table>
+		{{ range $key, $value := . }}
+			{{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+		{{ end }}
+	</table>
     {{ end }}
 </table>
 <main class="h-feed">
