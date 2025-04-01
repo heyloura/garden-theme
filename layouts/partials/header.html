@@ -50,9 +50,9 @@
             {{ end }}
             {{ range .Site.Menus.main }}
             {{ if .Page.Params.redirect_url }}
-            <li><a class="page-link {{ .Name }}" href="{{ .Page.Params.redirect_url }}">{{ .Name }}<span class="leaders" aria-hidden="true"></span></a></li>
+            <li><a class="u-url" href="{{ .Page.Params.redirect_url }}"><span class="title">{{ .Name }}<span class="leaders" aria-hidden="true"></span></span><span class="page"><time class="dt-updated" datetime="{{ .lastmod.Format "2006-01-02 15:04:05 -0700" }}">{{ .lastmod.Format "Jan 2, 2006" }}</time></span></a></li>
             {{ else }}
-            <li><a class="page-link {{ .Name }}" href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}<span class="leaders" aria-hidden="true"></span></a></li>
+            <li><a class="u-url" href="{{ .URL | relLangURL | safeURL }}"><span class="title">{{ .Name }}<span class="leaders" aria-hidden="true"></span></span><span class="page"><time class="dt-updated" datetime="{{ .lastmod.Format "2006-01-02 15:04:05 -0700" }}">{{ .lastmod.Format "Jan 2, 2006" }}</time></span></a></li>
             {{ end }}
             {{ end }}
             {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
