@@ -11,15 +11,13 @@
         {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
     {{ end }}
 </table>
-<table style="display: none;">
     {{ range .Site.Pages }}
-	<table>
+	<table style="display: none;">
 		{{ range $key, $value := .Params }}
 			{{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
 		{{ end }}
 	</table>
     {{ end }}
-</table>
 <main class="h-feed">
 	{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 	{{ range .Paginator.Pages }}
