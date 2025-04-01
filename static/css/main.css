@@ -46,11 +46,6 @@
 	grid-column: 2;
 	display: grid;
 	place-content: center;
-	width: 2.5rem;
-	height: 2.5rem;
-	border-radius: 50%;
-	background: #000;
-	transition: background-color 0.2s;
   }
   
   header nav > a.section,
@@ -59,8 +54,9 @@
   }
   
   header nav img {
-	height: 1.6rem;
-	fill: #fff;
+	height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
   }
   
   header nav div,

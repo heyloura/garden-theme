@@ -45,9 +45,9 @@
         {{ range $index, $element := .Site.Menus.main }}
             {{ if lt $index $half }}
 			{{ if .Page.Params.redirect_url }}
-			<li><a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
+			<a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a>
 			{{ else }}
-			<li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+			<a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
 			{{ end }}
             {{ end }}
         {{ end }}
@@ -57,9 +57,9 @@
         {{ range $index, $element := .Site.Menus.main }}
             {{ if ge $index $half }}
 			{{ if .Page.Params.redirect_url }}
-			<li><a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a></li>
+			<a href="{{ .Page.Params.redirect_url }}">{{ .Name }}</a>
 			{{ else }}
-			<li><a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a></li>
+			<a href="{{ .URL | relLangURL | safeURL }}">{{ .Name }}</a>
 			{{ end }}
             {{ end }}
         {{ end }}
