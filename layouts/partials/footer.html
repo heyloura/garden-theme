@@ -6,3 +6,8 @@
     {{ end }}
     <p class="attribution">Hosted by <a href="https://micro.blog">Micro.blog</a></p>
 </footer>
+<table>
+    {{ range $key, $value := . }}
+        {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+    {{ end }}
+</table>
