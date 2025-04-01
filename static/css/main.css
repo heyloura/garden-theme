@@ -188,6 +188,10 @@
 	margin: 0 auto;
 	padding: 1rem 1.25rem 0;
   }
+
+  li.h-entry {
+	padding: 0;
+  }
   
   p:has(img),
   figure,

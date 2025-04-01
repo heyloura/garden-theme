@@ -39,10 +39,12 @@
 <ol class="toc-list h-feed" role="list">
     <li>
         <a href="/">
-            <span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page"><img src="https://s1.ezgif.com/tmp/0d00b0fc3635-sprite-png/tile006.png" style="
+            <span class="title">Hey Loura<span class="leaders" aria-hidden="true"></span></span><span class="page">
+                <img src="{{ .Site.Author.avatar }}" alt="{{ .Site.Title }} Profile Photo" class="u-photo" style="
                 height: clamp(18px, 100vw / var(--width), 20px);
                 image-rendering: pixelated;
-            "></span>
+            ">
+            </span>
         </a>
         <ol role="list">
             {{ if templates.Exists "partials/microhook-inline-nav-begin.html" }}
