@@ -159,6 +159,12 @@
     text-align: right;
 }
 
+.avatar {
+	height: clamp(18px, 100vw / var(--width), 20px);
+	vertical-align: middle;
+	border-radius: 0;
+}
+
 
   
   footer {
@@ -230,8 +236,7 @@
   dt {
 	padding-top: 1rem;
   }
-  
-  ol,
+
   ul {
 	padding: 1rem 1.25rem 0 2.75rem;
   }
