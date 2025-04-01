@@ -49,15 +49,32 @@
             {{ partial "microhook-inline-nav-begin.html" . }}
             {{ end }}
             {{ range .Site.Menus.main }}
-            <table>
-                {{ range $key, $value := .Params}}
-                    {{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
-                {{ end }}
-            </table>
             {{ if .Page.Params.redirect_url }}
-            <li><a class="u-url" href="{{ .Page.Params.redirect_url }}"><span class="title">{{ .Name }}<span class="leaders" aria-hidden="true"></span></span><span class="page"></span></a></li>
+            <li>
+                <a class="u-url" href="{{ .Page.Params.redirect_url }}">
+                    <span class="title">{{ .Name }}
+                        <span class="leaders" aria-hidden="true"></span>
+                    </span>
+                    <span class="page">
+                        <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
+                            {{ $lastmod }}
+                        </time>
+                    </span>
+                </a>
+            </li>
             {{ else }}
-            <li><a class="u-url" href="{{ .URL | relLangURL | safeURL }}"><span class="title">{{ .Name }}<span class="leaders" aria-hidden="true"></span></span><span class="page"></span></a></li>
+            <li>
+                <a class="u-url" href="{{ .URL | relLangURL | safeURL }}">
+                    <span class="title">{{ .Name }}
+                        <span class="leaders" aria-hidden="true"></span>
+                    </span>
+                    <span class="page">
+                        <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
+                            {{ $lastmod }}
+                        </time>
+                    </span>
+                </a>
+            </li>
             {{ end }}
             {{ end }}
             {{ if templates.Exists "partials/microhook-inline-nav-end.html" }}
