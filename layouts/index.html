@@ -19,6 +19,24 @@
 	</table>
     {{ end }}
 <main class="h-feed">
+
+
+
+	{{ range .Site.Pages }}
+	{{- if (in .Params.Menu "main")}}
+	<table>
+		{{ range $key, $value := .Params }}
+			{{ printf "<tr><td>%#v</td><td>%#v</td></tr>" $key $value | safeHTML }}
+		{{ end }}
+	</table>
+	{{- end}}
+{{ end }}
+
+
+
+
+
+
 <ol class="toc-list" role="list">
 	{{ $list := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
 	{{ if gt (len $list) 0 }}
@@ -34,9 +52,9 @@
 			{{ range (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 				{{ if (in .Params.categories $category) }}
 				{{ if .Title }}
-				<li>
-					<a href="{{ .Permalink }}">
-						<span class="title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+				<li class="h-entry">
+					<a class="p-url" href="{{ .Permalink }}">
+						<span class="p-name title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
 						<span class="page">
 							{{- if .Page.Params.Lastmod }}
 							<time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
@@ -57,7 +75,7 @@
 </ol>
 	{{ $paginator := .Paginate (where .Site.Pages.ByDate.Reverse "Type" "post") }}
 	{{ range .Paginator.Pages }}
-	<article class="h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+	<article style="display: none;" class="h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
 		{{ if templates.Exists "partials/microhook-post-list-byline.html" }}
 		{{ partial "microhook-post-list-byline.html" . }}
 		{{ else }}
