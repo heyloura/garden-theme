@@ -142,6 +142,26 @@
     list-style: none;
   }
 
+  .microblog_post {
+    padding: 1rem 1.25rem 0;
+}
+
+.microblog_text {
+  margin-top: 1em;
+}
+
+.microblog_time {
+  font-size: small;
+  padding-top: 1rem;
+  color: gray;
+}
+
+  .microblog_avatar {
+    border-radius: 10px;
+    vertical-align: top;
+    padding: 0px;
+}
+
   li.h-entry {
 	padding: 0;
   }
