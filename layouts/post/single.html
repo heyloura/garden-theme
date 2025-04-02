@@ -145,7 +145,7 @@
   {{ partial "microhook-share-button.html" . }}
   {{ end }}
   <li>
-    <a {{ printf "href=%q" (replace .Permalink "https://" "gemini://") | safeHtmlAttr }}>🚀 Also on Gemini</a>
+    <a {{ printf "href=%q" (replace .Permalink "https://" "gemini://") }}>🚀 Also on Gemini</a>
   </li>
 </ul>
 {{ end }}
