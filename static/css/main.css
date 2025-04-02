@@ -1,7 +1,7 @@
 :root {
 	--width: 34.5;
 	--rounding: 4px;
-	--accent: #696;
+	--accent: #64A52D;
 	--dark-grey: #ddd;
 	--grey: #eee;
 	--light-grey: #f8f8f8;
@@ -32,6 +32,12 @@
     background-image: url('/img/Index.png');
     background-repeat: repeat-y;
     margin-left: 250px;
+  }
+  @media screen and (max-width: 820px) {
+    body {
+      margin-left: 0px;
+      background-image:none;
+    }
   }
   
   header {
