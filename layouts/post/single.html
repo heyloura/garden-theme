@@ -42,6 +42,29 @@
 
 </main>
 
+<aside>
+  {{ $permalinkurl := urls.Parse .Permalink }}
+  {{ $relpermalink := .RelPermalink }}
+  {{ $pages := slice }}
+  {{- range .Site.Pages -}}
+      {{- if strings.Contains .Content $relpermalink -}}
+          {{ $pages = $pages | append . }}
+      {{- end -}}
+  {{- end -}}
+  {{ with $pages }}
+  <section class="backlinks">
+      <h1>Backlinks</h1>
+      <div class="backlink-items">
+      {{- range $pages -}}
+          {{- if strings.Contains .Content $relpermalink -}}
+          <div class="backlink-item"><a href="{{ .Permalink }}">{{ .Name }}</a></div>
+          {{- end -}}
+      {{- end -}}
+      </div>
+  </section>
+  {{ end }}
+</aside>
+
 {{ if templates.Exists "partials/microhook-before-comments.html" }}
 {{ partial "microhook-before-comments.html" . }}
 {{ end }}
