@@ -113,10 +113,14 @@
 }
 
 .e-content {
-  margin-bottom: 3em;
   border: 2px solid var(--accent);
   border-radius: 1em;
   padding: 1em;
+  margin: 1em 0;
+}
+
+.e-content ~ footer {
+  margin-bottom: 3em;
 }
   
   footer {
