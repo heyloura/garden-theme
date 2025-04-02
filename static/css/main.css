@@ -133,7 +133,7 @@
   figure,
   form,
   .h-entry,
-  .microblog_conversation {
+  section {
 	max-width: calc(1rem * var(--width));
 	padding: 1rem 1.25rem 0;
   }
