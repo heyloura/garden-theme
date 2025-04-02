@@ -31,7 +31,7 @@
   <section class="backlinks">
     <ol class="toc-list h-feed" role="list">
       <li>
-        <span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span><span class="page"></span>
+        <span class="noA"><span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
           <ol role="list">
             {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize .) }}
             <li>
@@ -68,7 +68,7 @@
   <section class="backlinks">
     <ol class="toc-list h-feed" role="list">
       <li>
-        <span class="title">Backlinks<span class="leaders" aria-hidden="true"></span></span><span class="page"></span>
+        <span class="noA"><span class="title">Backlinks<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
           <ol role="list">
             {{ range $pages }}
               {{ if .Title }}

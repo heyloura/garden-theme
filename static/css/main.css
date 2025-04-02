@@ -66,24 +66,24 @@
   padding-inline-start: 2ch;
 }
 
-.toc-list > li > a , .toc-list > li > span {
+.toc-list > li > a , .toc-list > li > .noA {
   font-weight: bold;
   margin-block-start: 1em;
 }
 
-.toc-list li > a, .toc-list li > span {
+.toc-list li > a, .toc-list li > .noA {
     text-decoration: none;
     display: grid;
     grid-template-columns: auto max-content;
     align-items: end;
 }
 
-.toc-list li > a > .title, .toc-list li > span > .title {
+.toc-list li > a > .title, .toc-list li > .noA > .title {
     position: relative;
     overflow: hidden;
 }
 
-.toc-list li > a .leaders::after,.toc-list li > span .leaders::after {
+.toc-list li > a .leaders::after,.toc-list li > .noA .leaders::after {
     position: absolute;
     padding-inline-start: .25ch;
     content: " . . . . . . . . . . . . . . . . . . . "
@@ -96,7 +96,7 @@
     text-align: right;
 }
 
-.toc-list li > a > .page, .toc-list li > span > .page  {
+.toc-list li > a > .page, .toc-list li > .noA > .page  {
     min-width: 2ch;
     font-variant-numeric: tabular-nums;
     text-align: right;
