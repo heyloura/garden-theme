@@ -161,7 +161,7 @@
     image-rendering: auto;
     height: 30px !important;
     width: 30px !important;
-    max-width: 30px;
+    max-width: 30px !important;
 }
 
   li.h-entry {
