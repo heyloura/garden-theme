@@ -136,6 +136,7 @@
   .microblog_conversation {
 	max-width: calc(1rem * var(--width));
 	padding: 1rem 1.25rem 0;
+  font-size: 0.9em;
   }
 
   .post-tags,.reply-buttons {
@@ -143,12 +144,9 @@
   }
 
   .microblog_post {
-    padding: 1rem 1.25rem 0;
+    padding: 2rem 1.25rem 0;
 }
 
-.microblog_text {
-  margin-top: 1em;
-}
 
 .microblog_time {
   font-size: small;
@@ -163,6 +161,7 @@
     image-rendering: auto;
     height: 30px !important;
     width: 30px !important;
+    max-width: 30px;
 }
 
   li.h-entry {
