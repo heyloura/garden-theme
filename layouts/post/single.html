@@ -12,23 +12,33 @@
     {{ if templates.Exists "partials/microhook-post-byline.html" }}
     {{ partial "microhook-post-byline.html" . }}
     {{ else }}
-    <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
     {{ with .Params.audio }}
       <script type="text/javascript" src="https://micro.blog/narration.js?url={{ . }}"></script>
     {{ end }}
     {{ end }}
-
   </header>
 
   <article class="post-content e-content">
     {{ .Content }}
   </article>
 
+  <footer><p style="text-align:center;">
+    {{- if .Page.Params.Lastmod }}
+    Most recent update on
+    <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+      {{ .Page.Params.Lastmod.Format "2006.01.02" }}
+    </time><br/>
+    {{- end}}
+    <a href="{{ .Permalink }}" class="u-url">First published on <time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
+    </p>
+  </footer>
+</main>
+
   {{ if templates.Exists "partials/microhook-categories.html" }}
   {{ partial "microhook-categories.html" . }}
   {{ else }}
   {{ if .Params.categories }}
-  <section class="backlinks">
+  <aside class="backlinks">
     <ol class="toc-list h-feed" role="list">
       <li>
         <span class="noA"><span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span></span><span class="page"></span>
@@ -45,7 +55,7 @@
           </ol>
       </li>
     </ol>
-  </section>
+  </aside>
   {{ end }}
   {{ end }}
 
@@ -53,7 +63,7 @@
   {{ partial "microhook-after-post.html" . }}
   {{ end }}
 
-</main>
+
 
 <aside>
   {{ $permalinkurl := urls.Parse .Permalink }}

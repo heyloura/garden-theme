@@ -108,7 +108,16 @@
 	border-radius: 0;
 }
 
+.post-content {
+  margin-bottom: 3em;
+}
 
+.e-content {
+  margin-bottom: 3em;
+  border: 2px solid var(--accent);
+  border-radius: 1em;
+  padding: 1em;
+}
   
   footer {
 	padding: 3rem 0 1.5rem;
