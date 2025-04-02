@@ -53,45 +53,45 @@
   {{- end -}}
   {{ with $pages }}
   <section class="backlinks">
-      <h3 class="post-title">Backlinks</h3>
-      <ol role="list">
-        {{ range $pages }}
-          {{ if .Title }}
-          <li>
-            <a class="p-url" href="{{ .Permalink }}">
-              <span class="p-name title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
-              <span class="page">
-                {{- if .Page.Params.Lastmod }}
-                <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
-                  {{ .Page.Params.Lastmod.Format "2006.01.02" }}
-                </time>
-                {{- end}}
+    <ol class="toc-list h-feed" role="list">
+      <li>
+          <a href="/">
+              <span class="title">Backlinks<span class="leaders" aria-hidden="true"></span></span><span class="page">
+                  
               </span>
-            </a>
-          </li>
-          {{- else}}
-          <li>
-            <a class="p-url" href="{{ .Permalink }}">
-              <span class="p-name title">{{ .Summary | truncate 150 }}<span class="leaders" aria-hidden="true"></span></span>
-              <span class="page">
-                {{- if .Page.Params.Lastmod }}
-                <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
-                  {{ .Page.Params.Lastmod.Format "2006.01.02" }}
-                </time>
-                {{- end}}
-              </span>
-            </a>
-          </li>
-          {{- end}}
-        {{end}}
-      </ol>
-      <div class="backlink-items">
-      {{- range $pages -}}
-          {{- if strings.Contains .Content $relpermalink -}}
-          <div class="backlink-item"><a href="{{ .Permalink }}">{{ .Name }}</a></div>
-          {{- end -}}
-      {{- end -}}
-      </div>
+          </a>
+          <ol role="list">
+            {{ range $pages }}
+              {{ if .Title }}
+              <li>
+                <a class="p-url" href="{{ .Permalink }}">
+                  <span class="p-name title">{{ .Title }}<span class="leaders" aria-hidden="true"></span></span>
+                  <span class="page">
+                    {{- if .Page.Params.Lastmod }}
+                    <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+                      {{ .Page.Params.Lastmod.Format "2006.01.02" }}
+                    </time>
+                    {{- end}}
+                  </span>
+                </a>
+              </li>
+              {{- else}}
+              <li>
+                <a class="p-url" href="{{ .Permalink }}">
+                  <span class="p-name title">{{ .Summary | truncate 150 }}<span class="leaders" aria-hidden="true"></span></span>
+                  <span class="page">
+                    {{- if .Page.Params.Lastmod }}
+                    <time class="dt-updated" datetime="{{ .Page.Params.Lastmod.Format "2006-01-02 15:04:05 -0700" }}">
+                      {{ .Page.Params.Lastmod.Format "2006.01.02" }}
+                    </time>
+                    {{- end}}
+                  </span>
+                </a>
+              </li>
+              {{- end}}
+            {{end}}
+          </ol>
+      </li>
   </section>
   {{ end }}
 </aside>
