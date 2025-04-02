@@ -28,11 +28,24 @@
   {{ partial "microhook-categories.html" . }}
   {{ else }}
   {{ if .Params.categories }}
-  <ul class="post-tags">
-    {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize .) }}
-    <li><a href="{{ $href }}">#{{ . }}</a></li>
-    {{ end }}
-  </ul>
+  <section class="backlinks">
+    <ol class="toc-list h-feed" role="list">
+      <li>
+        <span class="title">Categories and tags<span class="leaders" aria-hidden="true"></span></span><span class="page"></span>
+          <ol role="list">
+            {{ range .Params.categories }} {{ $href := print (absURL "categories/") (urlize .) }}
+            <li>
+              <a class="p-url" href="{{ $href }}">
+                <span class="p-name title">{{ . }}<span class="leaders" aria-hidden="true"></span></span>
+                <span class="page">
+                </span>
+              </a>
+            </li>
+            {{end}}
+          </ol>
+      </li>
+    </ol>
+  </section>
   {{ end }}
   {{ end }}
 
@@ -55,11 +68,7 @@
   <section class="backlinks">
     <ol class="toc-list h-feed" role="list">
       <li>
-          <a href="/">
-              <span class="title">Backlinks<span class="leaders" aria-hidden="true"></span></span><span class="page">
-                  
-              </span>
-          </a>
+        <span class="title">Backlinks<span class="leaders" aria-hidden="true"></span></span><span class="page"></span>
           <ol role="list">
             {{ range $pages }}
               {{ if .Title }}
@@ -92,6 +101,7 @@
             {{end}}
           </ol>
       </li>
+    </ol>
   </section>
   {{ end }}
 </aside>
