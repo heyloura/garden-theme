@@ -71,14 +71,14 @@
   margin-block-start: 1em;
 }
 
-.toc-list li > a, .toc-list > li > span {
+.toc-list li > a, .toc-list li > span {
     text-decoration: none;
     display: grid;
     grid-template-columns: auto max-content;
     align-items: end;
 }
 
-.toc-list li > a > .title, .toc-list > li > span > .title {
+.toc-list li > a > .title, .toc-list li > span > .title {
     position: relative;
     overflow: hidden;
 }
