@@ -145,6 +145,9 @@
   {{ if templates.Exists "partials/microhook-share-button.html" }}
   {{ partial "microhook-share-button.html" . }}
   {{ end }}
+  <li>
+    <a href="{{ replace .Permalink "https://" "gemini://" }}">🚀 Also on Gemini</a>
+  </li>
 </ul>
 {{ end }}
 
