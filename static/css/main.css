@@ -329,6 +329,7 @@
 	border-radius: var(--rounding);
 	background: #fff no-repeat center center;
 	color: #000;
+  width:100%
   }
   
   :is(input, textarea, select):where(:active:not(:disabled), :focus) {
@@ -414,7 +415,7 @@
   }
   
   button > span,
-  .button {
+  button {
 	display: inline-block;
 	padding: 0 0.5rem;
 	border: 2px solid var(--accent);
@@ -428,8 +429,8 @@
   }
   
   button:where(:active, :focus) > span,
-  .button:where(:active, :focus),
-  input[type="file"]:where(:active, :focus) + .button {
+  button:where(:active, :focus),
+  input[type="file"]:where(:active, :focus) + button {
 	background: #fff;
 	color: var(--accent);
   }
