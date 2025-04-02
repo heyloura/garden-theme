@@ -44,6 +44,10 @@
 	padding: 1.25rem 0 0.5rem;
   }
 
+  .post-title {
+    text-align: center;
+  }
+
 .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(100%);

@@ -1,23 +1,23 @@
 {{ define "main" }}
-<div class="post h-entry {{ range .Params.categories }} {{ . | urlize | lower }}{{ end }}">
+<main class="h-entry">
 
   {{ if templates.Exists "partials/microhook-before-post.html" }}
   {{ partial "microhook-before-post.html" . }}
   {{ end }}
 
   <header class="post-header">
-
+    {{ if .Title }}
+    <h2 class="p-name post-title">{{ .Title }}</h2>
+    {{ end }}
     {{ if templates.Exists "partials/microhook-post-byline.html" }}
     {{ partial "microhook-post-byline.html" . }}
     {{ else }}
-    <a href="{{ .Permalink }}" class="post-date u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time> ∞</a>
+    <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time></a>
     {{ with .Params.audio }}
       <script type="text/javascript" src="https://micro.blog/narration.js?url={{ . }}"></script>
     {{ end }}
     {{ end }}
-    {{ if .Title }}
-    <h2 class="p-name">{{ .Title }}</h2>
-    {{ end }}
+
   </header>
 
   <article class="post-content e-content">
@@ -40,7 +40,7 @@
   {{ partial "microhook-after-post.html" . }}
   {{ end }}
 
-</div>
+</main>
 {{ if or (templates.Exists "partials/reply-by-email.html") (templates.Exists "partials/conversation-link.html") (templates.Exists "partials/plugin_tinylytics.html") (templates.Exists "partials/reply-on-mastodon.html") (templates.Exists "partials/microhook-share-button.html")}}
 <ul class="reply-buttons">
   {{ if templates.Exists "partials/plugin_tinylytics.html" }}
