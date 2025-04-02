@@ -41,6 +41,19 @@
   {{ end }}
 
 </main>
+
+{{ if templates.Exists "partials/microhook-before-comments.html" }}
+{{ partial "microhook-before-comments.html" . }}
+{{ end }}
+
+<section>
+  <h3>Conversation</h3>
+  {{ if .Site.Params.include_conversation }}
+  <script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+  {{ end }}
+	<div class="microblog_conversation">	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2023/15/3241.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Ricardo Mendes </span>		</div>		<div class="microblog_text">			<p> Hey.. This is really cool.. I will share this with a bunch of Gem friends that I know were looking for a way to do similar with their own blogs, again thanks, great dev cooking! </p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/rmdes/59573234">2025-03-11  5:27 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2024/17/38001.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Sven Dahlstrand</span>		</div>		<div class="microblog_text">			<p> Will read this with my morning coffee tomorrow, but browsing your capsule right now. Amazing! 😍</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/sod/59583618">2025-03-11  8:22 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2022/144491.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Loura</span>		</div>		<div class="microblog_text">			<p><a href="https://micro.blog/rmdes">@rmdes</a> Thank you!</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/heyloura/59585068">2025-03-11  8:51 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2022/144491.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Loura</span>		</div>		<div class="microblog_text">			<p><a href="https://micro.blog/sod">@sod</a> Thanks for checking it out! It was an enjoyable project to toss together last week 😁</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/heyloura/59884897">2025-03-15  2:55 pm</a>		</div>	</div><form method="POST" class="microblog_reply_form" action="https://micro.blog/account/comments/59568308/post"><p class="microblog_reply_signin">Sign in with <a href="https://micro.blog/account/comments/59568308/mb?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Micro.blog</a>, <a href="https://micro.blog/account/comments/59568308/mastodon?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Mastodon</a>, or <a href="https://micro.blog/account/comments/59568308/bluesky?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Bluesky</a> to reply:</p><input type="hidden" name="token" value="null"><input type="hidden" name="username" value="null"><input type="hidden" name="url" value="https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html"><p class="microblog_reply_textarea"><textarea name="text" rows="4" cols="50" disabled=""></textarea></p><p class="microblog_reply_button"><input type="submit" value="Post" disabled=""></p></form></div>
+</section>
+
 {{ if or (templates.Exists "partials/reply-by-email.html") (templates.Exists "partials/conversation-link.html") (templates.Exists "partials/plugin_tinylytics.html") (templates.Exists "partials/reply-on-mastodon.html") (templates.Exists "partials/microhook-share-button.html")}}
 <ul class="reply-buttons">
   {{ if templates.Exists "partials/plugin_tinylytics.html" }}
@@ -59,21 +72,6 @@
   {{ partial "microhook-share-button.html" . }}
   {{ end }}
 </ul>
-{{ end }}
-<section>
-  <div id="conversation" style="margin-top: 2em;">
-		
-		<div class="microblog_conversation">	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2023/15/3241.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Ricardo Mendes </span>		</div>		<div class="microblog_text">			<p> Hey.. This is really cool.. I will share this with a bunch of Gem friends that I know were looking for a way to do similar with their own blogs, again thanks, great dev cooking! </p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/rmdes/59573234">2025-03-11  5:27 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2024/17/38001.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Sven Dahlstrand</span>		</div>		<div class="microblog_text">			<p> Will read this with my morning coffee tomorrow, but browsing your capsule right now. Amazing! 😍</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/sod/59583618">2025-03-11  8:22 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2022/144491.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Loura</span>		</div>		<div class="microblog_text">			<p><a href="https://micro.blog/rmdes">@rmdes</a> Thank you!</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/heyloura/59585068">2025-03-11  8:51 pm</a>		</div>	</div>	<div class="microblog_post">		<div class="microblog_user">			<img class="microblog_avatar" src="https://avatars.micro.blog/avatars/2022/144491.jpg" width="20" height="20" style="max-width: 20px;">			<span class="microblog_fullname">Loura</span>		</div>		<div class="microblog_text">			<p><a href="https://micro.blog/sod">@sod</a> Thanks for checking it out! It was an enjoyable project to toss together last week 😁</p>		</div>		<div class="microblog_time">			<a href="https://micro.blog/heyloura/59884897">2025-03-15  2:55 pm</a>		</div>	</div><form method="POST" class="microblog_reply_form" action="https://micro.blog/account/comments/59568308/post"><p class="microblog_reply_signin">Sign in with <a href="https://micro.blog/account/comments/59568308/mb?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Micro.blog</a>, <a href="https://micro.blog/account/comments/59568308/mastodon?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Mastodon</a>, or <a href="https://micro.blog/account/comments/59568308/bluesky?url=https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html">Bluesky</a> to reply:</p><input type="hidden" name="token" value="null"><input type="hidden" name="username" value="null"><input type="hidden" name="url" value="https://heyloura.com/2025/03/11/coding-adventure-using-deno-and.html"><p class="microblog_reply_textarea"><textarea name="text" rows="4" cols="50" disabled=""></textarea></p><p class="microblog_reply_button"><input type="submit" value="Post" disabled=""></p></form></div>
-		
-	</div>
-</section>
-
-{{ if templates.Exists "partials/microhook-before-comments.html" }}
-{{ partial "microhook-before-comments.html" . }}
-{{ end }}
-
-{{ if .Site.Params.include_conversation }}
-<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
 {{ end }}
 
 {{ if templates.Exists "partials/microhook-after-comments.html" }}

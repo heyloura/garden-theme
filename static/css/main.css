@@ -132,9 +132,14 @@
   ul,
   figure,
   form,
-  .h-entry {
+  .h-entry,
+  .microblog_conversation {
 	max-width: calc(1rem * var(--width));
 	padding: 1rem 1.25rem 0;
+  }
+
+  .post-tags,.reply-buttons {
+    list-style: none;
   }
 
   li.h-entry {
